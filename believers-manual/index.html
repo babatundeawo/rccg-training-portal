@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Believers' Manual Track Dashboard - RCCG Portal</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="dashboard-body">
+
+  <header class="app-header">
+    <div class="brand">
+      <img src="../assets/images/rccg_logo.png" alt="RCCG Logo" class="brand-logo">
+      <div>
+        <span class="brand-name">Believers' Manual</span>
+        <span class="brand-subtitle">RCCG Training Track</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="../index.html" class="dashboard-back">← Back to Portal</a>
+    
+    <div class="dashboard-hero">
+      <h2>Believers' Manual</h2>
+      <p>This study track establishes you in the Christian faith. It covers fundamental doctrines, Quiet Time, personal evangelism, moral issues, and the Second Coming of Christ.</p>
+      
+      <div class="dashboard-actions">
+        <button id="start-track-btn" class="btn btn-primary" onclick="startFirstIncompleteStudy()">Start First Study</button>
+        <a href="quiz.html" class="btn btn-secondary">Take Exam 📝</a>
+        <button class="btn btn-secondary" onclick="confirmReset()" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4);">Reset Progress</button>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 20px; color: var(--color-primary-dark)">Studies in this Track</h3>
+    <div class="study-list" id="dashboard-study-list">
+      <!-- Generated dynamically by script -->
+    </div>
+  </main>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/content-believers.js"></script>
+  <script>
+    const TRACK_ID = "believers";
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      renderStudiesList();
+    });
+
+    function renderStudiesList() {
+      const progress = getTrackProgress(TRACK_ID);
+      const listContainer = document.getElementById("dashboard-study-list");
+      listContainer.innerHTML = "";
+
+      BELIEVERS_CONTENT.forEach(study => {
+        const isCompleted = progress.completedStudies.includes(study.id);
+        const item = document.createElement("div");
+        item.className = `study-item ${isCompleted ? 'completed' : ''}`;
+        
+        item.innerHTML = `
+          <div class="study-item-info">
+            <div class="study-number">${study.id}</div>
+            <div class="study-title-text">${study.title}</div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <span class="study-status">${isCompleted ? 'Complete ✓' : 'Not Started'}</span>
+            <a href="study.html?study=${study.id}" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">
+              ${isCompleted ? 'Review' : 'Study'}
+            </a>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+
+      // Update start button
+      const nextStudyId = findFirstIncompleteStudy();
+      const startBtn = document.getElementById('start-track-btn');
+      if (progress.completedStudies.length === BELIEVERS_CONTENT.length) {
+        startBtn.innerText = "Review Track";
+      } else if (progress.completedStudies.length > 0) {
+        startBtn.innerText = `Resume (Study ${nextStudyId})`;
+      }
+    }
+
+    function findFirstIncompleteStudy() {
+      const progress = getTrackProgress(TRACK_ID);
+      for (let study of BELIEVERS_CONTENT) {
+        if (!progress.completedStudies.includes(study.id)) {
+          return study.id;
+        }
+      }
+      return "1";
+    }
+
+    function startFirstIncompleteStudy() {
+      const studyId = findFirstIncompleteStudy();
+      window.location.href = `study.html?study=${studyId}`;
+    }
+
+    function confirmReset() {
+      if (confirm("Are you sure you want to reset all your progress in the Believers' Manual track?")) {
+        resetTrackProgress(TRACK_ID);
+      }
+    }
+  </script>
+</body>
+</html>

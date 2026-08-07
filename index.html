@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official RCCG North America interactive training manual portal. Step-by-step tracks for Believers, Baptismal, and Workers-in-Training.">
+  <title>RCCG Interactive Training Manuals Portal</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+  <!-- App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="assets/images/rccg_logo.png" alt="RCCG Logo" class="brand-logo">
+      <div>
+        <span class="brand-name">RCCG North America</span>
+        <span class="brand-subtitle">Training Portal</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portal Hero -->
+  <section class="portal-hero">
+    <h1 class="portal-title">Interactive Training Portal</h1>
+    <p class="portal-subtitle">Welcome to the official Redeemed Christian Church of God training portal. Choose a track below to start your guided learning journey.</p>
+  </section>
+
+  <!-- Main Content Manual Selector Grid -->
+  <main class="container">
+    <div class="manual-grid">
+      
+      <!-- Believers Manual Card -->
+      <div class="manual-card believers" onclick="window.location.href='believers-manual/index.html'">
+        <div>
+          <div class="manual-icon-wrap">📖</div>
+          <h3>Believers' Manual</h3>
+          <p>Establish your faith in Christ. Learn foundational doctrines including the New Birth, Quiet Time, and the Second Coming.</p>
+        </div>
+        <div class="manual-progress-info">
+          <span>Completion:</span>
+          <span class="progress-pill" id="believers-progress">0%</span>
+        </div>
+      </div>
+
+      <!-- Baptismal Manual Card -->
+      <div class="manual-card baptismal" onclick="window.location.href='baptismal-manual/index.html'">
+        <div>
+          <div class="manual-icon-wrap">💧</div>
+          <h3>Baptismal Manual</h3>
+          <p>Detailed study of three key baptisms, divine healing, holy marriage, tithes, vows, and deliverance guidance.</p>
+        </div>
+        <div class="manual-progress-info">
+          <span>Completion:</span>
+          <span class="progress-pill" id="baptismal-progress">0%</span>
+        </div>
+      </div>
+
+      <!-- Workers-in-Training Card -->
+      <div class="manual-card workers" onclick="window.location.href='workers-in-training/index.html'">
+        <div>
+          <div class="manual-icon-wrap">🔥</div>
+          <h3>Workers-in-Training</h3>
+          <p>Equip yourself for service in God's house. Study RCCG history, church hierarchy, code of conduct, and department guidelines.</p>
+        </div>
+        <div class="manual-progress-info">
+          <span>Completion:</span>
+          <span class="progress-pill" id="workers-progress">0%</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+  <script>
+    // Load track completion percentages on page load
+    document.addEventListener("DOMContentLoaded", () => {
+      const tracks = ["believers", "baptismal", "workers"];
+      const counts = { believers: 8, baptismal: 15, workers: 16 };
+      
+      tracks.forEach(track => {
+        const progress = getTrackProgress(track);
+        const total = counts[track];
+        const completed = progress.completedStudies.length;
+        const pct = Math.round((completed / total) * 100);
+        
+        const pill = document.getElementById(`${track}-progress`);
+        if (pill) {
+          pill.innerText = `${pct}%`;
+          if (pct === 100) {
+            pill.classList.add("completed-pill");
+            pill.innerText = "Complete ✓";
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
