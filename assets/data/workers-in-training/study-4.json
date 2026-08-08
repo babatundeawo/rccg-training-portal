@@ -94,15 +94,15 @@
       "Contributing actively to the maintenance of the church buildings and its surroundings to maintain an atmosphere congenial to worship.",
       "Contributing actively toward Go-A-Fishing and Church planting exercises."
      ]
-    }
-   ]
-  },
-  {
-   "heading": "3. PROPAGATION OF THE GOSPEL",
-   "blocks": [
+    },
     {
-     "type": "p",
-     "text": "(a) Every worker is expected to be an active soul-winner and an incurable witness for Christ. (b) Therefore he/she should be involved in the propagation of the Gospel by means of word of mouth, tracts distribution, letter writing crusades, seminars, youth services, village evangelism, child evangelism prison, hospital and market evangelism, etc. (c) Every worker is also expected to be very active in follow-up programmes."
+     "type": "list",
+     "items": [
+      "PROPAGATION OF THE GOSPEL",
+      "Every worker is expected to be an active soul-winner and an incurable witness for Christ.",
+      "Therefore he/she should be involved in the propagation of the Gospel by means of word of mouth, tracts distribution, letter writing crusades, seminars, youth services, village evangelism, child evangelism prison, hospital and market evangelism, etc.",
+      "Every worker is also expected to be very active in follow-up programmes."
+     ]
     }
    ]
   }

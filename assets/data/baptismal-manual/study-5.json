@@ -4,7 +4,14 @@
  "studyId": 5,
  "totalStudies": 15,
  "title": "LEARNING ABOUT THE BIBLE, THE TRINITY AND THE DEVIL",
- "memoryVerse": [],
+ "memoryVerse": [
+  {
+   "keys": [
+    "2tm 3:16"
+   ],
+   "label": "II TIM 3:16"
+  }
+ ],
  "cards": [
   {
    "heading": "1. THE BIBLE",
@@ -12,7 +19,7 @@
     {
      "type": "list",
      "items": [
-      "The Bible is the spoken word of God, authored by the Holy Spirit through the instrumentality of inspired men of old. II Tim 3:16-17; {{2pe 1:20,2pe 1:21|II Peter 1: 20-21}}; Is 55: 11",
+      "The Bible is the spoken word of God, authored by the Holy Spirit through the instrumentality of inspired men of old. {{2tm 3:16,2tm 3:17|II Tim 3:16-17}}; {{2pe 1:20,2pe 1:21|II Peter 1: 20-21}}; Is 55: 11",
       "The Bible contain a total of sixty-six books with thirty nine in the Old Testament and twenty seven in the New Testament. (Memorize these books in the order in which they occur).",
       "The Bible is the unamendable CONSTITUTION of every believer, it answers every question of life and nothing should be added or subtracted from it as it is dangerous to do so. {{dt 4:2|Deut 4: 2}}; {{re 22:18,re 22:19|Rev 22: 18-19}}.",
       "The New Testament is the fulfillment and the perfection of the Old. {{mt 4:17,mt 4:18,mt 4:19|Matt 4: 17-19}}; {{rm 3:31|Rom. 3:31}}"
@@ -41,7 +48,7 @@
     {
      "type": "list",
      "items": [
-      "Comfort to cheer you................................... II Cor. 1:4"
+      "Comfort to cheer you................................... {{2co 1:4|II Cor. 1:4}}"
      ]
     },
     {
@@ -55,7 +62,7 @@
       "Binding.......................................................................... {{prv 4:20,prv 4:21,prv 4:22,prv 4:23|Prov. 4:20-23}}",
       "True............................................................................... {{re 15:3,re 15:4|Rev. 15:3-4}}, {{ps 19:8|Ps. 19:8}}",
       "Immutable (Does not change and cannot be changed)............ {{hb 6:17,hb 6:18,hb 6:19,hb 6:20|Heb. 6:17-20}}",
-      "Cleansing....................................................................... Jn 15: 3",
+      "Cleansing....................................................................... {{jo 15:3|Jn 15: 3}}",
       "Cannot Fail..................................................................... Is 55: 10-11"
      ]
     }
@@ -100,7 +107,7 @@
     {
      "type": "list",
      "items": [
-      "Study it to be approved of God.................................. II Tim. 2:15"
+      "Study it to be approved of God.................................. {{2tm 2:15|II Tim. 2:15}}"
      ]
     }
    ]
@@ -124,7 +131,7 @@
       "At the expulsion of Adam and Eve from the Garden of Eden. \"The Lord God said, Behold the man is become as one of us...So He (unity of Trinity) drove out the man:. {{gn 3:22|Gen. 3:22}}-",
       "When God confounded the language of man at the Tower of Babel, \"Come let us (Trinity implied) go down, and there confound their language...so the Lord scattered them....\" {{gn 11:7,gn 11:8|Gen. 11:7-8}}",
       "At the baptism of the Lord Jesus. {{mt 3:12,mt 3:13,mt 3:14,mt 3:15,mt 3:16,mt 3:17|Matt 3:12-17}}, Identify the members of the Trinity in this event.",
-      "At Benediction. II Cor. 13:14"
+      "At Benediction. {{2co 13:14|II Cor. 13:14}}"
      ]
     }
    ]
@@ -151,7 +158,7 @@
    "blocks": [
     {
      "type": "p",
-     "text": "o Satan is a spirit and has a personality, possessing life, intelligence, will power and feeling. However, being a spirit, he does not possess a human body (neither tail nor horn). He was originally good, but fell and was cast out because of pride ({{1tm 3:6|1 Tim. 3:6}}) o He is a thief............................................. {{mt 13:19|Matt. 13:19}}; {{jo 10:10|John 10:10}} o He is subtle............................................. {{gn 3:1|Gen. 3:1}}, II Cor. 11:3 o He is a murderer...................................... {{jo 8:44|John 8:44}} o He is a liar and Father of Lies.................... {{jo 8:44|John 8:44}} o He is a deceiver........................................ {{re 12:10|Rev. 12:10}} o He is the tempter...................................... {{mt 4:1|Matt. 4:1}} o He is the adversary.................................... {{1pe 5:8|1 Pet 5:8}} o He is the evil one...................................... {{mt 1:19|Matt 1:19, 38}}"
+     "text": "o Satan is a spirit and has a personality, possessing life, intelligence, will power and feeling. However, being a spirit, he does not possess a human body (neither tail nor horn). He was originally good, but fell and was cast out because of pride ({{1tm 3:6|1 Tim. 3:6}}) o He is a thief............................................. {{mt 13:19|Matt. 13:19}}; {{jo 10:10|John 10:10}} o He is subtle............................................. {{gn 3:1|Gen. 3:1}}, {{2co 11:3|II Cor. 11:3}} o He is a murderer...................................... {{jo 8:44|John 8:44}} o He is a liar and Father of Lies.................... {{jo 8:44|John 8:44}} o He is a deceiver........................................ {{re 12:10|Rev. 12:10}} o He is the tempter...................................... {{mt 4:1|Matt. 4:1}} o He is the adversary.................................... {{1pe 5:8|1 Pet 5:8}} o He is the evil one...................................... {{mt 1:19|Matt 1:19, 38}}"
     },
     {
      "type": "p",
@@ -172,7 +179,7 @@
     },
     {
      "type": "p",
-     "text": "o Submit yourself to God {{jm 4:7|James 4:7}}, I Pet. 5:5-8 o Resist the devil {{jm 4:7|James. 4:7}} o Be sober I Pet 5:8 o Be vigilant I Pet. 5:8"
+     "text": "o Submit yourself to God {{jm 4:7|James 4:7}}, {{1pe 5:5,1pe 5:6,1pe 5:7,1pe 5:8|I Pet. 5:5-8}} o Resist the devil {{jm 4:7|James. 4:7}} o Be sober {{1pe 5:8|I Pet 5:8}} o Be vigilant {{1pe 5:8|I Pet. 5:8}}"
     },
     {
      "type": "p",

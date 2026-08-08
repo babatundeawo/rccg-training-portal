@@ -185,7 +185,7 @@
     },
     {
      "type": "p",
-     "text": ""
+     "text": "-"
     },
     {
      "type": "p",
@@ -265,53 +265,15 @@
    "heading": "1. Providing sacred and Gospel music to lead worship during church",
    "blocks": [
     {
-     "type": "p",
-     "text": "services/events."
-    }
-   ]
-  },
-  {
-   "heading": "2. Performing specially rehearsed songs to minister to the",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "congregation during the service."
-    }
-   ]
-  },
-  {
-   "heading": "3. Providing music to lead worship on special occasions e.g",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "Meetings, Weddings, Naming or Burial Ceremonies etc."
-    }
-   ]
-  },
-  {
-   "heading": "4. Meeting regularly for music rehearsals at agreed periods of the",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "week."
-    }
-   ]
-  },
-  {
-   "heading": "5. Regularly learning new songs and hymns, etc to be able to lead",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "worship effectively and teach the church same."
-    }
-   ]
-  },
-  {
-   "heading": "6. Providing regular reports of the activities of the department to the",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "Pastorate."
+     "type": "list",
+     "items": [
+      "services/events.",
+      "Performing specially rehearsed songs to minister to the congregation during the service.",
+      "Providing music to lead worship on special occasions e.g. Revival Meetings, Weddings, Naming or Burial Ceremonies etc.",
+      "Meeting regularly for music rehearsals at agreed periods of the week.",
+      "Regularly learning new songs and hymns, etc to be able to lead worship effectively and teach the church same.",
+      "Providing regular reports of the activities of the department to the Pastorate."
+     ]
     },
     {
      "type": "p",
@@ -324,47 +286,11 @@
    ]
   },
   {
-   "heading": "6. Providing regular reports of the activities of the department to the (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "p",
-     "text": "until the act is improved upon and mastered for a perfect presentation. Not everyone can endure this - because of the discipline of focus and concentration it demands. Some songs can take several days and some musical instruments several years to master. 5. MATURITY: As in other things, an intending chorister must handle his emotions well. Music rides on emotions. A fellow may be admired, appreciated or flattered for a good performance and conversely embarrassed, misunderstood and unduly criticized or ignored due to a perceived poor performance. 6. TOLERANCE: The choir is a heterogeneous mixture of different age groups. Therefore, an elderly fellow must be ready to tolerate the idiosyncrasies and exuberance of the lesser-aged who are always the majority in the choir."
-    }
-   ]
-  },
-  {
-   "heading": "7. MINISTERIAL ETHICS",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "morally and ethically minded else, he becomes a tool for the devil."
-    }
-   ]
-  },
-  {
-   "heading": "8. AVAILABILITY",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "and mastery without thorough participation. Ability without availability is a futility."
-    }
-   ]
-  },
-  {
-   "heading": "9. COMPLIANCE WITH CHOIR REGULATIONS",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "choir regulations must be observed - including the need to wear choir uniforms as the occasions may require."
-    }
-   ]
-  },
-  {
-   "heading": "10. NEATNESS",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "chorister must be simple in outlook, well dressed and neat in his/her uniform during church events."
+     "text": "until the act is improved upon and mastered for a perfect presentation. Not everyone can endure this - because of the discipline of focus and concentration it demands. Some songs can take several days and some musical instruments several years to master. 5. MATURITY: As in other things, an intending chorister must handle his emotions well. Music rides on emotions. A fellow may be admired, appreciated or flattered for a good performance and conversely embarrassed, misunderstood and unduly criticized or ignored due to a perceived poor performance. 6. TOLERANCE: The choir is a heterogeneous mixture of different age groups. Therefore, an elderly fellow must be ready to tolerate the idiosyncrasies and exuberance of the lesser-aged who are always the majority in the choir. 7. MINISTERIAL ETHICS: A chorister is a minister. He must be morally and ethically minded else, he becomes a tool for the devil. 8. AVAILABILITY: This is very crucial! There can be no improvement and mastery without thorough participation. Ability without availability is a futility. 9. COMPLIANCE WITH CHOIR REGULATIONS: The stipulated choir regulations must be observed - including the need to wear choir uniforms as the occasions may require. 10. NEATNESS: A chorister must be simple in outlook, well dressed and neat in his/her uniform during church events."
     },
     {
      "type": "p",
@@ -377,7 +303,7 @@
    ]
   },
   {
-   "heading": "10. NEATNESS (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "p",
@@ -402,7 +328,7 @@
    ]
   },
   {
-   "heading": "10. NEATNESS (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "p",
@@ -419,7 +345,7 @@
    ]
   },
   {
-   "heading": "10. NEATNESS (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "p",
@@ -436,7 +362,7 @@
    ]
   },
   {
-   "heading": "10. NEATNESS (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "list",
@@ -453,40 +379,24 @@
      "type": "list",
      "items": [
       "Assisting in checking and evaluating church inventory",
-      "Taking good custody of all past and present books/records containing the statistics of events of the church."
+      "Taking good custody of all past and present books/records containing the statistics of events of the church.",
+      "Waiting on the Pastors and Ministers for errands to meet official needs during and after events.",
+      "Providing regular reports of the activities of the department to the Pastorate"
      ]
-    }
-   ]
-  },
-  {
-   "heading": "11. Waiting on the Pastors",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "and Ministers for errands to meet official needs during and after events."
-    }
-   ]
-  },
-  {
-   "heading": "12. Providing regular",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "reports of the activities of the department to the Pastorate"
     },
     {
      "type": "p",
      "text": "QUALIFICATIONS OF AN USHER"
-    },
-    {
-     "type": "p",
-     "text": "1. MATERIAL CONTENTMENT: This is one of the first immediate qualifications to be an Usher. Because, part of the duties of an Usher is to collect, check and record various types of offerings. Therefore, anyone who does not have a stable means of livelihood and cannot resist the temptation to steal should never volunteer to be an usher at all 2. HUMILITY: An intending usher must indeed be humble and patient because ushers interface directly with the members, guests and visitors having various temperaments, manners and may be in different moods - yet, they all must be well received by the ushers! 3. CHEERFUL ATTITUDE: The first person to meet in a church event is the usher. If one needs a help during an event or service, the person to call is also the Usher. Thus, a good usher must exhibit a cheerful and sweet temperament all the time during an event, irrespective of his/her personal challenge. This calls for a good human relations and soft character. 4. NEAT AND ATTRACTIVE OUTLOOK: Most people are attracted or put off by what/whom they see and how they interpret this. A"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "1. MATERIAL CONTENTMENT: This is one of the first immediate qualifications to be an Usher. Because, part of the duties of an Usher is to collect, check and record various types of offerings. Therefore, anyone who does not have a stable means of livelihood and cannot resist the temptation to steal should never volunteer to be an usher at all 2. HUMILITY: An intending usher must indeed be humble and patient because ushers interface directly with the members, guests and visitors having various temperaments, manners and may be in different moods - yet, they all must be well received by the ushers! 3. CHEERFUL ATTITUDE: The first person to meet in a church event is the usher. If one needs a help during an event or service, the person to call is also the Usher. Thus, a good usher must exhibit a cheerful and sweet temperament all the time during an event, irrespective of his/her personal challenge. This calls for a good human relations and soft character. 4. NEAT AND ATTRACTIVE OUTLOOK: Most people are attracted or put off by what/whom they see and how they interpret this. A"
+    },
     {
      "type": "p",
      "text": "neat and attractive (not necessarily sophisticated) outlook is compulsory for an usher. This can affect so many things in a church event. 5. ETHICS: An usher must be ethically minded. The conducts of ushers are highly guided by regulations which are both stated and implied. Contravention of any of these may bring undesirable consequences. 6. STAMINA/ALERTNESS: All through a church event, most ushering works are done standing on one spot or moving up and down, being alert all the time. This requires a good measure of stamina and strength. This is to be considered by an intending usher. 7. PRAYERFUL: Ushers do not close their eyes in church events - even during prayers. Nevertheless, they must be prayerful all the time so that the Holy Spirit may flow as events progress during the service. 8. SMART AND INTELLIGENT: This is a highly sought after attribute among ushers in the church today. People like to be easily understood, well treated and honoured. An usher with these qualities will make a good impression. 9. ENDURANCE: All the above stated obligations require a spirit of endurance to drive them. After events in the church, ushers are usually the last to leave the premises and they are to get there before anyone else. This requires endurance."
@@ -494,16 +404,16 @@
     {
      "type": "p",
      "text": "10. SECURITY CONSCIOUSNESS: A good usher must have security instincts and consciousness because all who come to church events do not have the same motives. Some have ulterior motives. An usher must be smart enough to exercise good initiatives when there are security issues"
-    },
-    {
-     "type": "p",
-     "text": "1.4 THE TEACHING DEPARTMENT"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "1.4 THE TEACHING DEPARTMENT"
+    },
     {
      "type": "p",
      "text": "The Teaching department, like the Choir, has one of the oldest obligations in the Priesthood right from the Old Testament period. Most of the Old Testament prophets were teachers. When Jesus Christ came, He was also a teacher, besides other things. This group is made up of trained, educated and informed workers who regularly assist the Pastors to educate the church morally and spiritually. Their impact on church spiritual growth is highly critical. In RCCG, the teaching department comprises the Sunday School Unit and the Children/Teenagers' Teachers. The teaching department also includes units like the Believers/Baptismal Class and Workers-in- Training Class. All these are supervised by the Directorate of Christian Education at the National level of the RCCG."
@@ -511,7 +421,12 @@
     {
      "type": "p",
      "text": "FUNCTIONS OF THE TEACHING DEPARTMENT/SUNDAY SCHOOL DEPARTMENT"
-    },
+    }
+   ]
+  },
+  {
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
+   "blocks": [
     {
      "type": "list",
      "items": [
@@ -522,12 +437,7 @@
       "Training of volunteers as workers in the church.",
       "Providing regular reports of the activities of the department to the Pastorate."
      ]
-    }
-   ]
-  },
-  {
-   "heading": "12. Providing regular (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "QUALIFICATIONS OF A SUNDAY SCHOOL TEACHER"
@@ -538,16 +448,16 @@
       "LITERATE: An intending worker in this unit must be literate, educated, informed and a regular reader of the Bible.",
       "TEACHABLE: The one who will be a teacher must first be teachable himself, and then he will be open to other people's ideas as no one is an island of knowledge."
      ]
-    },
-    {
-     "type": "p",
-     "text": "3. GOOD COMMUNICATION SKILL: A teacher should be able to conceptualise, articulate and express divine truths and knowledge in a simple language that uneducated people can easily understand. 4. MODELLING: A teacher is automatically expected to be a model of what he teaches else, he will be a misfit. 5. MATURE and FRIENDLY: This is necessary to be able to handle the intellectual needs of the students. 6. KNOWLEDGEABLE: He must be well informed on the subject matter he intends to teach. This is necessary to avoid confusing the students and leading them into errors. 7. BOLD AND CONFIDENT: A teacher is also a watchman who should not spare the rod but gently rebuke evil and instruct the students in righteous living through his teachings. 8. WELL MANNERED: The first person to judge is the teacher. Her manner and life style must not contradict her message. 9. PATIENT: For knowledge to translate to good character, patience must be exercised. A teacher must not give up easily on his students. 10. PRAYERFUL: No divine assignment succeeds without spending time in the place of prayer."
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "3. GOOD COMMUNICATION SKILL: A teacher should be able to conceptualise, articulate and express divine truths and knowledge in a simple language that uneducated people can easily understand. 4. MODELLING: A teacher is automatically expected to be a model of what he teaches else, he will be a misfit. 5. MATURE and FRIENDLY: This is necessary to be able to handle the intellectual needs of the students. 6. KNOWLEDGEABLE: He must be well informed on the subject matter he intends to teach. This is necessary to avoid confusing the students and leading them into errors. 7. BOLD AND CONFIDENT: A teacher is also a watchman who should not spare the rod but gently rebuke evil and instruct the students in righteous living through his teachings. 8. WELL MANNERED: The first person to judge is the teacher. Her manner and life style must not contradict her message. 9. PATIENT: For knowledge to translate to good character, patience must be exercised. A teacher must not give up easily on his students. 10. PRAYERFUL: No divine assignment succeeds without spending time in the place of prayer."
+    },
     {
      "type": "p",
      "text": "FUNCTIONS OF THE CHILDREN/TEENAGERS' TEACHERS"
@@ -562,18 +472,18 @@
       "Modelling them to be able to grow and mature in all aspects of their lives",
       "Assisting them in prayers to be able to overcome personal struggles."
      ]
-    },
+    }
+   ]
+  },
+  {
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
+   "blocks": [
     {
      "type": "list",
      "items": [
       "Providing regular reports of the activities of the department to the Pastorate."
      ]
-    }
-   ]
-  },
-  {
-   "heading": "12. Providing regular (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "QUALIFICATIONS OF A CHILDREN/TEENAGERS' TEACHER"
@@ -581,16 +491,16 @@
     {
      "type": "p",
      "text": "The qualifications of a children/teenagers' teacher are the same as those of the Sunday school teacher stated above. Nevertheless, the following attributes are also required, namely:"
-    },
-    {
-     "type": "p",
-     "text": "1. PASSION AND LOVE FOR CHILDREN: Not everyone can actually cope with managing children and teenagers due to their peculiar habits. To succeed in this calling, one must have natural love and interest to relate to children in a way they will be blessed. 2. UNDERSTAND THEIR LANGUAGE: To be able to communicate with them, you must understand their language and be able to speak it. 3. TOLERANT: A man of critical spirit will never succeed with children. One must learn to tolerate them and gently rebuke them for errors. 4. DEPENDABLE: Children always prefer people they can depend upon. They would willingly submit to such individual and trust him blindfolded. 5. MORALLY UPRIGHT: Because children and teenagers submit completely to those they are able to trust, it becomes obligatory that their teachers must never take undue advantage of them or"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "1. PASSION AND LOVE FOR CHILDREN: Not everyone can actually cope with managing children and teenagers due to their peculiar habits. To succeed in this calling, one must have natural love and interest to relate to children in a way they will be blessed. 2. UNDERSTAND THEIR LANGUAGE: To be able to communicate with them, you must understand their language and be able to speak it. 3. TOLERANT: A man of critical spirit will never succeed with children. One must learn to tolerate them and gently rebuke them for errors. 4. DEPENDABLE: Children always prefer people they can depend upon. They would willingly submit to such individual and trust him blindfolded. 5. MORALLY UPRIGHT: Because children and teenagers submit completely to those they are able to trust, it becomes obligatory that their teachers must never take undue advantage of them or"
+    },
     {
      "type": "p",
      "text": "abuse their trust in any way. Especially, male teachers towards female teenagers. This will have disastrous consequences."
@@ -598,16 +508,16 @@
     {
      "type": "p",
      "text": "1.5 THE SANITATION DEPARTMENT"
-    },
-    {
-     "type": "p",
-     "text": "Cleanliness, they say, is next to Godliness. The Sanitation department is a very important unit without which the church premises will become a refuse dump. This unit is not as conspicuous, attractive and sensational as some of the other departments. However, the impact of what they do or fail to do does have immediate effects on the atmosphere of worship in any event of the church - because God is holy. The unit is led by a Head of Sanitation. Any willing, lowly minded individual can be a member of this department."
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "Cleanliness, they say, is next to Godliness. The Sanitation department is a very important unit without which the church premises will become a refuse dump. This unit is not as conspicuous, attractive and sensational as some of the other departments. However, the impact of what they do or fail to do does have immediate effects on the atmosphere of worship in any event of the church - because God is holy. The unit is led by a Head of Sanitation. Any willing, lowly minded individual can be a member of this department."
+    },
     {
      "type": "p",
      "text": "FUNCTIONS OF THE SANITATION UNIT"
@@ -620,16 +530,16 @@
       "Regularly organise, maintain and enforce the observation of sanitation regulations in the church.",
       "Regularly clean the toilets, bathrooms, offices and other places frequently used in the church"
      ]
-    },
-    {
-     "type": "p",
-     "text": "5. Occasionally collaborate with the ushers to arrange the seats and furniture at the venue of church events."
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "5. Occasionally collaborate with the ushers to arrange the seats and furniture at the venue of church events."
+    },
     {
      "type": "p",
      "text": "QUALIFICATIONS OF A SANITATION WORKER"
@@ -637,16 +547,16 @@
     {
      "type": "p",
      "text": "1. HUMBLE: Indeed, the individual who will work in the Sanitation unit must be a quiet, humble and caring individual who does not work to be noticed. 2. NOT EASILY NAUSEATED: Different types of rubbish and wastes are found at venues of church events - including the toilets. To be able to clean these, one must have the right psychological state of mind without being sickened with the job. 3. HYGIENIC: It is important to be hygienically minded in the spirit of the job for personal safety and health. 4. READY TO WORK UNNOTICED: The duties of a sanitation team do not usually attract celebrations, accolades and instant praises the way some are wont to be. This unit is not for those who like to be in the limelight for the smallest opportunity and be praised for the smallest effort."
-    },
-    {
-     "type": "p",
-     "text": "1.6 ENGINEERING DEPARTMENT"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "1.6 ENGINEERING DEPARTMENT"
+    },
     {
      "type": "p",
      "text": "This is another unit that works behind the scene, unnoticed until something goes wrong with the microphone, the speaker or any of the public address system. This unit is saddled with the responsibility of ensuring that all the public address systems at the venue of a church event are working all the time."
@@ -654,7 +564,12 @@
     {
      "type": "p",
      "text": "FUNCTIONS OF THE ENGINEERING DEPARTMENT"
-    },
+    }
+   ]
+  },
+  {
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
+   "blocks": [
     {
      "type": "list",
      "items": [
@@ -664,12 +579,7 @@
       "Regularly train to master and optimise the use of the facilities for optimum productivity.",
       "Give necessary advice to the Pastorate to obtain a network of scalable Public Address System."
      ]
-    }
-   ]
-  },
-  {
-   "heading": "12. Providing regular (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "6. Recording and production of church events. The unit has the obligation, upon request, to digitally do an audio/video recording of events in the church for duplication and record keeping. 7. Provision of good acoustic balance. This is critical to worship atmosphere as the events of nowadays are very dependent on technology of communication. 8. Providing regular reports of the activities of the department to the Pastorate."
@@ -677,16 +587,16 @@
     {
      "type": "p",
      "text": "QUALIFICATION TO WORK IN ENGINEERING UNIT"
-    },
-    {
-     "type": "p",
-     "text": "1. TECHNICAL KNOWLEDGE: This unit is for those who have the necessary technical training and skill in the setting up, installation, utilisation, troubleshooting and repair of electrical/electronic appliances and public address systems e.g. amplifiers, sound mixers, speakers, microphones, electronic screens, projectors, etc. 2. ALERTNESS: Workers in this unit must always be at alert to sense changes in acoustic balances during events and take appropriate actions. 3. ENDURANCE: Until the events end, their duty has not ended. 4. SPIRITUALLY- MINDED: Their responsibilities are not just about operating the equipment, but also sensitive to the Holy Spirit as events unfold."
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "1. TECHNICAL KNOWLEDGE: This unit is for those who have the necessary technical training and skill in the setting up, installation, utilisation, troubleshooting and repair of electrical/electronic appliances and public address systems e.g. amplifiers, sound mixers, speakers, microphones, electronic screens, projectors, etc. 2. ALERTNESS: Workers in this unit must always be at alert to sense changes in acoustic balances during events and take appropriate actions. 3. ENDURANCE: Until the events end, their duty has not ended. 4. SPIRITUALLY- MINDED: Their responsibilities are not just about operating the equipment, but also sensitive to the Holy Spirit as events unfold."
+    },
     {
      "type": "p",
      "text": "1.7 WELFARE DEPARTMENT"
@@ -694,16 +604,16 @@
     {
      "type": "p",
      "text": "This is the department that organises welfare and harnesses all available resources within the church to provide for the needy in the church."
-    },
-    {
-     "type": "p",
-     "text": "FUNCTIONS OF THE WELFARE DEPARTMENT"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "FUNCTIONS OF THE WELFARE DEPARTMENT"
+    },
     {
      "type": "list",
      "items": [
@@ -715,7 +625,12 @@
     {
      "type": "p",
      "text": "QUALIFICATIONS TO WORK IN THE WELFARE DEPARTMENT"
-    },
+    }
+   ]
+  },
+  {
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
+   "blocks": [
     {
      "type": "list",
      "items": [
@@ -724,12 +639,7 @@
       "SENSE OF CONCERN: Without a sense of concern for others, one cannot make a head way in this department.",
       "CONFIDENTIALITY: A worker in this unit must be ready to keep official information about others confidential as he will be getting privileged information by virtue of his duties."
      ]
-    }
-   ]
-  },
-  {
-   "heading": "12. Providing regular (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "1.8 EVANGELISM/DRAMA/FOLLOW-UP DEPARTMENT"
@@ -737,16 +647,16 @@
     {
      "type": "p",
      "text": "Evangelism is said to be the heartbeat of God, and it is the Great Commission. The church has the obligation to carry out this mandate. In order to achieve this, the church must develop realistic strategies and be well organised in her efforts. The Evangelism Department helps to organise and manage church resources in respect of this. This department comprises other subunits such as Drama group and Follow- up group. It is headed by a Head of Evangelism."
-    },
-    {
-     "type": "p",
-     "text": "FUNCTIONS OF EVANGELISM DEPARTMENT"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
+    {
+     "type": "p",
+     "text": "FUNCTIONS OF EVANGELISM DEPARTMENT"
+    },
     {
      "type": "list",
      "items": [
@@ -765,37 +675,42 @@
       "Organise and stage drama play-lets during church events.",
       "Providing regular reports of the activities of the department to the Pastorate."
      ]
-    },
-    {
-     "type": "p",
-     "text": "QUALIFICATION TO WORK IN EVANGELISM, DRAMA AND FOLLOW-UP UNIT"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "1. Providing sacred and Gospel music to lead worship during church (continued)",
    "blocks": [
     {
      "type": "p",
-     "text": "1. ENTHUSIASM: One must be lively, energetic and enthusiastic to be an effective member of this unit."
+     "text": "QUALIFICATION TO WORK IN EVANGELISM, DRAMA AND FOLLOW-UP UNIT"
     },
     {
      "type": "p",
-     "text": "2. PASSION FOR SOULS: Souls are actually the end products of evangelism. Any efforts may be used to reach them. Without a genuine love for the souls, it will be frustrating to continue as a worker in the unit. 3. ABILITY TO MEET PEOPLE AND TALK: It is necessary to develop the positive attitude of meeting and talking to people politely and boldly anywhere as may be led. This is an essential quality. 4. ABILITY TO ACT ON STAGE: This is very important for those who may volunteer to be in the Drama Unit. 5. TIME/AVAILABILITY: As in all other departments, this unit is not less demanding of time and availability. 6. COMMITMENT AND DEDICATION: Without this quality, it will be futile to join the unit. Consistency is of high premium. 7. RESILIENT: One requires persistence in following up others. Giving up too soon will not bring expected results. 8. TESTIMONY OF PERSONAL SALVATION: No man can give what he does not have. A personal testimony of salvation is of utmost necessity in soul winning. Readiness to share this with others is also important. 9. GOOD KNOWLEDGE OF THE BIBLE: This is critical because it is dangerous to go out in ignorance of the word of God."
+     "text": "1. ENTHUSIASM: One must be lively, energetic and enthusiastic to be an effective member of this unit."
+    }
+   ]
+  },
+  {
+   "heading": "2. PASSION FOR SOULS",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Souls are actually the end products of evangelism. Any efforts may be used to reach them. Without a genuine love for the souls, it will be frustrating to continue as a worker in the unit. 3. ABILITY TO MEET PEOPLE AND TALK: It is necessary to develop the positive attitude of meeting and talking to people politely and boldly anywhere as may be led. This is an essential quality. 4. ABILITY TO ACT ON STAGE: This is very important for those who may volunteer to be in the Drama Unit. 5. TIME/AVAILABILITY: As in all other departments, this unit is not less demanding of time and availability. 6. COMMITMENT AND DEDICATION: Without this quality, it will be futile to join the unit. Consistency is of high premium. 7. RESILIENT: One requires persistence in following up others. Giving up too soon will not bring expected results. 8. TESTIMONY OF PERSONAL SALVATION: No man can give what he does not have. A personal testimony of salvation is of utmost necessity in soul winning. Readiness to share this with others is also important. 9. GOOD KNOWLEDGE OF THE BIBLE: This is critical because it is dangerous to go out in ignorance of the word of God."
     },
     {
      "type": "p",
      "text": "DYNAMICS OF DEPARTMENTAL INTER-ACTIVITIES"
+    },
+    {
+     "type": "p",
+     "text": "Having studied all the various departments and their objective functions so far, it is now easy to look at how they relate to one another in activities. From the outlines, we can see that the functions of some of the departments are simultaneous and overlapping at various periods while some are just random. Therefore, we can conclude:"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "Having studied all the various departments and their objective functions so far, it is now easy to look at how they relate to one another in activities. From the outlines, we can see that the functions of some of the departments are simultaneous and overlapping at various periods while some are just random. Therefore, we can conclude:"
-    },
     {
      "type": "p",
      "text": "FIG 1.3"
@@ -803,16 +718,16 @@
     {
      "type": "p",
      "text": "FUNCTIONAL TIME OF DUTY NAME OF TIME OF MODE OF (Relevance to DEPARTMENT MEETING DRESSING Church Events Real-Time)"
+    },
+    {
+     "type": "p",
+     "text": "During the Service CHOIR Saturdays & (Physically Involved Uniform Other days in Church Services)"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "During the Service CHOIR Saturdays & (Physically Involved Uniform Other days in Church Services)"
-    },
     {
      "type": "p",
      "text": "Before the service, As generally PRAYER BAND (but not physically Any day of required of involved in the the week workers services)"
@@ -820,16 +735,16 @@
     {
      "type": "p",
      "text": "Before, during & USHERING after service (fully Any day of Uniform physically involved the week in church services.)"
+    },
+    {
+     "type": "p",
+     "text": "Before, during & after service Non- SANITATION (relevant during Any day of Uniform, but service, but not the week in Jackets physically in the programme.)"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "Before, during & after service Non- SANITATION (relevant during Any day of Uniform, but service, but not the week in Jackets physically in the programme.)"
-    },
     {
      "type": "p",
      "text": "Before the service, As generally TEACHING Any day of but not Involved in required of the week the service.) workers"
@@ -837,16 +752,16 @@
     {
      "type": "p",
      "text": "Before & during As generally ENGINEERING service ( fully Any day of required of Involved in the the week workers service but only in"
+    },
+    {
+     "type": "p",
+     "text": "the background)"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "the background)"
-    },
     {
      "type": "p",
      "text": "Not involved during As generally WELFARE Service, but Occasionally required of relevant all the time workers"
@@ -854,16 +769,16 @@
     {
      "type": "p",
      "text": "Occasionally involved during EVANGELISM As generally Service (Drama), but Any day of required of relevant after the week workers service for follow- Up."
+    },
+    {
+     "type": "p",
+     "text": "CAN A WORKER JOIN MORE THAN ONE DEPARTMENT?"
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "CAN A WORKER JOIN MORE THAN ONE DEPARTMENT?"
-    },
     {
      "type": "p",
      "text": "From the table in fig 1.2, it is apparent that all the departments are not fully and physically involved in the process of church events real-time. This means that some work before the service and some, after. Hence, to decide how many departments one can join at the same time, it will be necessary to be sure that the functional time of duties of the units will not overlap."
@@ -871,16 +786,16 @@
     {
      "type": "p",
      "text": "For example, it will be difficult to be an Usher and/or a Chorister and also be in Engineering and/or Sanitation Unit at the same time. All these units work simultaneously during the service and some of them have their varying mode of dress (uniforms)."
+    },
+    {
+     "type": "p",
+     "text": "However, one can be a member of any of the Departments above and still work in e.g. Welfare or Teaching Departments, depending on self - management and versatility. So, it is possible to join more than one department at a time."
     }
    ]
   },
   {
-   "heading": "12. Providing regular (continued)",
+   "heading": "2. PASSION FOR SOULS (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "However, one can be a member of any of the Departments above and still work in e.g. Welfare or Teaching Departments, depending on self - management and versatility. So, it is possible to join more than one department at a time."
-    },
     {
      "type": "p",
      "text": "In conclusion, from the study in this module, it is apparent that there is a lot of work to do in the Lord's Vineyard. How can a born-again Christian now remain idle and not be sure where to fit in among all these myriad of interesting and challenging duties? To sit on the fence as a born-again Christian will be tantamount to rebellion and sabotage in God's presence."

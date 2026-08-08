@@ -29,10 +29,10 @@
      "type": "list",
      "items": [
       "We need Gods power to cope with the daily activities. {{1kgs 19:7|I Kings 19:7}}; {{jo 15:5|John 15:5}}; Is 40:31",
-      "We pattern our lives after our Lord Jesus Christ's life by following His steps. {{mt 14:23|Mt. 14:23}}; {{mk 1:35|Mk 1:35}}; 6:46; I Pet. 2:21",
-      "To cultivate personal habit of worshipping; the Lord helps our personal devotion. I Pet. 2:2; {{js 1:8|Josh. 1:8}}; {{ps 1:1,ps 1:2,ps 1:3|Ps. 1: 1-3}}; {{ps 95:6|Ps. 95:6}}",
-      "To create personal adjustment to the teachings of the Bible; i.e. living by the Word, reacting positively or negatively to the Bible. Jn. 1:21-25; {{mt 4:4|Mt. 4:4}}; I Pet. 2:2; {{jm 1:21,jm 1:22,jm 1:23,jm 1:24,jm 1:25|James 1:21-25}}",
-      "For God\"s power to live an overcoming life, helps Create right reaction to trials and temptations: Substance already imparted in us helps create right reactions to situations and circumstances. I Pet. 1:3-7; {{hb 12:10,hb 12:11|Heb. 12:10-11}}; {{jm 1:24|James 1:24}}."
+      "We pattern our lives after our Lord Jesus Christ's life by following His steps. {{mt 14:23|Mt. 14:23}}; {{mk 1:35|Mk 1:35}}; 6:46; {{1pe 2:21|I Pet. 2:21}}",
+      "To cultivate personal habit of worshipping; the Lord helps our personal devotion. {{1pe 2:2|I Pet. 2:2}}; {{js 1:8|Josh. 1:8}}; {{ps 1:1,ps 1:2,ps 1:3|Ps. 1: 1-3}}; {{ps 95:6|Ps. 95:6}}",
+      "To create personal adjustment to the teachings of the Bible; i.e. living by the Word, reacting positively or negatively to the Bible. {{jo 1:21,jo 1:22,jo 1:23,jo 1:24,jo 1:25|Jn. 1:21-25}}; {{mt 4:4|Mt. 4:4}}; {{1pe 2:2|I Pet. 2:2}}; {{jm 1:21,jm 1:22,jm 1:23,jm 1:24,jm 1:25|James 1:21-25}}",
+      "For God's power to live an overcoming life, helps Create right reaction to trials and temptations: Substance already imparted in us helps create right reactions to situations and circumstances. {{1pe 1:3,1pe 1:4,1pe 1:5,1pe 1:6,1pe 1:7|I Pet. 1:3-7}}; {{hb 12:10,hb 12:11|Heb. 12:10-11}}; {{jm 1:24|James 1:24}}."
      ]
     }
    ]
@@ -57,32 +57,23 @@
      "items": [
       "Waking thoughts are focused on God.",
       "Strength is received to meet the challenges of the day. {{eph 6:10,eph 6:11,eph 6:12|Eph 6:10-12}}",
-      "Place: The place chosen for quiet time should be secluded from noise and distractions."
+      "Place: The place chosen for quiet time should be secluded from noise and distractions.",
+      "Duration: To be determined by the Believer such that it does not encroach on other activities for the day."
      ]
     }
    ]
   },
   {
-   "heading": "4. Duration",
+   "heading": "4. What you require",
    "blocks": [
-    {
-     "type": "p",
-     "text": "es for the day."
-    },
     {
      "type": "list",
      "items": [
-      "What you require",
       "The Holy Bible (it is advisable to have more than one version and a good reference of the",
       "Bible at your side).",
       "Hymn book/chorus book and dictionary",
       "Notebook and pen",
-      "List of prayer points"
-     ]
-    },
-    {
-     "type": "list",
-     "items": [
+      "List of prayer points",
       "Aid, Daily Power, Everyday with Jesus etc."
      ]
     }
@@ -126,18 +117,23 @@
       "By topics,",
       "Through biography,"
      ]
+    },
+    {
+     "type": "list",
+     "items": [
+      "Study outlines, e.g. Daily Bread or Everyday with Jesus or Open Heavens."
+     ]
     }
    ]
   },
   {
-   "heading": "7. Study outlines, e.g",
+   "heading": "7. Benefits of quiet time",
    "blocks": [
     {
      "type": "list",
      "items": [
-      "Benefits of quiet time",
       "It provides an opportunity for the soul to linger in the presence of God.",
-      "It creates an atmosphere of God\"s presence",
+      "It creates an atmosphere of God's presence",
       "It brings about the working knowledge of the Bible.",
       "It produces the desire to know God and to do His will."
      ]
@@ -154,14 +150,14 @@
       "By Dream {{jl 2:28|Joel 2:28}}; {{job 33:14,job 33:15,job 33:16|Job 33:14-16}}; {{gn 31:11|Gen. 31:11}}; 37:5-7.",
       "By Vision Acts 1 0:3; {{jl 2:28|Joel 2:28}}; Is. 6:1-4.",
       "The Still Small Voice {{1kgs 19:12|I Kings 19:12}}.",
-      "Inward Witness {{prv 20:27|Prov. 20:27}}; I Cor. 2: 11.",
-      "Audible Voice {{act 10:13|Acts 10: 13}}; I Sam. 3:4."
+      "Inward Witness {{prv 20:27|Prov. 20:27}}; {{1co 2:11|I Cor. 2: 11}}.",
+      "Audible Voice {{act 10:13|Acts 10: 13}}; {{1sm 3:4|I Sam. 3:4}}."
      ]
     },
     {
      "type": "list",
      "items": [
-      "Through the gifts of the Holy Spirit, e.g. prophecy, word of wisdom, word of knowledge, etc. I Cor. 14:3-4; II Pet. 1:19-21; Deut.18:20-21."
+      "Through the gifts of the Holy Spirit, e.g. prophecy, word of wisdom, word of knowledge, etc. {{1co 14:3,1co 14:4|I Cor. 14:3-4}}; {{2pe 1:19,2pe 1:20,2pe 1:21|II Pet. 1:19-21}}; Deut.18:20-21."
      ]
     }
    ]
@@ -271,9 +267,9 @@
      "type": "list",
      "items": [
       "CONCLUSION A fruitful and consistent quiet time brings out a balanced spiritual development in at least three different areas:",
-      "Healthy and fruitful Bible Knowledge: {{ps 119:9,ps 119:11,ps 119:105|Ps. 119:9, 11, 105}}; {{eph 3:16|Eph. 3: 16}}; II Tim 2: 15; {{ps 19:8|Ps. 19:8}}; {{ho 4:6|Hos. 4:6}}",
+      "Healthy and fruitful Bible Knowledge: {{ps 119:9,ps 119:11,ps 119:105|Ps. 119:9, 11, 105}}; {{eph 3:16|Eph. 3: 16}}; {{2tm 2:15|II Tim 2: 15}}; {{ps 19:8|Ps. 19:8}}; {{ho 4:6|Hos. 4:6}}",
       "Fruitful Prayer Life: Pr. 28:9; 15:8,29",
-      "An enviable Christian character: {{mt 5:16|Mt. 5:16}}; I Pet. 3:2; {{ph 3:20|Phil. 3:20}}; I Pet. 3:15-16"
+      "An enviable Christian character: {{mt 5:16|Mt. 5:16}}; {{1pe 3:2|I Pet. 3:2}}; {{ph 3:20|Phil. 3:20}}; {{1pe 3:15,1pe 3:16|I Pet. 3:15-16}}"
      ]
     }
    ]
@@ -319,18 +315,15 @@
       "To help break the power of Satan, and bring about deliverance and healing, {{mk 9:28,mk 9:29|Mark 9:28-29}}",
       "To help improves your prayer life {{lk 11:9,lk 11:10,lk 11:11|Luke 11:9-11}}",
       "To enhance continuous flow of Gods anointing;",
-      "We fast so that our sprit will readily be alive to hear when God speaks. {{act 13:3,act 13:4|Acts 13:3-4}}"
+      "We fast so that our sprit will readily be alive to hear when God speaks. {{act 13:3,act 13:4|Acts 13:3-4}}",
+      "Note: whether you are fasting or not, you are expected to live a practical daily life of holiness 1 Peter: 1:15-16"
      ]
     }
    ]
   },
   {
-   "heading": "10. Note",
+   "heading": "9. Obstacles to effective quiet time (continued)",
    "blocks": [
-    {
-     "type": "p",
-     "text": "liness 1 Peter: 1:15-16"
-    },
     {
      "type": "list",
      "items": [
@@ -349,12 +342,7 @@
       "When interceding for others; {{dn 9:3|Daniel 9:3}}",
       "Whenever you need to hear from God; {{act 13:3,act 13:4|Acts 13:3-4}}"
      ]
-    }
-   ]
-  },
-  {
-   "heading": "10. Note (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "4. How to operate Biblical fasting When fasting, you need to be very close to God, seeking his face in prayers and supplication for the duration of the fast. If the fast goes beyond 3 days it is not medically advisable to continue without drinking water Where the person fasting need to undertake some heavy tasks or undertake long distance journeys, drinking of liquid is advisable The duration of a fast should be a covenant between you and God, with a clear purpose; else, the fast may be as waste of time, a hunger strike or dieting Abstain from sex during fasting as agreed between husband and wife. {{1co 7:5|1 Cor. 7:5}} Be prayerful and continuously meditate on the word of God, listen to hear from the Holy Spirit during the fast. When you are done fasting, ending the fast should be done with caution and discipline, exercise more self control so that your health is not impaired. 5. Medical Benefit of fasting? Discuss"

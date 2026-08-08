@@ -109,11 +109,12 @@ const RCCG = (() => {
         return;
       }
       const displayLabel = tag.getAttribute('data-label') || entries[0].entry.ref;
-      // Show each verse with its REAL verse number (not array position), so a
-      // multi-verse passage reads the way it would on a printed page.
+      // Show each verse with its REAL verse number (not array position) on its own
+      // line, the way a printed reference Bible lays out a passage — not as one
+      // run-on paragraph where verses blur into each other.
       const bodyHTML = entries.map(({ key, entry }) =>
-        `<span class="vnum">${RCCG.escapeHtml(verseNumFromKey(key))}</span>${RCCG.escapeHtml(entry.text)}`
-      ).join(' ');
+        `<p class="verse-line"><span class="vnum">${RCCG.escapeHtml(verseNumFromKey(key))}</span>${RCCG.escapeHtml(entry.text)}</p>`
+      ).join('');
       tag.addEventListener('click', () => {
         overlay.querySelector('.scr-modal__ref').textContent = displayLabel;
         overlay.querySelector('.scr-modal__text').innerHTML = bodyHTML;

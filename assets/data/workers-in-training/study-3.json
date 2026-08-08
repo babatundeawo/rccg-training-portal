@@ -16,28 +16,16 @@
    ]
   },
   {
-   "heading": "3. To have a member of the Redeemed Christian Church of God in every",
+   "heading": "1. To make Heaven",
    "blocks": [
     {
-     "type": "p",
-     "text": "To take as many people as possible with us."
-    },
-    {
-     "type": "p",
-     "text": "family of all nations."
-    }
-   ]
-  },
-  {
-   "heading": "5. To accomplish Nos. 2 & 3 above, we will plant churches within five",
-   "blocks": [
-    {
-     "type": "p",
-     "text": "To accomplish No 1 above, holiness will be our lifestyle."
-    },
-    {
-     "type": "p",
-     "text": "minutes walking distance in every city and town of developing countries and within five minutes driving distance in every city and town of developed countries."
+     "type": "list",
+     "items": [
+      "To take as many people as possible with us.",
+      "To have a member of the Redeemed Christian Church of God in every family of all nations.",
+      "To accomplish No 1 above, holiness will be our lifestyle.",
+      "To accomplish Nos. 2 & 3 above, we will plant churches within five minutes walking distance in every city and town of developing countries and within five minutes driving distance in every city and town of developed countries."
+     ]
     },
     {
      "type": "p",
