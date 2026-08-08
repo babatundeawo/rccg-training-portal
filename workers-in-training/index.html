@@ -1,107 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Workers-in-Training Dashboard - RCCG Portal</title>
-  <link rel="stylesheet" href="../assets/css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Workers-in-Training — RCCG Learning Path</title>
+<link rel="icon" href="../assets/img/rccg-logo.png">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>:root{--module-accent:var(--gold-600);--module-accent-light:var(--gold-100);}</style>
 </head>
-<body class="dashboard-body">
+<body data-root="../">
 
-  <header class="app-header">
-    <div class="brand">
-      <img src="../assets/images/rccg_logo.png" alt="RCCG Logo" class="brand-logo">
-      <div>
-        <span class="brand-name">Workers-in-Training</span>
-        <span class="brand-subtitle">RCCG Training Track</span>
-      </div>
-    </div>
-  </header>
+<nav class="topnav">
+  <div class="topnav__inner">
+    <a class="topnav__brand" href="../index.html">
+      <span class="topnav__logo"><img src="../assets/img/rccg-logo.png" alt="RCCG logo"></span>
+      <span class="topnav__brand-text">
+        <span class="topnav__brand-name">RCCG Learning Path</span>
+        <span class="topnav__brand-sub">Kingdom Diplomats Training Portal</span>
+      </span>
+    </a>
+  </div>
+</nav>
 
-  <main class="container">
-    <a href="../index.html" class="dashboard-back">← Back to Portal</a>
-    
-    <div class="dashboard-hero" style="background: linear-gradient(135deg, #b45309, #78350f);">
-      <h2>Workers-in-Training</h2>
-      <p>Equip yourself to be a worker set apart for service in the church. Study the history, vision, qualifications, code of conduct, brokenness, and dynamic structure of various departments in RCCG.</p>
-      
-      <div class="dashboard-actions">
-        <button id="start-track-btn" class="btn btn-primary" onclick="startFirstIncompleteStudy()">Start First Section</button>
-        <a href="quiz.html" class="btn btn-secondary">Take Exam 📝</a>
-        <button class="btn btn-secondary" onclick="confirmReset()" style="background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4);">Reset Progress</button>
-      </div>
-    </div>
+<header class="hero hero--dark shell" style="margin-top:var(--sp-4);">
+  <div class="hero__eyebrow">Workers-in-Training · 16 Studies</div>
+  <h1 style="max-width:none;">Equipped to serve in the house of God</h1>
+  <p>For those stepping into service — church structure, conduct among workers, spiritual gifts, and ministry administration in the RCCG.</p>
+  <div style="max-width:24rem;margin-top:var(--sp-4);">
+    <div class="bar-track" style="background:rgba(255,255,255,.15);"><div class="bar-fill" id="moduleBar" style="width:0%;background:var(--gold-600);"></div></div>
+    <p style="color:rgba(255,255,255,.85);font-size:var(--fs-xs);margin-top:.5rem;margin-bottom:0;font-weight:700;" id="moduleBarLabel"></p>
+  </div>
+</header>
 
-    <h3 style="margin-bottom: 20px; color: var(--color-primary-dark)">Sections in this Track</h3>
-    <div class="study-list" id="dashboard-study-list">
-      <!-- Generated dynamically by script -->
-    </div>
-  </main>
+<main class="shell" style="padding-block: var(--sp-5);">
+  <div id="studyList" class="study-list" style="max-width:42rem;margin-inline:auto;"></div>
 
-  <script src="../assets/js/app.js"></script>
-  <script src="../assets/js/content-workers.js"></script>
-  <script>
-    const TRACK_ID = "workers";
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      renderStudiesList();
-    });
+  <div style="max-width:42rem;margin:var(--sp-5) auto 0;padding:var(--sp-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-align:center;">
+    <h2 style="margin-top:0;font-size:var(--fs-md);">Ready to be tested?</h2>
+    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-3);">Once you've gone through all 8 studies, take the Workers-in-Training quiz on test day.</p>
+    <a class="btn btn--gold" href="../test-workers/index.html">Go to test environment →</a>
+  </div>
+</main>
 
-    function renderStudiesList() {
-      const progress = getTrackProgress(TRACK_ID);
-      const listContainer = document.getElementById("dashboard-study-list");
-      listContainer.innerHTML = "";
+<footer class="footer">The Redeemed Christian Church of God</footer>
 
-      WORKERS_CONTENT.forEach(study => {
-        const isCompleted = progress.completedStudies.includes(study.id);
-        const item = document.createElement("div");
-        item.className = `study-item ${isCompleted ? 'completed' : ''}`;
-        
-        item.innerHTML = `
-          <div class="study-item-info">
-            <div class="study-number">${study.id}</div>
-            <div class="study-title-text">${study.title}</div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <span class="study-status">${isCompleted ? 'Complete ✓' : 'Not Started'}</span>
-            <a href="study.html?study=${study.id}" class="btn btn-outline" style="padding: 6px 14px; font-size: 0.85rem;">
-              ${isCompleted ? 'Review' : 'Study'}
-            </a>
-          </div>
-        `;
-        listContainer.appendChild(item);
-      });
+<script src="../assets/js/app.js"></script>
+<script>
+  fetch('../assets/data/workers-in-training/index.json').then(r => r.json()).then(data => {
+    const listEl = document.getElementById('studyList');
+    const { done, total } = RCCG.moduleCompletionCount('workers-in-training', data.studies.length);
+    document.getElementById('moduleBar').style.width = Math.round((done/total)*100) + '%';
+    document.getElementById('moduleBarLabel').textContent = `${done} of ${total} studies complete`;
 
-      // Update start button
-      const nextStudyId = findFirstIncompleteStudy();
-      const startBtn = document.getElementById('start-track-btn');
-      if (progress.completedStudies.length === WORKERS_CONTENT.length) {
-        startBtn.innerText = "Review Track";
-      } else if (progress.completedStudies.length > 0) {
-        startBtn.innerText = `Resume (Section ${nextStudyId})`;
-      }
-    }
-
-    function findFirstIncompleteStudy() {
-      const progress = getTrackProgress(TRACK_ID);
-      for (let study of WORKERS_CONTENT) {
-        if (!progress.completedStudies.includes(study.id)) {
-          return study.id;
-        }
-      }
-      return "1";
-    }
-
-    function startFirstIncompleteStudy() {
-      const studyId = findFirstIncompleteStudy();
-      window.location.href = `study.html?study=${studyId}`;
-    }
-
-    function confirmReset() {
-      if (confirm("Are you sure you want to reset all your progress in the Workers-in-Training track?")) {
-        resetTrackProgress(TRACK_ID);
-      }
-    }
-  </script>
+    listEl.innerHTML = data.studies.map(s => {
+      const complete = RCCG.isStudyComplete('workers-in-training', s.id);
+      return `
+      <a href="reader.html?study=${s.id}" class="study-item ${complete ? 'is-done' : ''}">
+        <span class="study-number">${complete ? '✓' : s.id}</span>
+        <span style="flex:1;">
+          <span class="study-title-text">Study ${s.id}</span>
+          <span style="font-size:var(--fs-sm);color:var(--color-text-muted);display:block;">${s.title}</span>
+        </span>
+        <span class="study-status">${complete ? 'Done' : 'Start'}</span>
+      </a>`;
+    }).join('');
+  });
+</script>
 </body>
 </html>

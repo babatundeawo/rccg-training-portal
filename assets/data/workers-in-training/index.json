@@ -1,0 +1,70 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studies": [
+  {
+   "id": 1,
+   "title": "Introduction"
+  },
+  {
+   "id": 2,
+   "title": "Brief History of RCCG"
+  },
+  {
+   "id": 3,
+   "title": "Vision & Mission Statement"
+  },
+  {
+   "id": 4,
+   "title": "Module 1: Description of a Worker"
+  },
+  {
+   "id": 5,
+   "title": "Module 2: Qualifications of a Worker"
+  },
+  {
+   "id": 6,
+   "title": "Module 3: Code of Conduct for Workers"
+  },
+  {
+   "id": 7,
+   "title": "Module 4: Discipline Among Workers"
+  },
+  {
+   "id": 8,
+   "title": "Module 5: Promotion Among Workers"
+  },
+  {
+   "id": 9,
+   "title": "Module 6: Workers' Sunday Activities"
+  },
+  {
+   "id": 10,
+   "title": "Module 7: Church Hierarchy"
+  },
+  {
+   "id": 11,
+   "title": "Module 8: Spiritual Appointment and Promotion"
+  },
+  {
+   "id": 12,
+   "title": "Module 9: Your Gifts, Call & Ministry"
+  },
+  {
+   "id": 13,
+   "title": "Module 10: The Ministry of Reconciliation"
+  },
+  {
+   "id": 14,
+   "title": "Module 12: Brokenness in Christian Service"
+  },
+  {
+   "id": 15,
+   "title": "Module 13: Church Administration"
+  },
+  {
+   "id": 16,
+   "title": "Module 14: Various Departments in the RCCG"
+  }
+ ]
+}

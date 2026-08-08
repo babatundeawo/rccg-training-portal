@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Workers-in-Training — RCCG Learning Path</title>
+<link rel="icon" href="../assets/img/rccg-logo.png">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>:root{--module-accent:var(--gold-600);--module-accent-light:var(--gold-100);}</style>
+</head>
+<body data-root="../">
+
+<nav class="topnav">
+  <div class="topnav__inner">
+    <a class="topnav__brand" href="index.html">
+      <span class="topnav__logo"><img src="../assets/img/rccg-logo.png" alt="RCCG logo"></span>
+      <span class="topnav__brand-text">
+        <span class="topnav__brand-name" id="navTitle">Workers-in-Training</span>
+      </span>
+    </a>
+    <span class="topnav__spacer"></span>
+    <button class="topnav__btn" data-map-open type="button" aria-label="Open study map">
+      <svg class="progress-ring" viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
+        <circle class="track" cx="16" cy="16" r="12"></circle>
+        <circle class="bar" cx="16" cy="16" r="12" transform="rotate(-90 16 16)"></circle>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div class="reading-progress-fixed"><div class="bar-fill" id="deckBarFill" style="width:0%"></div></div>
+
+<div class="map-overlay">
+  <div class="map-drawer">
+    <div class="map-drawer__head">
+      <h2>Workers-in-Training</h2>
+      <button class="map-drawer__close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="map-drawer__list" id="mapList"></div>
+  </div>
+</div>
+
+<main class="shell reading">
+  <div class="reader-head">
+    <div class="reader-head__eyebrow" id="studyEyebrow">Study —</div>
+    <h1 id="studyTitle">Loading…</h1>
+    <div class="memory-verse" id="memoryVerseBox" style="display:none;">
+      <span class="memory-verse__label">Memory verse</span>
+      <span class="memory-verse__text" id="memoryVerseText"></span>
+    </div>
+  </div>
+
+  <div class="study-viewport">
+    <div class="card-deck" id="cardDeck"></div>
+  </div>
+</main>
+
+<div id="completeScreen" style="display:none;">
+  <main class="shell reading">
+    <div class="complete-hero">
+      <div class="complete-hero__badge">✓</div>
+      <h1 style="font-size:var(--fs-xl);">Study complete!</h1>
+      <p style="color:var(--color-text-muted);max-width:32ch;margin-inline:auto;" id="completeMsg"></p>
+      <div id="completeActions" style="display:flex;gap:var(--sp-2);flex-wrap:wrap;justify-content:center;margin-top:var(--sp-4);"></div>
+    </div>
+  </main>
+</div>
+
+<footer class="footer">The Redeemed Christian Church of God</footer>
+
+<div class="bottom-actions" id="bottomActions">
+  <div class="bottom-actions__inner">
+    <button class="btn btn--outline btn--icon" id="backBtn" type="button" aria-label="Previous card" disabled>←</button>
+    <span class="bottom-actions__step" id="stepLabel">1 / 1</span>
+    <button class="btn btn--primary btn--block" id="nextBtn" type="button">Continue →</button>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const studyId = parseInt(params.get('study') || '1', 10);
+const MODULE_ID = 'workers-in-training';
+
+function cardHTML(card, i) {
+  const blocksHTML = card.blocks.map(b => {
+    if (b.type === 'list') {
+      return `<ul>${b.items.map(it => `<li>${RCCG.renderScriptureText(it)}</li>`).join('')}</ul>`;
+    }
+    return `<p>${RCCG.renderScriptureText(b.text)}</p>`;
+  }).join('');
+  return `
+  <article class="study-card" data-index="${i}">
+    <span class="card-category">Point ${RCCG.escapeHtml(String(i + 1))}</span>
+    <h2 class="card-title">${RCCG.escapeHtml(card.heading)}</h2>
+    <div class="card-content">${blocksHTML}</div>
+  </article>`;
+}
+
+async function init() {
+  const [indexData, studyData] = await Promise.all([
+    fetch('../assets/data/workers-in-training/index.json').then(r => r.json()),
+    fetch(`../assets/data/workers-in-training/study-${studyId}.json`).then(r => r.json())
+  ]);
+
+  document.title = `Study ${studyId}: ${studyData.title} — Workers-in-Training`;
+  document.getElementById('studyEyebrow').textContent = `Study ${studyId} of ${indexData.studies.length}`;
+  document.getElementById('studyTitle').textContent = studyData.title;
+
+  if (studyData.memoryVerse && studyData.memoryVerse.length) {
+    const box = document.getElementById('memoryVerseBox');
+    box.style.display = 'block';
+    document.getElementById('memoryVerseText').innerHTML = studyData.memoryVerse.map(mv =>
+      `<button type="button" class="scr" data-ref="${mv.keys.join(',')}" data-label="${RCCG.escapeHtml(mv.label)}" style="color:inherit;border-color:currentColor;">${RCCG.escapeHtml(mv.label)}</button>`
+    ).join('  &nbsp;·&nbsp;  ');
+  }
+
+  const allCards = studyData.cards.slice();
+  if (studyData.conclusion && studyData.conclusion.length) {
+    allCards.push({ heading: 'In Conclusion', blocks: studyData.conclusion });
+  }
+  document.getElementById('cardDeck').innerHTML = allCards.map(cardHTML).join('');
+
+  // Map drawer
+  const mapList = document.getElementById('mapList');
+  mapList.innerHTML = indexData.studies.map(s => {
+    const done = RCCG.isStudyComplete(MODULE_ID, s.id);
+    const current = s.id === studyId;
+    return `<a class="map-item ${done ? 'is-done' : ''} ${current ? 'is-current' : ''}" href="reader.html?study=${s.id}">
+      <span class="map-item__dot">${!done && !current ? s.id : ''}</span>
+      <span class="map-item__label">Study ${s.id}: ${s.title}</span>
+    </a>`;
+  }).join('');
+
+  const { done, total } = RCCG.moduleCompletionCount(MODULE_ID, indexData.studies.length);
+  RCCG.paintProgressRing(document.querySelector('.progress-ring'), total ? done / total : 0);
+  RCCG.initMapDrawer();
+  RCCG.initScriptureReveal(document);
+
+  function showComplete() {
+    RCCG.markStudyComplete(MODULE_ID, studyId);
+    document.querySelector('main.reading').style.display = 'none';
+    document.getElementById('bottomActions').style.display = 'none';
+    document.getElementById('completeScreen').style.display = 'block';
+    document.getElementById('completeMsg').textContent =
+      `You've finished Study ${studyId}: ${studyData.title}.`;
+
+    const prevId = studyId - 1, nextId = studyId + 1;
+    let html = '';
+    if (nextId <= indexData.studies.length) {
+      html += `<a class="btn btn--primary" href="reader.html?study=${nextId}">Next: ${RCCG.escapeHtml(indexData.studies[nextId-1].title)} →</a>`;
+    } else {
+      html += `<a class="btn btn--gold" href="../test-workers/index.html">Take the test →</a>`;
+    }
+    html += `<a class="btn btn--outline" href="index.html">Back to study list</a>`;
+    document.getElementById('completeActions').innerHTML = html;
+    RCCG.initScriptureReveal(document);
+  }
+
+  RCCG.initCardDeck({
+    deckSelector: '#cardDeck',
+    barFillSelector: '#deckBarFill',
+    stepLabelSelector: '#stepLabel',
+    backBtnSelector: '#backBtn',
+    nextBtnSelector: '#nextBtn',
+    onComplete: showComplete,
+    onStep: () => RCCG.initScriptureReveal(document)
+  });
+}
+init();
+</script>
+</body>
+</html>

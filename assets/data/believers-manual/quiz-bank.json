@@ -1,0 +1,30 @@
+{
+  "moduleId": "believers-manual",
+  "moduleTitle": "Believers' Class",
+  "questions": [
+    {"question":"According to the manual, the new birth is described as what kind of change?","options":["A spiritual and moral change","A political change","A purely physical change","A cultural change"],"correctIndex":0},
+    {"question":"Who was the head of the human race whose fall changed the course of humanity?","options":["Noah","Adam","Abraham","Moses"],"correctIndex":1},
+    {"question":"Which of these is listed as a consequence of the fall of man?","options":["Loss of communion and fellowship with God","Increase in wisdom","Automatic entry into heaven","Freedom from all temptation"],"correctIndex":0},
+    {"question":"Which of the following is NOT what the New Birth is, according to the manual?","options":["Keeping the law","A spiritual birth","The quickening of our dead spirit","Being translated from darkness to light"],"correctIndex":0},
+    {"question":"What is the first step listed in becoming born again?","options":["Water baptism","Acknowledging that you are a sinner","Joining a church","Paying tithes"],"correctIndex":1},
+    {"question":"Repentance is described as what kind of decision?","options":["An emotional outburst","A firm conscious personal decision to turn from sin to righteousness","A yearly ritual","A decision made only by pastors"],"correctIndex":1},
+    {"question":"Which of these is one of the steps repentance must involve?","options":["Acknowledging that you have sinned","Ignoring your past","Ceasing to attend church","Avoiding prayer"],"correctIndex":0},
+    {"question":"Before salvation, the manual says you were a servant of what?","options":["Righteousness","Sin","The church","The Holy Spirit"],"correctIndex":1},
+    {"question":"After salvation, how does God see the believer according to the manual?","options":["Still guilty until further notice","A new person whose sins are washed away and forgotten","Unchanged from before","Only partially forgiven"],"correctIndex":1},
+    {"question":"The manual identifies three baptisms for true believers. Which of these is one of them?","options":["Baptism into Christ and His Body","Baptism of fire only","Baptism by tradition","Baptism of ashes"],"correctIndex":0},
+    {"question":"What does the Greek word for baptism, 'Baptizo', mean?","options":["To sprinkle lightly","To submerge or immerse","To anoint with oil","To bless from a distance"],"correctIndex":1},
+    {"question":"Quiet time is described in the manual as time set aside for what?","options":["Meeting with God","Watching television","Socializing with friends","Resting only"],"correctIndex":0},
+    {"question":"According to the manual, why do we need quiet time?","options":["To cope with daily activities by God's power","To avoid other believers","To pass time","To impress others"],"correctIndex":0},
+    {"question":"What is personal evangelism described as?","options":["Person-to-person sharing of the gospel to lead someone to Christ","A yearly church event only","A task only for pastors","Distributing food to the poor"],"correctIndex":0},
+    {"question":"According to the manual's teaching on soul-winning, a soul is described as worth more than what?","options":["The whole world","A single church building","One's own reputation","Money alone"],"correctIndex":0},
+    {"question":"Restitution is described as involving what action?","options":["Restoring to the owner all things taken by falsehood","Ignoring past wrongs","Only apologizing verbally","Avoiding the wronged person"],"correctIndex":0},
+    {"question":"According to the manual, who initiated marriage?","options":["God","Society","Culture","Government"],"correctIndex":0},
+    {"question":"Marriage, according to the manual, should be between whom?","options":["A man and a woman","Any two consenting adults","Only within the same family","There is no biblical guidance given"],"correctIndex":0},
+    {"question":"The Second Coming of Christ study says events in the world today show what?","options":["The imminence of the Lord's coming","That prophecy has ended","Nothing significant","A delay of a thousand years"],"correctIndex":0},
+    {"question":"In the first phase of the Lord's coming as described in the manual, He comes for whom?","options":["The unbelievers","The saints, to remove them from the world","Only the apostles","No one specifically"],"correctIndex":1},
+    {"question":"How many chapters/points does Study 1 use to describe the fall of man's consequences before discussing God's mercy?","options":["Several, including loss of communion, spiritual death, and loss of dominion","None — the fall had no consequences","Only one consequence is listed","It focuses solely on physical illness"],"correctIndex":0},
+    {"question":"What must a born-again Christian's life reflect, according to the conclusion of Study 1?","options":["No visible difference from before","A difference evident in words, thoughts and actions","Only outward religious dressing","Wealth and prosperity"],"correctIndex":1},
+    {"question":"Which practice does the manual list as a way to live the new life successfully?","options":["Giving ourselves to the study of the Word","Avoiding fellowship with believers","Relying only on personal willpower","Ignoring prayer"],"correctIndex":0},
+    {"question":"According to Study 4, why must water baptism be by immersion rather than sprinkling?","options":["Because 'Baptizo' in Greek means to submerge or immerse, expressing burial and resurrection with Christ","Because the early church had no water","Because immersion is simply a modern preference","There is no reason given"],"correctIndex":0}
+  ]
+}

@@ -1,0 +1,83 @@
+/* ==========================================================================
+   RCCG Learning Path — design tokens
+   Palette matches the official portal identity: deep royal blue, sky blue,
+   emerald green, warm gold for scripture/memory-verse highlights, on white.
+   ========================================================================== */
+
+:root {
+  /* --- Color: named --- */
+  --navy-900:  #0a2540;   /* deep royal blue — headers, hero, headings */
+  --blue-600:  #0070f3;   /* primary interactive blue */
+  --blue-500:  #0ea5e9;   /* secondary sky blue (Baptismal accent) */
+  --green-600: #10b981;   /* emerald — success, progress, completion */
+  --green-100: rgba(16, 185, 129, .1);
+  --gold-600:  #d97706;   /* warm gold — memory verses, Workers accent */
+  --gold-100:  rgba(217, 119, 6, .1);
+  --red-600:   #ef4444;   /* alerts / incorrect */
+  --red-100:   rgba(239, 68, 68, .1);
+  --slate-50:  #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-700: #334155;
+  --white: #ffffff;
+
+  /* --- Role mapping --- */
+  --color-bg: var(--slate-50);
+  --color-surface: var(--white);
+  --color-surface-alt: var(--slate-100);
+  --color-text: var(--slate-700);
+  --color-text-muted: var(--slate-500);
+  --color-primary: var(--navy-900);
+  --color-accent: var(--blue-600);
+  --color-accent-light: rgba(0, 112, 243, .08);
+  --color-green: var(--green-600);
+  --color-gold: var(--gold-600);
+  --color-red: var(--red-600);
+  --color-border: var(--slate-200);
+
+  /* Per-module accent, overridden per module page */
+  --module-accent: var(--blue-600);
+  --module-accent-light: var(--color-accent-light);
+
+  /* --- Type --- */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  /* Fluid type scale — bumped up a step for a more immersive, easy-to-read feel */
+  --fs-xs:   clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
+  --fs-sm:   clamp(0.95rem, 0.9rem + 0.25vw, 1.02rem);
+  --fs-base: clamp(1.08rem, 1.03rem + 0.25vw, 1.18rem);
+  --fs-md:   clamp(1.28rem, 1.15rem + 0.6vw, 1.5rem);
+  --fs-lg:   clamp(1.55rem, 1.3rem + 1.2vw, 2.1rem);
+  --fs-xl:   clamp(1.9rem, 1.55rem + 1.7vw, 2.7rem);
+  --fs-xxl:  clamp(2.3rem, 1.8rem + 2.5vw, 3.6rem);
+
+  /* Spacing scale */
+  --sp-1: clamp(0.4rem, 0.35rem + 0.25vw, 0.55rem);
+  --sp-2: clamp(0.7rem, 0.6rem + 0.4vw, 0.95rem);
+  --sp-3: clamp(1.1rem, 0.95rem + 0.6vw, 1.5rem);
+  --sp-4: clamp(1.6rem, 1.35rem + 1vw, 2.3rem);
+  --sp-5: clamp(2.3rem, 1.9rem + 1.6vw, 3.4rem);
+  --sp-6: clamp(3.2rem, 2.6rem + 2.4vw, 4.8rem);
+
+  /* Layout */
+  --max-w-reading: 40rem;
+  --max-w-shell: 68rem;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --nav-h: 64px;
+  --bottom-bar-h: 78px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;
+  --dur-med: 340ms;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(10,37,64,.05);
+  --shadow-md: 0 4px 24px rgba(10,37,64,.08);
+  --shadow-lg: 0 14px 34px rgba(10,37,64,.14);
+}
