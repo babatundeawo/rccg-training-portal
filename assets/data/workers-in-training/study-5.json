@@ -2,41 +2,34 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 5,
- "totalStudies": 16,
- "title": "Module 2: Qualifications of a Worker",
+ "totalStudies": 33,
+ "title": "Qualifications of a Worker",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
+   "heading": "What is expected of a worker",
    "blocks": [
     {
-     "type": "list",
-     "items": [
-      "The one who would qualify as a worker must satisfy the following conditions. He/she must be:-",
-      "Born again - {{jo 3:3|John 3:3}}; 5.",
-      "Sanctified - {{jo 17:17|John 17:17}}, {{1ts 5:23|1 Thess. 5:23}}.",
-      "Filled with the Holy Spirit - {{act 1:8|Acts 1:8}}; 6:3.",
-      "Baptised by immersion in water, - {{mt 28:19|Matt. 28:19}}, {{act 16:15,act 16:16|Acts 16:15-16}}.",
-      "A tithe-payer - {{ml 3:10|Malachi 3:10}}."
-     ]
+     "type": "p",
+     "text": "Anyone who would qualify to serve as a worker must satisfy the following conditions. He or she must be:"
     },
     {
      "type": "list",
      "items": [
-      "A cheerful giver - {{2co 9:7|II Cor. 9:7}}.",
-      "A proven soul-winner, - Mark - 16:15-16.",
-      "Humble -{{is 57:15|Isa. 57:15}}; {{lk 22:26|Luke 22:26}}.",
-      "A prayer warrior - {{1ts 5:17|I Thess. 5:17}}.",
-      "Well-behaved - {{1co 13:5|I Cor. 13:5}}.",
-      "Given to fasting - {{lk 4:2|Luke 4:2}}; {{mt 17:21|Matt. 17:21}}, {{act 13:2,act 13:3|Acts 13:2-3}}."
-     ]
-    },
-    {
-     "type": "list",
-     "items": [
-      "Trustworthy - {{jr 35:1,jr 35:2,jr 35:3,jr 35:4,jr 35:5,jr 35:6,jr 35:7,jr 35:8|Jer. 35: 1-8}}.",
-      "Blameless and without blemish in the congregation - {{ph 2:14,ph 2:15,ph 2:16|Phil. 2: 14-16}}.",
-      "Any other qualifications that the Mission may from time to time consider necessary."
+      "Born again - {{jo 3:3,jo 3:5|John 3:3, 5}}.",
+      "Sanctified - {{jo 17:17|John 17:17}}, {{1ts 5:23|1 Thessalonians 5:23}}.",
+      "Filled with the Holy Spirit - {{act 1:8,act 6:3|Acts 1:8; 6:3}}.",
+      "Baptised by immersion in water - {{mt 28:19|Matthew 28:19}}, {{act 16:15,act 16:16|Acts 16:15-16}}.",
+      "A tithe-payer - {{ml 3:10|Malachi 3:10}}.",
+      "A cheerful giver - {{2co 9:7|2 Corinthians 9:7}}.",
+      "A proven soul-winner - {{mk 16:15,mk 16:16|Mark 16:15-16}}.",
+      "Humble - {{is 57:15|Isaiah 57:15}}, {{lk 22:26|Luke 22:26}}.",
+      "A prayer warrior - {{1ts 5:17|1 Thessalonians 5:17}}.",
+      "Well-behaved - {{1co 13:5|1 Corinthians 13:5}}.",
+      "Given to fasting - {{lk 4:2|Luke 4:2}}, {{mt 17:21|Matthew 17:21}}, {{act 13:2,act 13:3|Acts 13:2-3}}.",
+      "Trustworthy - {{jr 35:1,jr 35:2,jr 35:3,jr 35:4,jr 35:5,jr 35:6,jr 35:7,jr 35:8|Jeremiah 35:1-8}}.",
+      "Blameless and without blemish in the congregation - {{ph 2:14,ph 2:15,ph 2:16|Philippians 2:14-16}}.",
+      "Willing to meet any other qualification the Mission may from time to time consider necessary."
      ]
     }
    ]

@@ -1,0 +1,68 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 24,
+ "totalStudies": 33,
+ "title": "The Choir Department",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "An ancient calling",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "The Choir is one of the oldest groups in church history, tracing back to Old Testament worship as part of the priesthood. In the Old Testament, the choir was made up of the sons of Levi, whose sole obligation was to lead worship in the Tabernacle - {{1ch 15:16|1 Chronicles 15:16}}, {{1ch 6:31,1ch 6:32,1ch 6:33,1ch 6:34,1ch 6:35|1 Chronicles 6:31-35}}, {{2ch 7:6|2 Chronicles 7:6}}. Because music serves an eternal function in worship, the choir remains just as relevant in the New Testament church - {{re 5:11|Revelation 5:11}}, {{mt 26:30|Matthew 26:30}}, {{act 16:25|Acts 16:25}}."
+    },
+    {
+     "type": "p",
+     "text": "At the local church level, the RCCG choir is headed by a Choir Coordinator, who may have an assistant, both reporting to the Minister-in-Charge of the Choir in the Parish. The department typically comprises lead vocalists, back-up singers, and instrumentalists, who are free to organise themselves for optimal productivity."
+    }
+   ]
+  },
+  {
+   "heading": "Functions of the Choir",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "The choir's functions include, but aren't limited to:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Providing sacred and Gospel music to lead worship during services and events.",
+      "Performing specially rehearsed songs to minister to the congregation during service.",
+      "Providing music for special occasions - revival meetings, weddings, naming or burial ceremonies, and the like.",
+      "Meeting regularly for rehearsals at agreed times of the week.",
+      "Regularly learning new songs and hymns to lead worship effectively and teach them to the church.",
+      "Providing regular reports of the department's activities to the Pastorate."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Qualities of a good chorister",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "An intending chorister benefits from:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Humility - being ready to submit to the choir leaders, especially since the choir often attracts those who enjoy showing off their gift.",
+      "A quick-learning ability - rehearsal time is never enough for the number of songs to learn, so being highly teachable musically is a real asset.",
+      "A good voice and ear - for rhythm, tone, and sound; where these aren't natural, a willingness to endure thorough training to develop them.",
+      "Practice discipline - the patience to repeat the same passage correctly, under instruction, as many times as it takes to master it. Some songs take days; some instruments take years.",
+      "Emotional maturity - music rides on emotion, and a chorister may be praised one moment and misunderstood or criticised the next.",
+      "Tolerance - the choir spans a wide range of ages, and older members especially need patience with the exuberance of younger ones.",
+      "Ministerial ethics - a chorister is a minister, and must be morally and ethically sound.",
+      "Availability - there's no mastery without consistent participation; ability without availability achieves little.",
+      "Compliance with choir regulations, including wearing choir uniform as occasions require.",
+      "Neatness - simple, well-dressed, and tidy in uniform during church events."
+     ]
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

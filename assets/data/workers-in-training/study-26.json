@@ -1,0 +1,70 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 26,
+ "totalStudies": 33,
+ "title": "The Ushering Department",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "A paramilitary role",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Ushering is effectively a paramilitary group within the church, responsible for security, orderliness, and protocol at every church event. Their responsibilities are extensive, and the group is led by a Head Usher."
+    }
+   ]
+  },
+  {
+   "heading": "Functions of the Ushering Department",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Ushers are responsible for:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Welcoming members, guests, and visitors, and politely directing them to their seats.",
+      "Preparing venues before events start - cleaning, arranging seats and furniture, and ensuring good aesthetics.",
+      "Assisting with sanitation and cleaning of the venue before, during, and after events.",
+      "Monitoring and maintaining orderliness of movement and conduct during events.",
+      "Collecting all offerings during events, and counting and recording them accurately.",
+      "Handing checked offerings over to designated officers for prompt banking.",
+      "Attending to the needs of the congregation during an ongoing event.",
+      "Taking attendance at events and services, and recording it as required.",
+      "Assisting with checking and evaluating church inventory.",
+      "Keeping careful custody of past and present records and statistics of church events.",
+      "Running errands for Pastors and Ministers to meet official needs during and after events.",
+      "Providing regular reports of the department's activities to the Pastorate."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Qualities of a good usher",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "An intending usher needs:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Material contentment - since ushers handle offerings, anyone without a stable livelihood or unable to resist temptation should not volunteer for this role.",
+      "Humility and patience - ushers interact directly with people of every temperament and mood, and must receive all of them well.",
+      "A cheerful attitude - the usher is often the first person met at an event, and the person turned to for help, so a warm, sweet temperament matters regardless of personal circumstances.",
+      "A neat, attractive appearance - first impressions matter, and this affects the atmosphere of the whole event.",
+      "Sound ethics - usher conduct is guided by both stated and implied regulations.",
+      "Stamina and alertness - most ushering work involves standing or moving continuously while staying alert.",
+      "A prayerful spirit - ushers rarely close their eyes even during prayer, but should remain prayerful so the Holy Spirit can move freely.",
+      "Being smart and personable - people respond well to being understood and treated with honour.",
+      "Endurance - ushers are typically the first to arrive and the last to leave.",
+      "Security consciousness - not everyone who attends a church event comes with good motives, and an usher should be alert to this."
+     ]
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

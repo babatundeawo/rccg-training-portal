@@ -14,47 +14,42 @@
  ],
  "cards": [
   {
-   "heading": "Introduction",
+   "heading": "Introduction — Part 1 of 4",
    "blocks": [
     {
      "type": "p",
      "text": "Introduction: The Biblical fasting is imperative for the members of the body of Christ.It is essential, among other things, to deal with the flesh, that fallen nature, which is still much around to prevent us from prospering in the things of the spirit. Apostle Paul said \"But I keep under my body, and bring it into subjection...\" ({{1co 9:27|I Cor. 9:27}})."
     },
     {
-     "type": "p",
-     "text": "A. Whatis fasting? Fasting means abstinence and Biblical fasting means abstaining from food and drink (depending on the duration) for a period. This fasting is a voluntary act of denying ourselves of things that give us pleasure with a view to suppress the flesh and uplift the spirit. Fasts could be divided as follows: - Absolute Fast: means abstinence from both food and water. It is advisable not to exceed three days. - Total Fast: Abstinence from food only. Water may be taken. - Partial Fast: One meal/fruit may be taken in 24 hours. Water may be taken. B. Who should fast? - Individual believer {{2sm 12:16|II Sam. 12:16}}; {{mt 6:16,mt 6:17,mt 6:18|Matt. 6:16-18}} - Group of believers {{act 13:1,act 13:2,act 13:3|Acts 13:1-3}} - A whole nation {{jn 3:5,jn 3:6,jn 3:7,jn 3:8,jn 3:9|Jonah 3:5-9}}; {{et 4:15,et 4:16,et 4:17|Esther 4:15-17}} C. What fasting is set to Achieve, {{is 58:6,is 58:7,is 58:8,is 58:9,is 58:10,is 58:11,is 58:12,is 58:13,is 58:14|Isa. 58:6-14}} (please note that the list below is not exhaustive)"
+     "type": "list",
+     "items": [
+      "Whatis fasting? Fasting means abstinence and Biblical fasting means abstaining from food and drink (depending on the duration) for a period. This fasting is a voluntary act of denying ourselves of things that give us pleasure with a view to suppress the flesh and uplift the spirit. Fasts could be divided as follows: - Absolute Fast: means abstinence from both food and water. It is advisable not to exceed three days. - Total Fast: Abstinence from food only. Water may be taken. - Partial Fast: One meal/fruit may be taken in 24 hours. Water may be taken.",
+      "Who should fast? - Individual believer {{2sm 12:16|II Sam. 12:16}}; {{mt 6:16,mt 6:17,mt 6:18|Matt. 6:16-18}} - Group of believers {{act 13:1,act 13:2,act 13:3|Acts 13:1-3}} - A whole nation {{jn 3:5,jn 3:6,jn 3:7,jn 3:8,jn 3:9|Jonah 3:5-9}}; {{et 4:15,et 4:16,et 4:17|Esther 4:15-17}}",
+      "What fasting is set to Achieve, {{is 58:6,is 58:7,is 58:8,is 58:9,is 58:10,is 58:11,is 58:12,is 58:13,is 58:14|Isa. 58:6-14}} (please note that the list below is not exhaustive)",
+      "To loose the bands of wickedness (vs.6)",
+      "To undo the heavy burdens (vs.6)",
+      "To let the oppressed go free (vs.6)"
+     ]
     }
    ]
   },
   {
-   "heading": "1. To loose the bands of wickedness (vs.6)",
+   "heading": "Introduction — Part 2 of 4",
    "blocks": [
     {
      "type": "list",
      "items": [
-      "To undo the heavy burdens (vs.6)",
-      "To let the oppressed go free (vs.6)",
       "To break every yoke (vs.6)",
       "To give bread to the hungry (vs.7)",
       "To restore the poor (vs.7)",
-      "To clothe the naked (vs.7)"
-     ]
-    },
-    {
-     "type": "list",
-     "items": [
+      "To clothe the naked (vs.7)",
       "Not to hide from relative who need your help (vs.7)"
      ]
     },
     {
      "type": "p",
      "text": "All these could be summarized in {{jm 1:27|James 1:27}}. It should be pointed out here that whether or not you are fasting, you are expected to lead a life of daily practical holiness. {{1pe 1:15,1pe 1:16|I Peter 1:15-16}}"
-    }
-   ]
-  },
-  {
-   "heading": "1. To loose the bands of wickedness (vs.6) (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [
@@ -76,7 +71,12 @@
       "When in danger. {{act 27:21,act 27:22,act 27:23,act 27:24,act 27:25|Acts 27:21-25}}; {{jn 1:17|Jonah 1:17}}; 2:1",
       "When taking a crucial decision. Ester 4:15-16"
      ]
-    },
+    }
+   ]
+  },
+  {
+   "heading": "Introduction — Part 3 of 4",
+   "blocks": [
     {
      "type": "list",
      "items": [
@@ -87,12 +87,7 @@
       "We fast so that our spirit will readily be alive when God speaks. {{act 13:2,act 13:3,act 13:4|Acts 13:2-4}}",
       "How to operate in Biblical fasting"
      ]
-    }
-   ]
-  },
-  {
-   "heading": "1. To loose the bands of wickedness (vs.6) (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [
@@ -109,7 +104,12 @@
       "There must be concerted prayers, adequate meditation on the Word and listening distinctly to the Holy Spirit for the duration for the fast.",
       "When the days are fulfilled, withdrawing from fast should be done with all caution and discipline. You need to exercise more self -control than when you were fasting so that your health is not impaired."
      ]
-    },
+    }
+   ]
+  },
+  {
+   "heading": "Introduction — Part 4 of 4",
+   "blocks": [
     {
      "type": "list",
      "items": [
@@ -120,12 +120,7 @@
       "What fasting does not achieve",
       "It does not bribe God, Duet 32:4. Therefore when we fast, we depend on God's grace and promises {{et 4:16|Esther 4:16}}"
      ]
-    }
-   ]
-  },
-  {
-   "heading": "1. To loose the bands of wickedness (vs.6) (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [

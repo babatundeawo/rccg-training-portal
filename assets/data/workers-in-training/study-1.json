@@ -2,16 +2,28 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 1,
- "totalStudies": 16,
- "title": "Introduction",
+ "totalStudies": 33,
+ "title": "Why This Manual Exists",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
+   "heading": "A church born of revelation",
    "blocks": [
     {
      "type": "p",
-     "text": "Beloved, we believe that you know that it is the Almighty God Himself who named this church, \"The Redeemed. Christian Church of God\", through a revelation He gave to the founder, the Late Rev. J.0. Akindayomi. This fact alone, we are sure, makes this church a rather unique establishment of the Most High. Also, concerning this church, the Almighty made a series of promises among which are: (i) That He will meet this church on His return. (ii) That this church will become a model to the whole world. (iii) That other churches from all over the world will come to learn and worship in this church. Big as these divine promises are, God is more than able to fulfill what He has spoken - {{nm 23:19|Numbers 23:19}}. In fact, as of today, He has given this church such a good name among other churches in this country that on many occasions:- (i) Our workers who apply to other Missions for employment had been promptly employed even without any formal interview. (ii) Missions who have Bible Colleges of their own still send their Ministers to our Colleges to be trained. To God be the glory. Moreover, by the special grace of God, our beloved church is growing very fast and we believe God that it will continue to grow extremely very fast from now on. The foregoing are some of the reasons we, therefore, feel that the qualifications and code of conduct for workers in this Mission ought to be spelt out in writing for the information and guidance of all concerned."
+     "text": "The name \"The Redeemed Christian Church of God\" was not chosen by a committee - it was given directly to the founder, the late Reverend Josiah Olufemi Akindayomi, through a revelation from God. That alone marks this church as a unique work of the Most High."
+    },
+    {
+     "type": "p",
+     "text": "Alongside the name, God made several promises concerning this church: that He Himself would meet the church on His return; that this church would become a model to the whole world; and that other churches from every nation would come to learn and worship here."
+    },
+    {
+     "type": "p",
+     "text": "These are large promises, but God is more than able to fulfil what He has spoken - {{nm 23:19|Numbers 23:19}}. Even today, that faithfulness shows: workers who apply to other missions for employment are often engaged without a formal interview, purely on the strength of the church's reputation, and missions with their own Bible colleges still send ministers to be trained in ours."
+    },
+    {
+     "type": "p",
+     "text": "By God's grace, the church continues to grow rapidly - and we believe it will keep growing. It's for these reasons that the qualifications and code of conduct expected of every worker have been put down in writing: so that everyone involved knows exactly what's expected of them."
     }
    ]
   }

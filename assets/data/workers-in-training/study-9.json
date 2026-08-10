@@ -2,16 +2,20 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 9,
- "totalStudies": 16,
- "title": "Module 6: Workers' Sunday Activities",
+ "totalStudies": 33,
+ "title": "Workers' Sunday Activities",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
+   "heading": "The whole day belongs to Jesus",
    "blocks": [
     {
      "type": "p",
-     "text": "The workers are the people who are the first to come to the church on Sunday morning. For example, they would have been there an hour before others come. They must wake up early on Sunday morning in order to see that they are there early. As far as workers are concerned, the whole Sunday belongs to Jesus Christ. When they finish their morning prayers they must go on house to house witnessing or follow-up in order to invite people to the church. In the evening, they are expected to be at the House-fellowship Centres and the monthly Holy Communion Services."
+     "text": "Workers are typically the first to arrive at church on Sunday morning - often an hour or more before everyone else. This means waking up early to be sure of arriving in good time. As far as workers are concerned, the entirety of Sunday belongs to Jesus Christ."
+    },
+    {
+     "type": "p",
+     "text": "After morning prayers, workers are expected to go house-to-house witnessing or following up with contacts, inviting people to church. In the evening, they're expected to be present at House Fellowship Centres and at the monthly Holy Communion service."
     }
    ]
   }

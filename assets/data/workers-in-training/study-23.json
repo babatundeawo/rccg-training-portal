@@ -1,0 +1,53 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 23,
+ "totalStudies": 33,
+ "title": "The Ministerial Structure",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "The organogram",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "The RCCG has a ministerial structure and mode of operation that enables it to harness its God-given resources and sustain the pace of growth it has seen. From the top of the structure down, the chain runs as follows:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "General Overseer",
+      "Deputy General Overseer",
+      "Mother-in-Israel",
+      "Assistant General Overseer",
+      "National Elder",
+      "Assistant National Elder / Special Assistant to the General Overseer",
+      "Pastor in Charge of Region / Regional Evangelist / Secretary",
+      "Pastor in Charge of Province / Assistant Secretary",
+      "Assistant Pastor in Charge of Province / Church Growth Officer 1",
+      "Church Growth Officer 2",
+      "Pastor in Charge of Zone",
+      "Pastor in Charge of Area",
+      "Pastor in Charge of Parish",
+      "Ordained Minister",
+      "Non-Ordained Minister"
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "The local parish",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "The local Parish (alongside House Fellowship Centres) is the lowest rung of the RCCG's ministerial structure, and every policy begins at this level. A Local Parish is administered by a Pastor-in-Charge, supported by other ordained and non-ordained ministers."
+    },
+    {
+     "type": "p",
+     "text": "For ease of administration, each local assembly is segmented into departments, giving rise to Heads of Departments who share the overall work of church administration with the Pastor-in-Charge. The reporting line runs from the Pastor-in-Charge (Pastors, Assistant Pastors, Deacons, Deaconesses, and un-ordained ministers) to the Heads of Departments (Deacons and Deaconesses, Assistant Pastors, non-ordained ministers, and workers) and the ordained and un-ordained altar ministers."
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

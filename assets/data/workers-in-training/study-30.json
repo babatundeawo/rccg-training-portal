@@ -1,0 +1,55 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 30,
+ "totalStudies": 33,
+ "title": "The Welfare Department",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "Meeting practical needs",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "This department organises welfare support and gathers the church's available resources to provide for those in need."
+    }
+   ]
+  },
+  {
+   "heading": "Functions of the Welfare Department",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Their work includes:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Organising funds and other resources to meet needs within the church.",
+      "Identifying individuals who need material assistance and organising support for them.",
+      "Supporting the Pastorate in caring for the poor, widows, and needy within the church."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Qualities needed in Welfare",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "This role calls for:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Generosity - a large heart, ready to give to help others.",
+      "A love for others - genuinely willing to help.",
+      "A sense of concern - without this, little headway is possible in this department.",
+      "Confidentiality - a worker here will regularly have access to sensitive, private information and must be trusted to keep it that way."
+     ]
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

@@ -1,0 +1,57 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 28,
+ "totalStudies": 33,
+ "title": "The Sanitation Department",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "An unseen but essential role",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Cleanliness, as the saying goes, is next to godliness. Without the Sanitation department, church premises would quickly become a dumping ground. This unit isn't as conspicuous or celebrated as some others, but what it does - or fails to do - has an immediate effect on the atmosphere of worship, because God is holy. The unit is led by a Head of Sanitation, and any willing, humble-minded individual can be part of it."
+    }
+   ]
+  },
+  {
+   "heading": "Functions of the Sanitation Unit",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Their responsibilities include:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Ensuring church premises or event venues are clean, neat, and tidy before, during, and after events.",
+      "Ensuring proper disposal of waste at designated places after thorough cleaning.",
+      "Regularly organising, maintaining, and enforcing sanitation regulations in the church.",
+      "Regularly cleaning toilets, bathrooms, offices, and other frequently used spaces.",
+      "Occasionally collaborating with ushers to arrange seats and furniture at event venues."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Qualities of a sanitation worker",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "An intending sanitation worker needs to be:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Humble - a quiet, caring individual who doesn't work to be noticed.",
+      "Not easily nauseated - able to handle different types of waste, including toilets, without being sickened by the work.",
+      "Hygienic - for personal safety and health.",
+      "Ready to work unnoticed - this role doesn't attract celebration or instant praise, and isn't suited to those who need recognition for the smallest effort."
+     ]
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

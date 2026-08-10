@@ -2,16 +2,37 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 14,
- "totalStudies": 16,
- "title": "Module 12: Brokenness in Christian Service",
+ "totalStudies": 33,
+ "title": "Discovering Your Spiritual Gifts",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
+   "heading": "What a spiritual gift is",
    "blocks": [
     {
      "type": "p",
-     "text": "Brokenness is a process by which the flesh is subdued in order to imbibe the spirit of meekness and humility - {{mi 6:8|Mic. 6:8}}, Mt.11:29, 18:4. It involves the crucifixion of the flesh and its influence over the inner man - Gal.5:24, Rom.6:6, Col.3:12. The unbroken person is ruled by self and pride. Self is the state of full manifestation of the works of the flesh-Gal.5:19-21. Brokenness of the spirit in \"self \" must be a vital goal of every worker in the Lord's service. This can be achieved through the following means: (1) Personal decision to subdue self - Mat 18:4, Mat 20:26-27, {{ph 2:3|Phil. 2:3}}. (2) Divine enforcement - Jam. 4:6, {{prv 15:25|Prov. 15:25}}a, Mat. 23:12, Luk. 1:52. (3) Living a life of humility because pride brings a person into personal confrontation with God- Jam 4: 6, 10, {{mt 23:12|Matt 23:12}}. (4) Fear and reverence for God - {{ps 111:10|Ps. 111:10}}, Pro. 1: 7, 3:7, 8:13. The fear of God is the whole duty of man- {{ec 12:13|Eccl. 12:13}}. (5) Surrendering one's self as an instrument of God in accomplishing His purpose on earth - {{ez 22:30|Ezek. 22:30}}. These instruments are battle-axes, giant-killers, revivalist, reformers, co-workers with Christ and tools in the hand of the Holy Spirit. Hence, {{ps 34:18|Ps 34:18}} tells us that \"The LORD is nigh unto them that are of a broken heart; and saves such as be of a contrite spirit.\""
+     "text": "Your God-given gift is what the Greek calls \"charisma\" - grace, favour, or talent that equips you to do certain things in a special way - {{1co 12:4|1 Corinthians 12:4}}. It's activated at the point of salvation and/or the baptism of the Holy Spirit, and can also be imparted through holy and anointed servants of God - {{rm 1:11|Romans 1:11}}."
+    },
+    {
+     "type": "p",
+     "text": "Gifts exist for two purposes: to glorify the Father - {{re 4:11|Revelation 4:11}}, and to build up the church - {{eph 4:12,eph 4:13|Ephesians 4:12-13}}."
+    }
+   ]
+  },
+  {
+   "heading": "Three ways a gift can be misused",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A spiritual gift can be abused in three ways:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "By not using the gift you've been given - {{2tm 1:6|2 Timothy 1:6}}; {{1tm 4:14|1 Timothy 4:14}}.",
+      "By attempting to operate a gift that hasn't been given to you - {{act 8:9,act 8:13,act 8:18,act 8:19|Acts 8:9, 13, 18-19}}.",
+      "By exercising a gift without love - {{1co 13:1|1 Corinthians 13:1}}."
+     ]
     }
    ]
   }

@@ -14,7 +14,7 @@
  ],
  "cards": [
   {
-   "heading": "1. THE BIBLE",
+   "heading": "1. THE BIBLE — Part 1 of 2",
    "blocks": [
     {
      "type": "list",
@@ -39,12 +39,7 @@
       "Happiness of believers................................ {{lk 10:20|Luke 10:20}}, {{jo 14:1,jo 14:2,jo 14:3,jo 14:4|John 14:1-4}}",
       "Light to direct you....................................... {{ps 119:105|Ps. 119:105}}"
      ]
-    }
-   ]
-  },
-  {
-   "heading": "1. THE BIBLE (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [
@@ -69,7 +64,7 @@
    ]
   },
   {
-   "heading": "1. THE BIBLE (continued)",
+   "heading": "1. THE BIBLE — Part 2 of 2",
    "blocks": [
     {
      "type": "p",
@@ -87,12 +82,7 @@
     {
      "type": "p",
      "text": "What you should do with the Bible"
-    }
-   ]
-  },
-  {
-   "heading": "1. THE BIBLE (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [
@@ -137,7 +127,7 @@
    ]
   },
   {
-   "heading": "3. THE DEVIL",
+   "heading": "3. THE DEVIL — Part 1 of 2",
    "blocks": [
     {
      "type": "p",
@@ -150,12 +140,7 @@
     {
      "type": "p",
      "text": "Who is Satan?"
-    }
-   ]
-  },
-  {
-   "heading": "3. THE DEVIL (continued)",
-   "blocks": [
+    },
     {
      "type": "p",
      "text": "o Satan is a spirit and has a personality, possessing life, intelligence, will power and feeling. However, being a spirit, he does not possess a human body (neither tail nor horn). He was originally good, but fell and was cast out because of pride ({{1tm 3:6|1 Tim. 3:6}}) o He is a thief............................................. {{mt 13:19|Matt. 13:19}}; {{jo 10:10|John 10:10}} o He is subtle............................................. {{gn 3:1|Gen. 3:1}}, {{2co 11:3|II Cor. 11:3}} o He is a murderer...................................... {{jo 8:44|John 8:44}} o He is a liar and Father of Lies.................... {{jo 8:44|John 8:44}} o He is a deceiver........................................ {{re 12:10|Rev. 12:10}} o He is the tempter...................................... {{mt 4:1|Matt. 4:1}} o He is the adversary.................................... {{1pe 5:8|1 Pet 5:8}} o He is the evil one...................................... {{mt 1:19|Matt 1:19, 38}}"
@@ -163,16 +148,16 @@
     {
      "type": "p",
      "text": "Limitations of Satan"
-    },
-    {
-     "type": "p",
-     "text": "o Limited in Power. He goes only as far as God permits him...... {{job 1:10,job 1:11,job 1:12|Job 1:10-12}}; 2: 6; o Limited in time............................................................... {{re 12:12|Rev. 12:12}},, {{mt 8:29|Matt. 8:29}} o Limited in Location......................................................... {{job 1:6,job 1:7|Job 1:6-7}}"
     }
    ]
   },
   {
-   "heading": "3. THE DEVIL (continued)",
+   "heading": "3. THE DEVIL — Part 2 of 2",
    "blocks": [
+    {
+     "type": "p",
+     "text": "o Limited in Power. He goes only as far as God permits him...... {{job 1:10,job 1:11,job 1:12|Job 1:10-12}}; 2: 6; o Limited in time............................................................... {{re 12:12|Rev. 12:12}},, {{mt 8:29|Matt. 8:29}} o Limited in Location......................................................... {{job 1:6,job 1:7|Job 1:6-7}}"
+    },
     {
      "type": "p",
      "text": "How to deal with the devil"
@@ -184,12 +169,7 @@
     {
      "type": "p",
      "text": "Some Facts about the devil"
-    }
-   ]
-  },
-  {
-   "heading": "3. THE DEVIL (continued)",
-   "blocks": [
+    },
     {
      "type": "list",
      "items": [

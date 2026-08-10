@@ -57,8 +57,11 @@
   </section>
 
   <section id="stepQuiz" class="panel hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-2);">
+      <div class="q-progress" id="qProgress" style="margin-bottom:0;">Question 1 of 30</div>
+      <div id="timerDisplay" style="font-weight:800;font-size:var(--fs-sm);color:var(--module-accent);background:var(--module-accent-light);padding:.35rem .7rem;border-radius:99px;">15:00</div>
+    </div>
     <div class="bar-track" style="margin-bottom:var(--sp-3);"><div class="bar-fill" id="quizBar" style="width:0%"></div></div>
-    <div class="q-progress" id="qProgress">Question 1 of 30</div>
     <div class="q-text" id="qText"></div>
     <div class="q-opts" id="qOpts"></div>
     <button class="btn btn--primary btn--block" id="nextBtn" type="button" disabled>Next question →</button>
@@ -85,11 +88,46 @@
 <script src="../assets/js/quiz.js"></script>
 <script>
 const MODULE_ID = 'baptismal-manual';
+const TEST_DURATION_SECONDS = 15 * 60;
 let paper = [], answers = [], current = 0, candidate = {};
+let timerInterval = null, timeRemaining = TEST_DURATION_SECONDS, autoSubmitted = false;
 
 const stepRegister = document.getElementById('stepRegister');
 const stepQuiz = document.getElementById('stepQuiz');
 const stepResult = document.getElementById('stepResult');
+
+function formatTime(secs) {
+  const m = Math.floor(secs / 60);
+  const s = secs % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function startTimer() {
+  timeRemaining = TEST_DURATION_SECONDS;
+  autoSubmitted = false;
+  const display = document.getElementById('timerDisplay');
+  display.textContent = formatTime(timeRemaining);
+  display.style.color = '';
+  display.style.background = '';
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeRemaining--;
+    display.textContent = formatTime(Math.max(timeRemaining, 0));
+    if (timeRemaining <= 60) {
+      display.style.color = '#fff';
+      display.style.background = 'var(--color-red, #ef4444)';
+    }
+    if (timeRemaining <= 0) {
+      clearInterval(timerInterval);
+      autoSubmitted = true;
+      finishQuiz();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
 
 document.getElementById('startBtn').addEventListener('click', async () => {
   const name = document.getElementById('candName').value.trim();
@@ -106,6 +144,7 @@ document.getElementById('startBtn').addEventListener('click', async () => {
   stepRegister.classList.add('hidden');
   stepQuiz.classList.remove('hidden');
   renderQuestion();
+  startTimer();
 });
 
 function renderQuestion() {
@@ -137,11 +176,17 @@ document.getElementById('nextBtn').addEventListener('click', () => {
 });
 
 function finishQuiz() {
+  stopTimer();
   const { correct, total } = RCCGQuiz.scorePaper(paper, answers);
   stepQuiz.classList.add('hidden');
   stepResult.classList.remove('hidden');
   document.getElementById('scoreNum').textContent = `${correct} / ${total}`;
-  document.getElementById('scorePct').textContent = `${Math.round((correct/total)*100)}%`;
+  const unanswered = answers.filter(a => a === null).length;
+  let pctLine = `${Math.round((correct/total)*100)}%`;
+  if (autoSubmitted) {
+    pctLine = `⏱ Time's up — test auto-submitted. ${pctLine}` + (unanswered ? ` (${unanswered} left unanswered)` : '');
+  }
+  document.getElementById('scorePct').textContent = pctLine;
   window._lastScore = { correct, total };
 }
 

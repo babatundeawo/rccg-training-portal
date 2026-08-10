@@ -1,0 +1,59 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 32,
+ "totalStudies": 33,
+ "title": "Working Across Departments",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "How departments relate to one another",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Having looked at each department individually, it's worth seeing how their timing and activity overlap. Some departments are fully and physically involved throughout a service in real time; others are relevant before or after the service without being physically present during it."
+    }
+   ]
+  },
+  {
+   "heading": "When each department is active",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Roughly speaking:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Choir - physically involved during the service itself; rehearsals on Saturdays and other days; choir uniform worn.",
+      "Prayer Band - active before the service, not physically part of the service itself; can meet any day of the week; dresses as generally required of workers.",
+      "Ushering - fully involved before, during, and after the service, any day of the week; uniform worn.",
+      "Sanitation - relevant during the service though not physically present in the programme itself; active before, during, and after; any day of the week; non-uniform, but in jackets.",
+      "Teaching - active before the service, not involved in the service itself; any day of the week; dresses as generally required of workers.",
+      "Engineering - fully involved before and during the service, though working in the background; any day of the week; dresses as generally required of workers.",
+      "Welfare - not involved during the service, but relevant at all times; occasional; dresses as generally required of workers.",
+      "Evangelism - occasionally involved during the service (for drama), relevant afterward for follow-up; any day of the week; dresses as generally required of workers."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Can a worker join more than one department?",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Since not every department is fully or physically involved in real-time church events, the real question when joining more than one department is whether their functional timings clash. For example, it would be difficult to serve as an Usher or Chorister while also serving in Engineering or Sanitation at the same time - these all work simultaneously during the service, and some require different uniforms."
+    },
+    {
+     "type": "p",
+     "text": "However, it's entirely possible to belong to one of those departments and also serve in, say, Welfare or Teaching, depending on self-management and versatility. So yes - a worker can join more than one department, as long as the timing allows for it."
+    },
+    {
+     "type": "p",
+     "text": "In short: there's a great deal of work to be done in the Lord's vineyard. No born-again Christian should remain idle, unsure of where to fit among so many interesting and worthwhile duties - to sit on the fence would amount to rebellion against God's purpose. And it should be said plainly: no department is superior to another. None can function well without the others - every one is complementary, and every one matters."
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}

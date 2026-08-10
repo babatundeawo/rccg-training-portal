@@ -2,24 +2,56 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 6,
- "totalStudies": 16,
- "title": "Module 3: Code of Conduct for Workers",
+ "totalStudies": 33,
+ "title": "Code of Conduct for Workers",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
+   "heading": "A weighty responsibility",
    "blocks": [
     {
      "type": "p",
-     "text": "The Lord Jesus calls us the light of the world, {{mt 5:14,mt 5:15,mt 5:16|Matt. 5:14-16}}, the salt of the earth - {{mt 5:13|Matt. 5: 13}} - and the ambassadors of Christ - {{jo 20:21|John 20:21}}. These imply that we are very important to God and our responsibilities are heavy. In order to effectively and correctly discharge our responsibilities to God and His Church, without failing God or disappointing the Pastor who recommended us, every worker should observe the following code of conduct. He/she must be: (a) Totally submissive to constituted authorities of the Mission - {{1pe 5:5|I Pet. 5:5}}; {{1co 16:16|1 Cor. 16:16}}; {{hb 13:17|Hebrews 13:17}}, e.g. (i) When travelling he/she should inform the Pastor - {{2kgs 6:2|2 Kings 6:2}}. (ii) Should be ready to attend all meetings and go wherever he/she is sent - {{js 1:16|Joshua 1:16}}. (iii) Be absolutely obedient to Pastor/Assistant Pastors when they give orders that do not contradict the Bible - I Pet: 5:5. (iv) Be an example to the congregation in submitting to the doctrine of the Church -{{tt 2:7|Titus 2:7}}; {{1tm 4:12|I Tim. 4:12}}; {{1tm 4:6|I Tim. 4:6}}; {{tt 1:9|Titus 1:9}}. (v) Be an example to the congregation in spending and being spent for God - {{2co 12:15|2 Cor. 12:15}}; {{gl 2:20|Gal. 2:20}}. (b) Hygienic in all dispositions - {{is 52:11|Isaiah 52:11}}. (c) Well dressed in accordance with the Scriptures. Where there is any doubt, must be willing to give the benefits of doubt to the Lord - {{1pe 3:1,1pe 3:2,1pe 3:3,1pe 3:4|I Pet. 3:1-4}}, I Tim.2:9, Isa.3:16-26. (d) Someone who will be a worthy ambassador of both Christ and His Church such that if he/she be transferred from his/her working place to a town/village where there is no branch of this church, he/she will promptly start one - {{act 8:4|Acts 8:4}}; {{act 11:19|Acts 11: 19}}. (e) Only too happy to attend all-night vigils and/or organise such in his/her home - {{lk 6:12|Luke 6:12}}; {{act 16:25|Acts 16:25}}. (f) Punctual at all Local, Area, Zonal, Provincial or national meetings - {{hb 10:25|Heb. 10:25}}. (g) Walking, worshipping and growing in the spirit constantly - {{gl 5:16|Gal. 5: 16}}; {{jo 4:23,jo 4:24|John 4:23-24}}, Psa. 117: 12; {{cl 3:16|Col. 3: 16}}."
+     "text": "The Lord Jesus calls us the light of the world - {{mt 5:14,mt 5:15,mt 5:16|Matthew 5:14-16}} - the salt of the earth - {{mt 5:13|Matthew 5:13}} - and ambassadors of Christ - {{jo 20:21|John 20:21}}. These titles carry weight: they mean we matter to God, and our responsibilities are significant. To discharge them well - without failing God or disappointing the Pastor who recommended us - every worker is expected to observe the following code of conduct."
+    }
+   ]
+  },
+  {
+   "heading": "Submission and example",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A worker must be totally submissive to the constituted authorities of the Mission - {{1pe 5:5|1 Peter 5:5}}; {{1co 16:16|1 Corinthians 16:16}}; {{hb 13:17|Hebrews 13:17}}. In practice, this means:"
     },
     {
      "type": "list",
      "items": [
-      "Someone who enjoys a life of holiness and sanctification, living right in the open and in secret and dwelling in love - {{2pe 3:18|2 Pet. 3:18}}; {{2tm 3:14,2tm 3:15,2tm 3:16,2tm 3:17|2 Tim. 3:14-17}}; Eph. 5:2527, {{mt 5:13,mt 5:14,mt 5:15,mt 5:16|Matt. 5:13-16}}, {{hb 12:14|Heb. 12:14}}, {{1tm 3:2|I Tim. 3:2}}.",
-      "Ready always to do good works - {{tt 2:14|Titus 2:14}}, {{gl 6:10|Gal. 6:10}}.",
-      "Ever ready to protect the good name of the church, {{1tm 3:7|I Tim. 3:7}}; {{tt 1:10,tt 1:11,tt 1:12,tt 1:13|Titus 1:10-13}}."
+      "Informing the Pastor before travelling - {{2kgs 6:2|2 Kings 6:2}}.",
+      "Being ready to attend all meetings and go wherever sent - {{js 1:16|Joshua 1:16}}.",
+      "Being absolutely obedient to Pastors and Assistant Pastors when their instructions don't contradict Scripture - {{1pe 5:5|1 Peter 5:5}}.",
+      "Being an example to the congregation in submitting to the doctrine of the church - {{tt 2:7|Titus 2:7}}; {{1tm 4:6,1tm 4:12|1 Timothy 4:6, 12}}; {{tt 1:9|Titus 1:9}}.",
+      "Being an example in spending and being spent for God - {{2co 12:15|2 Corinthians 12:15}}; {{gl 2:20|Galatians 2:20}}."
      ]
+    },
+    {
+     "type": "p",
+     "text": "Beyond submission, a worker is also expected to be hygienic in every disposition - {{is 52:11|Isaiah 52:11}}; to dress modestly and scripturally, giving God the benefit of any doubt - {{1pe 3:1,1pe 3:2,1pe 3:3,1pe 3:4|1 Peter 3:1-4}}, {{1tm 2:9|1 Timothy 2:9}}, {{is 3:16,is 3:17,is 3:18,is 3:19,is 3:20,is 3:21,is 3:22,is 3:23,is 3:24,is 3:25,is 3:26|Isaiah 3:16-26}}; and to represent both Christ and the church so well that if transferred to a town with no branch of the church, they would promptly start one - {{act 8:4|Acts 8:4}}; {{act 11:19|Acts 11:19}}."
+    }
+   ]
+  },
+  {
+   "heading": "Devotion and holy living",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A worker should be glad to attend all-night vigils, or organise them at home - {{lk 6:12|Luke 6:12}}; {{act 16:25|Acts 16:25}}; punctual at every Local, Area, Zonal, Provincial, or National meeting - {{hb 10:25|Hebrews 10:25}}; and constantly walking, worshipping, and growing in the Spirit - {{gl 5:16|Galatians 5:16}}; {{jo 4:23,jo 4:24|John 4:23-24}}; {{cl 3:16|Colossians 3:16}}."
+    },
+    {
+     "type": "p",
+     "text": "A worker should enjoy a life of holiness and sanctification - living rightly both in public and in private, and dwelling in love - {{2pe 3:18|2 Peter 3:18}}; {{2tm 3:14,2tm 3:15,2tm 3:16,2tm 3:17|2 Timothy 3:14-17}}; {{eph 5:25,eph 5:26,eph 5:27|Ephesians 5:25-27}}; {{mt 5:13,mt 5:14,mt 5:15,mt 5:16|Matthew 5:13-16}}; {{hb 12:14|Hebrews 12:14}}; {{1tm 3:2|1 Timothy 3:2}}."
+    },
+    {
+     "type": "p",
+     "text": "Finally, a worker should always be ready to do good works - {{tt 2:14|Titus 2:14}}; {{gl 6:10|Galatians 6:10}} - and should be ever watchful to protect the good name of the church - {{1tm 3:7|1 Timothy 3:7}}; {{tt 1:10,tt 1:11,tt 1:12,tt 1:13|Titus 1:10-13}}."
     }
    ]
   }

@@ -4,7 +4,7 @@
  "studies": [
   {
    "id": 1,
-   "title": "Introduction"
+   "title": "Why This Manual Exists"
   },
   {
    "id": 2,
@@ -16,55 +16,123 @@
   },
   {
    "id": 4,
-   "title": "Module 1: Description of a Worker"
+   "title": "Description of a Worker"
   },
   {
    "id": 5,
-   "title": "Module 2: Qualifications of a Worker"
+   "title": "Qualifications of a Worker"
   },
   {
    "id": 6,
-   "title": "Module 3: Code of Conduct for Workers"
+   "title": "Code of Conduct for Workers"
   },
   {
    "id": 7,
-   "title": "Module 4: Discipline Among Workers"
+   "title": "Discipline Among Workers"
   },
   {
    "id": 8,
-   "title": "Module 5: Promotion Among Workers"
+   "title": "Promotion Among Workers"
   },
   {
    "id": 9,
-   "title": "Module 6: Workers' Sunday Activities"
+   "title": "Workers' Sunday Activities"
   },
   {
    "id": 10,
-   "title": "Module 7: Church Hierarchy"
+   "title": "Church Hierarchy"
   },
   {
    "id": 11,
-   "title": "Module 8: Spiritual Appointment and Promotion"
+   "title": "Spiritual Appointment: An Overview"
   },
   {
    "id": 12,
-   "title": "Module 9: Your Gifts, Call & Ministry"
+   "title": "The Seventy - Called and Set Apart"
   },
   {
    "id": 13,
-   "title": "Module 10: The Ministry of Reconciliation"
+   "title": "The Twelve, the Three, and the One"
   },
   {
    "id": 14,
-   "title": "Module 12: Brokenness in Christian Service"
+   "title": "Discovering Your Spiritual Gifts"
   },
   {
    "id": 15,
-   "title": "Module 13: Church Administration"
+   "title": "Understanding Your Call and Ministry"
   },
   {
    "id": 16,
-   "title": "Module 14: Various Departments in the RCCG"
+   "title": "The Five Foundational Ministries"
+  },
+  {
+   "id": 17,
+   "title": "Other Ministry Gifts in Scripture"
+  },
+  {
+   "id": 18,
+   "title": "Gift-Mix and Ministries Beyond Scripture"
+  },
+  {
+   "id": 19,
+   "title": "The Ministry of Reconciliation"
+  },
+  {
+   "id": 20,
+   "title": "Brokenness in Christian Service"
+  },
+  {
+   "id": 21,
+   "title": "Church Administration"
+  },
+  {
+   "id": 22,
+   "title": "Various Departments: An Overview"
+  },
+  {
+   "id": 23,
+   "title": "The Ministerial Structure"
+  },
+  {
+   "id": 24,
+   "title": "The Choir Department"
+  },
+  {
+   "id": 25,
+   "title": "The Prayer Band Department"
+  },
+  {
+   "id": 26,
+   "title": "The Ushering Department"
+  },
+  {
+   "id": 27,
+   "title": "The Teaching Department"
+  },
+  {
+   "id": 28,
+   "title": "The Sanitation Department"
+  },
+  {
+   "id": 29,
+   "title": "The Engineering Department"
+  },
+  {
+   "id": 30,
+   "title": "The Welfare Department"
+  },
+  {
+   "id": 31,
+   "title": "Evangelism, Drama & Follow-Up"
+  },
+  {
+   "id": 32,
+   "title": "Working Across Departments"
+  },
+  {
+   "id": 33,
+   "title": "Conclusion"
   }
  ]
 }

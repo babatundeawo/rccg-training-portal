@@ -67,6 +67,10 @@ Each `test-*/index.html` is self-contained:
   unit/department).
 - 30 questions are drawn at random from that module's `quiz-bank.json`, with answer options
   also shuffled, so each candidate's paper differs.
+- A **15-minute countdown timer** starts the moment the test begins, shown at the top of the
+  quiz. It turns red in the last minute. If time runs out before the candidate finishes, the
+  test **auto-submits** with whatever was answered so far (unanswered questions count as
+  incorrect), and the result screen notes it was auto-submitted.
 - On submit, a WhatsApp share button opens with the result pre-formatted — the invigilator
   or candidate picks the RCCG group chat and sends. (Browsers can't silently auto-post to
   WhatsApp groups — this is the standard, reliable way to get a pre-filled message there in

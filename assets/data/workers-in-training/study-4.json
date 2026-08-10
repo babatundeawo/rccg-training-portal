@@ -2,107 +2,81 @@
  "moduleId": "workers-in-training",
  "moduleTitle": "Workers-in-Training",
  "studyId": 4,
- "totalStudies": 16,
- "title": "Module 1: Description of a Worker",
+ "totalStudies": 33,
+ "title": "Description of a Worker",
  "memoryVerse": [],
  "cards": [
   {
-   "heading": "Overview",
-   "blocks": [
-    {
-     "type": "list",
-     "items": [
-      "Who exactly is a worker?",
-      "For whom is he or she working?",
-      "What are the works of the workers?"
-     ]
-    },
-    {
-     "type": "p",
-     "text": "A worker in the Redeemed Christian Church of God is any child of God who, on the recommendation of the local Pastor, has been set aside for special services in the house of God. Included in this category are members of the Choir, the Ushers, the Sunday School Teachers, and Children Teachers etc."
-    },
-    {
-     "type": "p",
-     "text": "Primarily and ultimately, the worker is working for God Almighty Himself. It follows immediately that he/she will get his/her reward from the Almighty too. Secondarily, however, the worker is working for the Redeemed Christian Church of God as part of the visible body of Christ on earth. This is why the General Overseer mentions the workers in his daily prayers to God. This constant prayer of the General Overseer is basically the reward that the Redeemed Christian Church of God offers her workers throughout their life's span."
-    }
-   ]
-  },
-  {
-   "heading": "Overview (continued)",
+   "heading": "Who is a worker, and who are they working for?",
    "blocks": [
     {
      "type": "p",
-     "text": "The works of the workers include the following:"
+     "text": "A worker in the Redeemed Christian Church of God is any child of God who, on the recommendation of the local Pastor, has been set aside for special service in the house of God. This includes members of the Choir, the Ushers, Sunday School Teachers, Children's Teachers, and others like them."
+    },
+    {
+     "type": "p",
+     "text": "Primarily and ultimately, a worker is working for God Almighty Himself - which means their reward comes from Him too. Secondarily, the worker serves the Redeemed Christian Church of God as part of the visible body of Christ on earth. This is part of why the General Overseer mentions workers in his daily prayers; that constant intercession is, in itself, one of the rewards the church offers those who serve."
+    },
+    {
+     "type": "p",
+     "text": "The work of a worker falls into three broad areas: Prayer, Financial giving, and the Propagation of the Gospel."
     }
    ]
   },
   {
-   "heading": "1. PRAYERS",
+   "heading": "1. Prayer",
    "blocks": [
     {
-     "type": "list",
-     "items": [
-      "Intensive prayers for:-",
-      "The progress of the church: spiritual, numerical, financial etc.",
-      "The missionary efforts of the Church.",
-      "The Pastors, Assistant Pastors and all their families.",
-      "The General Overseer, the Deputy General Overseer, the Mother-in Israel, the Assistant General Overseers, the Elders, Directors, Special Assistants to the General Overseer, the Pastors in Charge of Regions, Provinces, Zones, Areas and Parishes, Deacons/Deaconesses, non- ordained Ministers, Workers, Workers-in training, Baptised members, saved non-baptised members, new comers and the yet to be saved.",
-      "All the members of the Mission as a whole, both old and new."
-     ]
+     "type": "p",
+     "text": "Every worker is called to intensive, intercessory prayer covering:"
     },
     {
      "type": "list",
      "items": [
-      "The restoration of all backsliders into the fold.",
-      "The rapid expansion of the Mission as a whole and the particular local"
+      "The progress of the church - spiritually, numerically, and financially.",
+      "The missionary efforts of the church.",
+      "The Pastors, Assistant Pastors, and all their families.",
+      "The General Overseer, the Deputy General Overseer, the Mother-in-Israel, the Assistant General Overseers, the Elders, Directors, Special Assistants to the General Overseer, and Pastors in charge of Regions, Provinces, Zones, Areas, and Parishes.",
+      "Deacons and Deaconesses, non-ordained ministers, workers, workers-in-training, baptised and saved non-baptised members, newcomers, and the yet-to-be-saved.",
+      "All members of the Mission, both old and new.",
+      "The restoration of backsliders into the fold.",
+      "The rapid expansion of the Mission as a whole, and of each local church.",
+      "All pregnant women, for safe and easy delivery.",
+      "All midwives, for special divine assistance.",
+      "All barren women, for quick answers to their prayers.",
+      "All children in the Mission, for divine protection, wisdom, good health, and spiritual development.",
+      "The workers themselves, for steady spiritual progress and all-round prosperity.",
+      "All the sick, jobless, and needy, for recovery of health, employment, and prosperity."
      ]
+    }
+   ]
+  },
+  {
+   "heading": "2. Financial giving",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Every worker is also expected to give financially, through:"
     },
     {
      "type": "list",
      "items": [
-      "church of the workers.",
-      "All pregnant women for safe and easy delivery.",
-      "All midwives for special divine assistance.",
-      "All barren women for quick answers to their prayers.",
-      "All children in the Mission for divine protection, wisdom from above, good health and spiritual development.",
-      "The workers themselves for steady spiritual progress and all-round prosperity."
-     ]
-    }
-   ]
-  },
-  {
-   "heading": "1. PRAYERS (continued)",
-   "blocks": [
-    {
-     "type": "list",
-     "items": [
-      "All the sick, jobless and needy for recovery of health, job and prosperity."
-     ]
-    }
-   ]
-  },
-  {
-   "heading": "2. FINANCIAL",
-   "blocks": [
-    {
-     "type": "list",
-     "items": [
-      "Financial contributions to all the projects of the local church and the Mission as a whole.",
+      "Contributions to all projects of the local church and the wider Mission.",
       "Generosity towards the Pastors and their families.",
-      "Assisting the needy in the church in all possible ways.",
-      "Contributing actively to ease the burdens of those bereaved or who have been blessed with a new child.",
-      "Contributing actively to the maintenance of the church buildings and its surroundings to maintain an atmosphere congenial to worship.",
-      "Contributing actively toward Go-A-Fishing and Church planting exercises."
+      "Assisting the needy within the church in every possible way.",
+      "Easing the burdens of those who are bereaved or who have been blessed with a new child.",
+      "Maintaining the church buildings and grounds, so they remain fitting for worship.",
+      "Supporting outreach and church-planting efforts such as \"Go-a-Fishing\" campaigns."
      ]
-    },
+    }
+   ]
+  },
+  {
+   "heading": "3. Propagation of the Gospel",
+   "blocks": [
     {
-     "type": "list",
-     "items": [
-      "PROPAGATION OF THE GOSPEL",
-      "Every worker is expected to be an active soul-winner and an incurable witness for Christ.",
-      "Therefore he/she should be involved in the propagation of the Gospel by means of word of mouth, tracts distribution, letter writing crusades, seminars, youth services, village evangelism, child evangelism prison, hospital and market evangelism, etc.",
-      "Every worker is also expected to be very active in follow-up programmes."
-     ]
+     "type": "p",
+     "text": "Every worker is expected to be an active soul-winner and an unashamed witness for Christ - involved in spreading the Gospel by word of mouth, tract distribution, letter-writing, crusades, seminars, youth services, village evangelism, child evangelism, and prison, hospital, and market evangelism. Every worker is also expected to be actively involved in following up with new converts."
     }
    ]
   }

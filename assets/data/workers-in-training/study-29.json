@@ -1,0 +1,60 @@
+{
+ "moduleId": "workers-in-training",
+ "moduleTitle": "Workers-in-Training",
+ "studyId": 29,
+ "totalStudies": 33,
+ "title": "The Engineering Department",
+ "memoryVerse": [],
+ "cards": [
+  {
+   "heading": "Working behind the scenes",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "This unit works largely unnoticed - until something goes wrong with the microphone, the speakers, or any part of the public address system. Their responsibility is to keep the church's public address systems working reliably at all times."
+    }
+   ]
+  },
+  {
+   "heading": "Functions of the Engineering Department",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "Their work includes:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Ensuring all public address systems function optimally.",
+      "Regular servicing and maintenance of the church's electrical, electronic, and PA equipment.",
+      "Setting up and installing new electrical or electronic equipment.",
+      "Ongoing training to master and optimise the use of the church's facilities.",
+      "Advising the Pastorate on obtaining a scalable public address system.",
+      "Audio/video recording of church events, on request, for duplication and record-keeping.",
+      "Providing good acoustic balance, which is critical given how dependent modern services are on communication technology.",
+      "Providing regular reports of the department's activities to the Pastorate."
+     ]
+    }
+   ]
+  },
+  {
+   "heading": "Qualities needed in Engineering",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "This unit calls for:"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Technical knowledge - training and skill in setting up, installing, using, troubleshooting, and repairing amplifiers, sound mixers, speakers, microphones, screens, projectors, and similar equipment.",
+      "Alertness - to sense and respond to changes in acoustic balance as events unfold.",
+      "Endurance - the job isn't done until the event itself has ended.",
+      "A spiritually-minded outlook - this role isn't just about operating equipment, but staying sensitive to the Holy Spirit as events unfold."
+     ]
+    }
+   ]
+  }
+ ],
+ "conclusion": null
+}
