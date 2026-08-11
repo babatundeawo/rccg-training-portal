@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Believers' Class — RCCG Learning Path</title>
+<title>Believers' Class - RCCG Learning Path</title>
 <link rel="icon" href="../assets/img/rccg-logo.png">
 <link rel="stylesheet" href="../assets/css/base.css">
 <style>:root{--module-accent:var(--blue-600);--module-accent-light:var(--color-accent-light);}</style>
@@ -11,60 +11,60 @@
 <body data-root="../">
 
 <nav class="topnav">
-  <div class="topnav__inner">
-    <a class="topnav__brand" href="../index.html">
-      <span class="topnav__logo"><img src="../assets/img/rccg-logo.png" alt="RCCG logo"></span>
-      <span class="topnav__brand-text">
-        <span class="topnav__brand-name">RCCG Learning Path</span>
-        <span class="topnav__brand-sub">Kingdom Diplomats Training Portal</span>
-      </span>
-    </a>
-  </div>
+ <div class="topnav__inner">
+ <a class="topnav__brand" href="../index.html">
+ <span class="topnav__logo"><img src="../assets/img/rccg-logo.png" alt="RCCG logo"></span>
+ <span class="topnav__brand-text">
+ <span class="topnav__brand-name">RCCG Learning Path</span>
+ <span class="topnav__brand-sub">Kingdom Diplomats Training Portal</span>
+ </span>
+ </a>
+ </div>
 </nav>
 
 <header class="hero hero--dark shell" style="margin-top:var(--sp-4);">
-  <div class="hero__eyebrow">Believers' Class · 8 Studies</div>
-  <h1 style="max-width:none;">Establish your faith in Christ</h1>
-  <p>Learn the foundational doctrines every believer needs — the New Birth, Quiet Time, Baptism, and the Second Coming — one study at a time.</p>
-  <div style="max-width:24rem;margin-top:var(--sp-4);">
-    <div class="bar-track" style="background:rgba(255,255,255,.15);"><div class="bar-fill" id="moduleBar" style="width:0%;background:var(--gold-600);"></div></div>
-    <p style="color:rgba(255,255,255,.85);font-size:var(--fs-xs);margin-top:.5rem;margin-bottom:0;font-weight:700;" id="moduleBarLabel"></p>
-  </div>
+ <div class="hero__eyebrow">Believers' Class · 8 Studies</div>
+ <h1 style="max-width:none;">Establish your faith in Christ</h1>
+ <p>Learn the foundational doctrines every believer needs - the New Birth, Quiet Time, Baptism, and the Second Coming - one study at a time.</p>
+ <div style="max-width:24rem;margin-top:var(--sp-4);">
+ <div class="bar-track" style="background:rgba(255,255,255,.15);"><div class="bar-fill" id="moduleBar" style="width:0%;background:var(--gold-600);"></div></div>
+ <p style="color:rgba(255,255,255,.85);font-size:var(--fs-xs);margin-top:.5rem;margin-bottom:0;font-weight:700;" id="moduleBarLabel"></p>
+ </div>
 </header>
 
 <main class="shell" style="padding-block: var(--sp-5);">
-  <div id="studyList" class="study-list" style="max-width:42rem;margin-inline:auto;"></div>
+ <div id="studyList" class="study-list" style="max-width:42rem;margin-inline:auto;"></div>
 
-  <div style="max-width:42rem;margin:var(--sp-5) auto 0;padding:var(--sp-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-align:center;">
-    <h2 style="margin-top:0;font-size:var(--fs-md);">Ready to be tested?</h2>
-    <p style="color:var(--color-text-muted);margin-bottom:var(--sp-3);">Once you've gone through all 8 studies, take the Believers' Class quiz on test day.</p>
-    <a class="btn btn--gold" href="../test-believers/index.html">Go to test environment →</a>
-  </div>
+ <div style="max-width:42rem;margin:var(--sp-5) auto 0;padding:var(--sp-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);text-align:center;">
+ <h2 style="margin-top:0;font-size:var(--fs-md);">Ready to be tested?</h2>
+ <p style="color:var(--color-text-muted);margin-bottom:var(--sp-3);">Once you've gone through all 8 studies, take the Believers' Class quiz on test day.</p>
+ <a class="btn btn--gold" href="../test-believers/index.html">Go to test environment →</a>
+ </div>
 </main>
 
 <footer class="footer">The Redeemed Christian Church of God</footer>
 
 <script src="../assets/js/app.js"></script>
 <script>
-  fetch('../assets/data/believers-manual/index.json').then(r => r.json()).then(data => {
-    const listEl = document.getElementById('studyList');
-    const { done, total } = RCCG.moduleCompletionCount('believers-manual', data.studies.length);
-    document.getElementById('moduleBar').style.width = Math.round((done/total)*100) + '%';
-    document.getElementById('moduleBarLabel').textContent = `${done} of ${total} studies complete`;
+ fetch('../assets/data/believers-manual/index.json').then(r => r.json()).then(data => {
+ const listEl = document.getElementById('studyList');
+ const { done, total } = RCCG.moduleCompletionCount('believers-manual', data.studies.length);
+ document.getElementById('moduleBar').style.width = Math.round((done/total)*100) + '%';
+ document.getElementById('moduleBarLabel').textContent = `${done} of ${total} studies complete`;
 
-    listEl.innerHTML = data.studies.map(s => {
-      const complete = RCCG.isStudyComplete('believers-manual', s.id);
-      return `
-      <a href="reader.html?study=${s.id}" class="study-item ${complete ? 'is-done' : ''}">
-        <span class="study-number">${complete ? '✓' : s.id}</span>
-        <span style="flex:1;">
-          <span class="study-title-text">Study ${s.id}</span>
-          <span style="font-size:var(--fs-sm);color:var(--color-text-muted);display:block;">${s.title}</span>
-        </span>
-        <span class="study-status">${complete ? 'Done' : 'Start'}</span>
-      </a>`;
-    }).join('');
-  });
+ listEl.innerHTML = data.studies.map(s => {
+ const complete = RCCG.isStudyComplete('believers-manual', s.id);
+ return `
+ <a href="reader.html?study=${s.id}" class="study-item ${complete ? 'is-done' : ''}">
+ <span class="study-number">${complete ? '✓' : s.id}</span>
+ <span style="flex:1;">
+ <span class="study-title-text">Study ${s.id}</span>
+ <span style="font-size:var(--fs-sm);color:var(--color-text-muted);display:block;">${s.title}</span>
+ </span>
+ <span class="study-status">${complete ? 'Done' : 'Start'}</span>
+ </a>`;
+ }).join('');
+ });
 </script>
 </body>
 </html>
