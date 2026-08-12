@@ -22,7 +22,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/fireba
 import {
   getAuth, onAuthStateChanged, signOut,
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, updateProfile,
+  GoogleAuthProvider, signInWithRedirect, getRedirectResult, updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 import {
   getFirestore, doc, getDoc, setDoc,
@@ -109,9 +109,20 @@ async function signIn(email, password) {
 
 async function signInGoogle() {
   const provider = new GoogleAuthProvider();
-  const cred = await signInWithPopup(auth, provider);
-  return cred.user;
+  // Redirect (not popup) is far more reliable on GitHub Pages and mobile
+  // browsers, where popups are commonly blocked or silently closed by the
+  // browser's cross-origin-opener policy. This navigates away to Google's
+  // sign-in and back - the result is picked up by getRedirectResult() below
+  // and by the normal onAuthStateChanged listener once the page reloads.
+  await signInWithRedirect(auth, provider);
 }
+
+// Surface any error from a just-completed redirect sign-in (e.g. unauthorized
+// domain) so it isn't silently swallowed.
+getRedirectResult(auth).catch((err) => {
+  console.error('RCCG Google sign-in failed:', err);
+  window.dispatchEvent(new CustomEvent('rccg:auth-error', { detail: friendlyAuthError(err) }));
+});
 
 async function logOut() {
   await signOut(auth);
