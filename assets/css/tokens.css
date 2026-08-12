@@ -1,17 +1,17 @@
 /* ==========================================================================
-   RCCG Learning Path — design tokens
+   RCCG Learning Path - design tokens
    Palette matches the official portal identity: deep royal blue, sky blue,
    emerald green, warm gold for scripture/memory-verse highlights, on white.
    ========================================================================== */
 
 :root {
   /* --- Color: named --- */
-  --navy-900:  #0a2540;   /* deep royal blue — headers, hero, headings */
+  --navy-900:  #0a2540;   /* deep royal blue  - headers, hero, headings */
   --blue-600:  #0070f3;   /* primary interactive blue */
   --blue-500:  #0ea5e9;   /* secondary sky blue (Baptismal accent) */
-  --green-600: #10b981;   /* emerald — success, progress, completion */
+  --green-600: #10b981;   /* emerald  - success, progress, completion */
   --green-100: rgba(16, 185, 129, .1);
-  --gold-600:  #d97706;   /* warm gold — memory verses, Workers accent */
+  --gold-600:  #d97706;   /* warm gold  - memory verses, Workers accent */
   --gold-100:  rgba(217, 119, 6, .1);
   --red-600:   #ef4444;   /* alerts / incorrect */
   --red-100:   rgba(239, 68, 68, .1);
@@ -45,7 +45,7 @@
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
 
-  /* Fluid type scale — bumped up a step for a more immersive, easy-to-read feel */
+  /* Fluid type scale  - bumped up a step for a more immersive, easy-to-read feel */
   --fs-xs:   clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
   --fs-sm:   clamp(0.95rem, 0.9rem + 0.25vw, 1.02rem);
   --fs-base: clamp(1.08rem, 1.03rem + 0.25vw, 1.18rem);

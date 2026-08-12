@@ -1,0 +1,18 @@
+// FIRESTORE SECURITY RULES
+//
+// Paste this into: Firebase Console → Build → Firestore Database → Rules tab
+// → replace everything there with this → Publish.
+//
+// What it does: each signed-in person can only read and write their OWN
+// progress document (keyed by their own user ID). No one can read or write
+// anyone else's progress, and nobody signed out can read or write anything.
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /progress/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

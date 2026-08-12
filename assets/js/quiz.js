@@ -1,5 +1,5 @@
 /* =============================================================
-   RCCG Learning Path — Test / Exam engine
+   RCCG Learning Path - Test / Exam engine
    Candidate registration -> randomized 30-question quiz -> score -> WhatsApp share
    ============================================================= */
 
@@ -34,7 +34,7 @@ const RCCGQuiz = (() => {
   function buildWhatsAppMessage({ moduleTitle, name, dob, phone, extra, correct, total, date }) {
     const pct = Math.round((correct / total) * 100);
     const lines = [
-      `*RCCG — ${moduleTitle} Test Result*`,
+      `*RCCG - ${moduleTitle} Test Result*`,
       ``,
       `*Name:* ${name}`,
       `*Date of birth:* ${dob}`,

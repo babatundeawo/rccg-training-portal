@@ -19,6 +19,10 @@
  <span class="topnav__brand-sub">Kingdom Diplomats Training Portal</span>
  </span>
  </a>
+ <span class="topnav__spacer"></span>
+ <button class="account-btn" data-account-btn type="button">
+   <span class="account-btn-label">Sign in</span>
+ </button>
  </div>
 </nav>
 
@@ -44,6 +48,10 @@
 </footer>
 
 <script src="assets/js/app.js"></script>
+<script src="assets/js/firebase-config.js"></script>
+<script type="module" src="assets/js/auth.js"></script>
+<script src="assets/js/account-ui.js"></script>
+<script>RCCG_initAccountUI();</script>
 <script>
  const MODULES = [
  { id: 'believers-manual', accent: 'var(--blue-600)', accentLight: 'var(--color-accent-light)',
@@ -61,10 +69,12 @@
  ];
 
  const grid = document.getElementById('moduleGrid');
- Promise.all(MODULES.map(m => fetch(`assets/data/${m.id}/index.json`).then(r => r.json())))
- .then(indexes => {
+ let cachedIndexes = null;
+
+ function paintModules() {
+ if (!cachedIndexes) return;
  grid.innerHTML = MODULES.map((m, idx) => {
- const total = indexes[idx].studies.length;
+ const total = cachedIndexes[idx].studies.length;
  const { done } = RCCG.moduleCompletionCount(m.id, total);
  const pct = Math.round((done / total) * 100);
  return `
@@ -79,7 +89,12 @@
  </div>
  </a>`;
  }).join('');
- });
+ }
+
+ Promise.all(MODULES.map(m => fetch(`assets/data/${m.id}/index.json`).then(r => r.json())))
+ .then(indexes => { cachedIndexes = indexes; paintModules(); });
+
+ window.addEventListener('rccg:progress-synced', paintModules);
 </script>
 </body>
 </html>

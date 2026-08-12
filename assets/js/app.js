@@ -1,5 +1,5 @@
 /* =============================================================
-   RCCG Learning Path — shared app engine
+   RCCG Learning Path - shared app engine
    Handles: progress storage, nav drawer, scripture reveal modal
    (with real verse numbers + internal scroll), and the single-card
    "deck" reading engine with a fixed bottom Back/Continue bar.
@@ -21,6 +21,10 @@ const RCCG = (() => {
     data[moduleId] = data[moduleId] || {};
     data[moduleId][studyId] = true;
     saveProgress(data);
+    // If signed in, sync this update to the cloud in the background so it
+    // shows up on the person's other devices. No-op for guests, and safe
+    // even if auth.js hasn't loaded on this page.
+    window.RCCGAuth?.pushProgressToCloud?.();
   }
   function isStudyComplete(moduleId, studyId) {
     const data = loadProgress();
@@ -110,7 +114,7 @@ const RCCG = (() => {
       }
       const displayLabel = tag.getAttribute('data-label') || entries[0].entry.ref;
       // Show each verse with its REAL verse number (not array position) on its own
-      // line, the way a printed reference Bible lays out a passage — not as one
+      // line, the way a printed reference Bible lays out a passage - not as one
       // run-on paragraph where verses blur into each other.
       const bodyHTML = entries.map(({ key, entry }) =>
         `<p class="verse-line"><span class="vnum">${RCCG.escapeHtml(verseNumFromKey(key))}</span>${RCCG.escapeHtml(entry.text)}</p>`
@@ -192,7 +196,7 @@ const RCCG = (() => {
           if (check.classList.contains('is-answered')) return;
           check.classList.add('is-answered');
           opts.forEach((o, j) => o.classList.add(j === correctIdx ? 'correct' : (o === opt ? 'incorrect' : '')));
-          feedback.textContent = i === correctIdx ? '✓ Correct — well done!' : 'Not quite — the correct answer is highlighted above.';
+          feedback.textContent = i === correctIdx ? '✓ Correct - well done!' : 'Not quite - the correct answer is highlighted above.';
           feedback.classList.add('is-shown');
         });
       });
