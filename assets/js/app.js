@@ -72,9 +72,11 @@ const RCCG = (() => {
   }
 
   function buildScriptureModal() {
-    if (document.querySelector('.scr-modal-overlay')) return document.querySelector('.scr-modal-overlay');
+    const existing = document.querySelector('[data-scripture-modal]');
+    if (existing) return existing;
     const overlay = document.createElement('div');
     overlay.className = 'scr-modal-overlay';
+    overlay.setAttribute('data-scripture-modal', '1');
     overlay.innerHTML = `
       <div class="scr-modal" role="dialog" aria-modal="true" aria-labelledby="scrModalRef">
         <div class="scr-modal__head">

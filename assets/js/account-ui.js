@@ -7,9 +7,11 @@
 
 (function () {
   function buildModal() {
-    if (document.querySelector('.account-modal-overlay')) return;
+    const existing = document.querySelector('[data-account-modal]');
+    if (existing) return existing;
     const overlay = document.createElement('div');
     overlay.className = 'scr-modal-overlay account-modal-overlay';
+    overlay.setAttribute('data-account-modal', '1');
     overlay.innerHTML = `
       <div class="scr-modal account-modal" role="dialog" aria-modal="true">
         <div class="scr-modal__head">
@@ -79,23 +81,32 @@
         } else {
           await window.RCCGAuth.signIn(email, password);
         }
-        close();
+        // Reload so the page picks up the freshly-synced cloud progress
+        // cleanly from scratch, rather than trying to patch the live DOM.
+        submitBtn.textContent = 'Signed in - reloading...';
+        location.reload();
       } catch (err) {
         errorBox.textContent = window.RCCGAuth.friendlyAuthError(err);
         errorBox.style.display = 'block';
-      } finally {
         submitBtn.disabled = false;
       }
     });
 
-    overlay.querySelector('#acctGoogleBtn').addEventListener('click', async () => {
+    overlay.querySelector('#acctGoogleBtn').addEventListener('click', async (e) => {
       errorBox.style.display = 'none';
+      const btn = e.currentTarget;
+      btn.disabled = true;
+      btn.textContent = 'Redirecting to Google...';
       try {
+        // This navigates away to Google's sign-in page and back - the page
+        // will reload automatically once that completes, so there's nothing
+        // further to do here on success.
         await window.RCCGAuth.signInGoogle();
-        close();
       } catch (err) {
         errorBox.textContent = window.RCCGAuth.friendlyAuthError(err);
         errorBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Continue with Google';
       }
     });
 
@@ -121,13 +132,20 @@
     if (btn) {
       btn.addEventListener('click', async () => {
         if (btn.getAttribute('data-signed-in') === 'true') {
-          if (confirm('Sign out?')) await window.RCCGAuth.logOut();
+          if (confirm('Sign out?')) {
+            await window.RCCGAuth.logOut();
+            location.reload();
+          }
         } else {
           overlay.classList.add('is-open');
         }
       });
     }
     window.addEventListener('rccg:auth-changed', (e) => paintAccountButton(e.detail));
+    // Surface errors from a just-completed Google redirect sign-in - the
+    // modal itself won't still be open after the page reloads back from
+    // Google, so a plain alert is the simplest reliable way to show it.
+    window.addEventListener('rccg:auth-error', (e) => alert(e.detail));
     // In case auth already resolved before this ran
     if (window.RCCGAuth?.getCurrentUser()) paintAccountButton(window.RCCGAuth.getCurrentUser());
   }
