@@ -114,15 +114,34 @@ async function signInGoogle() {
   // browser's cross-origin-opener policy. This navigates away to Google's
   // sign-in and back - the result is picked up by getRedirectResult() below
   // and by the normal onAuthStateChanged listener once the page reloads.
+  // Mark that a redirect is in flight so we can tell, on return, whether
+  // Firebase actually completed it or silently lost track of it (this
+  // happens in private/incognito windows and with strict third-party
+  // storage settings, since the redirect round-trip needs to persist a bit
+  // of state across the hop through the Firebase authDomain).
+  sessionStorage.setItem('rccg-google-redirect-pending', '1');
   await signInWithRedirect(auth, provider);
 }
 
 // Surface any error from a just-completed redirect sign-in (e.g. unauthorized
-// domain) so it isn't silently swallowed.
-getRedirectResult(auth).catch((err) => {
-  console.error('RCCG Google sign-in failed:', err);
-  window.dispatchEvent(new CustomEvent('rccg:auth-error', { detail: friendlyAuthError(err) }));
-});
+// domain), and also detect the "redirect finished but produced no user and no
+// error" case - Firebase itself doesn't distinguish this from "no redirect
+// was pending" any other way, so we track it ourselves.
+const wasRedirectPending = sessionStorage.getItem('rccg-google-redirect-pending') === '1';
+sessionStorage.removeItem('rccg-google-redirect-pending');
+
+getRedirectResult(auth)
+  .then((result) => {
+    if (wasRedirectPending && !result) {
+      window.dispatchEvent(new CustomEvent('rccg:auth-error', {
+        detail: 'Google sign-in didn\'t complete. This often happens in private/incognito windows or with strict browser privacy settings that block the sign-in redirect. Please try again in a normal browser window.',
+      }));
+    }
+  })
+  .catch((err) => {
+    console.error('RCCG Google sign-in failed:', err);
+    window.dispatchEvent(new CustomEvent('rccg:auth-error', { detail: friendlyAuthError(err) }));
+  });
 
 async function logOut() {
   await signOut(auth);
