@@ -96,12 +96,17 @@
       errorBox.style.display = 'none';
       const btn = e.currentTarget;
       btn.disabled = true;
-      btn.textContent = 'Redirecting to Google...';
+      btn.textContent = 'Opening Google sign-in...';
       try {
-        // This navigates away to Google's sign-in page and back - the page
-        // will reload automatically once that completes, so there's nothing
-        // further to do here on success.
-        await window.RCCGAuth.signInGoogle();
+        const user = await window.RCCGAuth.signInGoogle();
+        if (user) {
+          // Popup succeeded and returned a user directly - reload now so the
+          // page picks up freshly-synced cloud progress from scratch.
+          btn.textContent = 'Signed in - reloading...';
+          location.reload();
+        }
+        // If no user came back, signInGoogle fell back to a full-page
+        // redirect that's already in progress - nothing more to do here.
       } catch (err) {
         errorBox.textContent = window.RCCGAuth.friendlyAuthError(err);
         errorBox.style.display = 'block';

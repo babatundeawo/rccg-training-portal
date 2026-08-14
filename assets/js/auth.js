@@ -22,7 +22,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/fireba
 import {
   getAuth, onAuthStateChanged, signOut,
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithRedirect, getRedirectResult, updateProfile,
+  GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 import {
   getFirestore, doc, getDoc, setDoc,
@@ -109,24 +109,27 @@ async function signIn(email, password) {
 
 async function signInGoogle() {
   const provider = new GoogleAuthProvider();
-  // Redirect (not popup) is far more reliable on GitHub Pages and mobile
-  // browsers, where popups are commonly blocked or silently closed by the
-  // browser's cross-origin-opener policy. This navigates away to Google's
-  // sign-in and back - the result is picked up by getRedirectResult() below
-  // and by the normal onAuthStateChanged listener once the page reloads.
-  // Mark that a redirect is in flight so we can tell, on return, whether
-  // Firebase actually completed it or silently lost track of it (this
-  // happens in private/incognito windows and with strict third-party
-  // storage settings, since the redirect round-trip needs to persist a bit
-  // of state across the hop through the Firebase authDomain).
-  sessionStorage.setItem('rccg-google-redirect-pending', '1');
-  await signInWithRedirect(auth, provider);
+  try {
+    // Popup is the more reliable method when it's available - it doesn't need
+    // to persist any state across a full-page navigation, so it isn't
+    // affected by the storage-partitioning issues that break the redirect
+    // flow in private/incognito windows and on browsers with strict
+    // cross-site privacy settings (increasingly the default even in normal
+    // windows). It only fails if the browser actively blocks the popup.
+    const cred = await signInWithPopup(auth, provider);
+    return cred.user;
+  } catch (err) {
+    const popupBlocked = ['auth/popup-blocked', 'auth/operation-not-supported-in-this-environment']
+      .includes(err.code);
+    if (!popupBlocked) throw err; // real errors (wrong password flow, etc.) surface normally
+    // Fall back to redirect only when the browser actually blocked the popup.
+    sessionStorage.setItem('rccg-google-redirect-pending', '1');
+    await signInWithRedirect(auth, provider);
+  }
 }
 
-// Surface any error from a just-completed redirect sign-in (e.g. unauthorized
-// domain), and also detect the "redirect finished but produced no user and no
-// error" case - Firebase itself doesn't distinguish this from "no redirect
-// was pending" any other way, so we track it ourselves.
+// Surface any error/incomplete result from a just-completed redirect
+// fallback (only relevant if signInGoogle had to fall back to redirect above).
 const wasRedirectPending = sessionStorage.getItem('rccg-google-redirect-pending') === '1';
 sessionStorage.removeItem('rccg-google-redirect-pending');
 
@@ -134,7 +137,7 @@ getRedirectResult(auth)
   .then((result) => {
     if (wasRedirectPending && !result) {
       window.dispatchEvent(new CustomEvent('rccg:auth-error', {
-        detail: 'Google sign-in didn\'t complete. This often happens in private/incognito windows or with strict browser privacy settings that block the sign-in redirect. Please try again in a normal browser window.',
+        detail: 'Google sign-in didn\'t complete. This often happens in private/incognito windows or with strict browser privacy settings that block the sign-in redirect. Please try again in a normal browser window, and make sure pop-ups aren\'t blocked for this site.',
       }));
     }
   })
