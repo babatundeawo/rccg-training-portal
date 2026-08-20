@@ -2,6 +2,10 @@
 
 An interactive, mobile-first companion site replacing the printed Believers' Class, Baptismal Class, and Workers-in-Training manuals - built as a static site for GitHub Pages.
 
+**Live:** https://babatundeawo.github.io/rccg-training-portal/
+
+**Tech stack:** vanilla HTML/CSS/JavaScript (no build step, no framework), JSON as the content format, Firebase Authentication + Cloud Firestore for optional cross-device progress sync.
+
 ## What's here
 
 ```
@@ -31,16 +35,7 @@ Each module's `reader.html` is a single reusable template - it reads `?study=N` 
 URL and renders whichever `study-N.json` file matches. To edit a study's wording, edit its
 JSON file directly; you never need to touch the HTML/JS for content changes.
 
-## 1. Replace the logo
-
-The real RCCG logo couldn't be auto-downloaded (network sandboxing during the build blocked
-image CDNs). Grab it here - one click, official, CC BY-SA 4.0:
-
-https://commons.wikimedia.org/wiki/File:Rccg_logo.png
-
-Save it as `assets/img/rccg-logo.png`, replacing the placeholder monogram that's there now.
-
-## 2. Deploy to GitHub Pages
+## 1. Deploy to GitHub Pages
 
 1. Create a new repo (or use an existing one) and push this folder's contents to it.
 2. In the repo settings → Pages, set the source to the branch/folder you pushed (e.g. `main`, root).
@@ -48,7 +43,7 @@ Save it as `assets/img/rccg-logo.png`, replacing the placeholder monogram that's
 
 No build step, no dependencies to install - it's plain HTML/CSS/JS.
 
-## 3. Scripture reveal - how it works
+## 2. Scripture reveal - how it works
 
 Any scripture reference is marked in a study's JSON as:
 ```
@@ -61,7 +56,7 @@ tag quietly falls back to plain, non-tappable text - it will never show the wron
 If you add new content with new scripture references by hand, follow the same `{{...|...}}`
 pattern, or run the reference parser again (see "Regenerating content" below).
 
-## 4. Test / exam environment
+## 3. Test / exam environment
 
 Each `test-*/index.html` is self-contained:
 - Candidate fills in name, date of birth, phone (Workers-in-Training also asks for
@@ -85,7 +80,7 @@ automatically includes new questions in the random draw - no code changes needed
 All were written directly from the verified manual content. Feel free to expand them - 
 more questions in the bank means less repetition across candidates on test day.
 
-## 5. Regenerating content from the source PDFs
+## 4. Regenerating content from the source PDFs
 
 If the source manuals are ever updated, the conversion pipeline that built this site's
 content lives in three scripts (not included in this folder, but easy to reconstruct if
@@ -93,7 +88,7 @@ needed): a scripture-reference parser, a content-to-JSON converter, and a per-ma
 extractor that knows each manual's section boundaries. Ask for these if you need to
 regenerate content from a revised PDF.
 
-## 6. Login and cross-device progress
+## 5. Login and cross-device progress
 
 Progress is stored in the browser's `localStorage` by default (per device, no
 account needed). Signing in adds cross-device sync on top of that, backed by
