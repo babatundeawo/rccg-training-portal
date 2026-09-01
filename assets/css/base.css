@@ -35,24 +35,48 @@ ul, ol { padding-left: 1.3em; }
   background: rgba(255,255,255,.95);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
-  height: var(--nav-h);
+  min-height: var(--nav-h);
   display: flex; align-items: center;
 }
-.topnav__inner { width: 100%; max-width: var(--max-w-shell); margin: 0 auto; padding-inline: var(--sp-3); display: flex; align-items: center; gap: var(--sp-2); }
-.topnav__brand { display: flex; align-items: center; gap: .7rem; color: var(--color-primary); text-decoration: none; }
-.topnav__logo { width: 40px; height: 40px; border-radius: 10px; overflow: hidden; flex: none; display: grid; place-items: center; }
+.topnav__inner {
+  width: 100%; max-width: var(--max-w-shell); margin: 0 auto;
+  padding-inline: var(--sp-3); padding-block: .5rem;
+  display: flex; align-items: center; gap: var(--sp-2);
+}
+.topnav__brand { display: flex; align-items: center; gap: .6rem; color: var(--color-primary); text-decoration: none; min-width: 0; flex: 1 1 auto; }
+.topnav__logo { width: 38px; height: 38px; border-radius: 10px; overflow: hidden; flex: none; display: grid; place-items: center; }
 .topnav__logo img { width: 100%; height: 100%; object-fit: contain; }
-.topnav__brand-text { display: flex; flex-direction: column; line-height: 1.25; }
-.topnav__brand-name { font-weight: 800; font-size: var(--fs-sm); letter-spacing: -.01em; }
-.topnav__brand-sub { font-size: var(--fs-xs); color: var(--color-text-muted); font-weight: 500; }
-.topnav__spacer { flex: 1; }
+.topnav__brand-text { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+.topnav__brand-name {
+  font-weight: 800; font-size: var(--fs-sm); letter-spacing: -.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+}
+.topnav__brand-sub {
+  font-size: var(--fs-xs); color: var(--color-text-muted); font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+}
+.topnav__spacer { flex: 0 1 var(--sp-2); }
 .topnav__btn {
   background: var(--color-surface-alt); border: none; color: var(--color-primary);
   width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
   display: inline-flex; align-items: center; justify-content: center;
   transition: background var(--dur-fast) var(--ease-out);
+  flex: none; white-space: nowrap;
 }
 .topnav__btn:hover { background: var(--color-border); }
+.topnav__btn > span { white-space: nowrap; }
+
+/* Nav actions (map/studies + account) never wrap or get squeezed --
+   the brand block truncates first via min-width:0 + ellipsis above. */
+.topnav__inner > .account-btn,
+.topnav__inner > .topnav__btn { flex: none; }
+
+@media (max-width: 480px) {
+  .topnav__brand-sub { display: none; }
+  .topnav__logo { width: 34px; height: 34px; }
+  .topnav__btn[data-map-open] .topnav__btn-text { display: none; }
+  .topnav__btn[data-map-open] { width: 40px; padding: 0 !important; gap: 0 !important; }
+}
 .progress-ring circle { fill: none; stroke-width: 3; }
 .progress-ring .track { stroke: var(--color-border); }
 .progress-ring .bar { stroke: var(--color-accent); stroke-linecap: round; transition: stroke-dashoffset var(--dur-med) var(--ease-out); }
@@ -258,7 +282,9 @@ ul, ol { padding-left: 1.3em; }
   display: inline-flex; align-items: center; gap: .5rem; border: none; cursor: pointer;
   background: var(--color-surface-alt); color: var(--color-primary); font-weight: 700;
   font-size: var(--fs-xs); padding: .45rem .8rem; border-radius: 99px; font-family: inherit;
+  flex: none; white-space: nowrap;
 }
+.account-btn-label { white-space: nowrap; max-width: 9ch; overflow: hidden; text-overflow: ellipsis; }
 .account-btn:hover { background: var(--color-border); }
 .account-avatar {
   width: 22px; height: 22px; border-radius: 50%; background: var(--color-accent); color: #fff;
