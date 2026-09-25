@@ -6,18 +6,24 @@
 
 :root {
   /* --- Color: named --- */
+  --navy-950:  #061627;   /* near-black navy - deepest accents, text-on-gold */
   --navy-900:  #0a2540;   /* deep royal blue  - headers, hero, headings */
+  --navy-800:  #123258;   /* lighter navy for gradients */
   --blue-600:  #0070f3;   /* primary interactive blue */
   --blue-500:  #0ea5e9;   /* secondary sky blue (Baptismal accent) */
+  --blue-glow: rgba(0, 112, 243, .35);
   --green-600: #10b981;   /* emerald  - success, progress, completion */
+  --green-700: #059669;
   --green-100: rgba(16, 185, 129, .1);
   --gold-600:  #d97706;   /* warm gold  - memory verses, Workers accent */
+  --gold-500:  #f59e0b;
   --gold-100:  rgba(217, 119, 6, .1);
   --red-600:   #ef4444;   /* alerts / incorrect */
   --red-100:   rgba(239, 68, 68, .1);
   --slate-50:  #f8fafc;
   --slate-100: #f1f5f9;
   --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
   --slate-400: #94a3b8;
   --slate-500: #64748b;
   --slate-700: #334155;
@@ -40,6 +46,12 @@
   /* Per-module accent, overridden per module page */
   --module-accent: var(--blue-600);
   --module-accent-light: var(--color-accent-light);
+  --module-accent-dark: #0060d0;
+
+  /* --- Gradients (premium surfaces) --- */
+  --grad-navy: linear-gradient(160deg, var(--navy-800) 0%, var(--navy-950) 100%);
+  --grad-gold: linear-gradient(135deg, var(--gold-500), var(--gold-600));
+  --grad-sheen: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 48%, rgba(255,255,255,0) 65%);
 
   /* --- Type --- */
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -68,16 +80,25 @@
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
+  --radius-xl: 28px;
   --nav-h: 64px;
   --bottom-bar-h: 78px;
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --dur-fast: 180ms;
   --dur-med: 340ms;
+  --dur-slow: 560ms;
 
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(10,37,64,.05);
-  --shadow-md: 0 4px 24px rgba(10,37,64,.08);
-  --shadow-lg: 0 14px 34px rgba(10,37,64,.14);
+  /* Shadows - tinted with the navy ink instead of flat black for a warmer,
+     more premium sense of depth; one carries the module accent for glow. */
+  --shadow-xs: 0 1px 2px rgba(10,37,64,.04);
+  --shadow-sm: 0 2px 8px -2px rgba(10,37,64,.07);
+  --shadow-md: 0 8px 28px -6px rgba(10,37,64,.14);
+  --shadow-lg: 0 20px 48px -12px rgba(10,37,64,.22);
+  --shadow-xl: 0 28px 64px -16px rgba(10,37,64,.28);
+  --shadow-glow: 0 10px 30px -8px var(--blue-glow);
+
+  --glass-blur: 16px;
 }

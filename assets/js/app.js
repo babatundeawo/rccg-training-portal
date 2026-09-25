@@ -225,3 +225,42 @@ const RCCG = (() => {
     renderScriptureText, escapeHtml, getRootPath
   };
 })();
+
+/* =============================================================
+   Global polish - runs on every page automatically, no per-page
+   wiring needed: a subtle shadow on the top nav once the page has
+   scrolled, and a soft ripple on tap/click for every .btn so
+   buttons feel tactile rather than flat.
+   ============================================================= */
+(function initGlobalPolish() {
+  function onReady(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
+  }
+
+  onReady(() => {
+    // Nav gains a shadow once content scrolls underneath it.
+    const nav = document.querySelector('.topnav');
+    if (nav) {
+      const syncNavShadow = () => nav.classList.toggle('is-scrolled', window.scrollY > 4);
+      syncNavShadow();
+      window.addEventListener('scroll', syncNavShadow, { passive: true });
+    }
+
+    // Ripple on every button - delegated so it also covers buttons
+    // rendered later (quiz options rendered from JSON, etc.).
+    document.addEventListener('pointerdown', (e) => {
+      const btn = e.target.closest('.btn');
+      if (!btn || btn.disabled) return;
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 1.4;
+      const ripple = document.createElement('span');
+      ripple.className = 'btn__ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+      btn.appendChild(ripple);
+      ripple.addEventListener('animationend', () => ripple.remove());
+    });
+  });
+})();
