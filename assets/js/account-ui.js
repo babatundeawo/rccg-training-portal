@@ -1,159 +1,194 @@
-/* =============================================================
-   RCCG Learning Path - Account UI
-   Injects a sign-in/sign-up modal and wires up the "Account" button
-   that appears in every page's top nav. Depends on auth.js having
-   set window.RCCGAuth, and on app.js's RCCG helper being loaded.
-   ============================================================= */
+/* Account dialog: sign in, create account, reset password, and a profile view
+   with email verification and sign out. Loaded on demand. */
+import { $, esc, icon, createDialog, showDialog, toast, paintAccountButton } from './ui.js';
+import { loadAuth, friendlyAuthError } from './auth.js';
 
-(function () {
-  function buildModal() {
-    const existing = document.querySelector('[data-account-modal]');
-    if (existing) return existing;
-    const overlay = document.createElement('div');
-    overlay.className = 'scr-modal-overlay account-modal-overlay';
-    overlay.setAttribute('data-account-modal', '1');
-    overlay.innerHTML = `
-      <div class="scr-modal account-modal" role="dialog" aria-modal="true">
-        <div class="scr-modal__head">
-          <div class="scr-modal__ref" id="acctModalTitle">Sign in</div>
-          <button class="scr-modal__close" type="button" aria-label="Close">✕</button>
-        </div>
-        <div class="account-tabs">
-          <button type="button" class="account-tab is-active" data-tab="signin">Sign in</button>
-          <button type="button" class="account-tab" data-tab="signup">Create account</button>
-        </div>
-        <form class="account-form" id="acctForm">
-          <div class="field account-name-field" style="display:none;">
-            <label for="acctName">Your name</label>
-            <input id="acctName" type="text" autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="acctEmail">Email</label>
-            <input id="acctEmail" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="acctPassword">Password</label>
-            <input id="acctPassword" type="password" autocomplete="current-password" required minlength="6">
-          </div>
-          <div class="account-error" id="acctError" style="display:none;"></div>
-          <button class="btn btn--primary btn--block" type="submit" id="acctSubmitBtn">Sign in</button>
-        </form>
-        <div class="account-divider"><span>or</span></div>
-        <button class="btn btn--outline btn--block" type="button" id="acctGoogleBtn">
-          Continue with Google
-        </button>
-        <p class="account-note">Signing in lets your study progress follow you between your phone, tablet, and computer.</p>
-      </div>`;
-    document.body.appendChild(overlay);
+let dlg;
+let auth = null;
+let mode = 'signin'; // 'signin' | 'signup' | 'reset'
+let person = null;
+let wired = false;
+let initPromise;
 
-    const close = () => overlay.classList.remove('is-open');
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-    overlay.querySelector('.scr-modal__close').addEventListener('click', close);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+function field(id, label, attrs, hint = '') {
+  return `<div class="field"><label for="${id}">${label}</label>
+    <input class="input" id="${id}" ${attrs}>${hint ? `<span class="hint">${hint}</span>` : ''}</div>`;
+}
 
-    let mode = 'signin';
-    const tabs = overlay.querySelectorAll('.account-tab');
-    const nameField = overlay.querySelector('.account-name-field');
-    const submitBtn = overlay.querySelector('#acctSubmitBtn');
-    const errorBox = overlay.querySelector('#acctError');
-    const title = overlay.querySelector('#acctModalTitle');
+function formView() {
+  const isSignup = mode === 'signup';
+  const isReset = mode === 'reset';
+  return `
+    ${isReset ? '' : `<div class="seg" role="tablist" aria-label="Account options">
+      <button class="seg__btn" role="tab" type="button" data-mode="signin" aria-selected="${!isSignup}">Sign in</button>
+      <button class="seg__btn" role="tab" type="button" data-mode="signup" aria-selected="${isSignup}">Create account</button></div>`}
+    ${isReset ? '<p class="muted mb-4"></p>' : ''}
+    <form id="acctForm" novalidate>
+      ${isSignup ? field('acctName', 'Your name', 'type="text" autocomplete="name" required') : ''}
+      ${field('acctEmail', 'Email', 'type="email" autocomplete="email" inputmode="email" required')}
+      ${isReset ? '' : field('acctPassword', 'Password', `type="password" autocomplete="${isSignup ? 'new-password' : 'current-password'}" minlength="6" required`, isSignup ? 'At least 6 characters.' : '')}
+      <div class="notice notice--error mb-4" id="acctError" role="alert" hidden></div>
+      <button class="btn btn--primary btn--block btn--lg" type="submit" id="acctSubmit">
+        <span class="btn__label">${isReset ? 'Send reset link' : isSignup ? 'Create account' : 'Sign in'}</span></button>
+    </form>
+    ${mode === 'signin' ? '<p class="account-note"><button class="link-btn" type="button" data-mode="reset">Forgot your password?</button></p>' : ''}
+    ${isReset ? '<p class="account-note"><button class="link-btn" type="button" data-mode="signin">Back to sign in</button></p>' : `
+      <div class="divider"><span>or</span></div>
+      <button class="btn btn--block" type="button" id="acctGoogle"><span class="btn__label">Continue with Google</span></button>
+      <p class="account-note">Signing in lets your study progress follow you between your phone, tablet and computer.</p>`}`;
+}
 
-    function setMode(newMode) {
-      mode = newMode;
-      tabs.forEach(t => t.classList.toggle('is-active', t.dataset.tab === mode));
-      nameField.style.display = mode === 'signup' ? 'block' : 'none';
-      submitBtn.textContent = mode === 'signup' ? 'Create account' : 'Sign in';
-      title.textContent = mode === 'signup' ? 'Create your account' : 'Sign in';
-      errorBox.style.display = 'none';
-    }
-    tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.tab)));
+function profileView() {
+  const verified = person.emailVerified;
+  return `<div class="profile">
+    <div class="profile__avatar" aria-hidden="true">${esc(person.name.charAt(0).toUpperCase())}</div>
+    <div><div class="profile__name">${esc(person.name)}</div><div class="profile__email">${esc(person.email)}</div></div>
+    ${verified ? `<div class="notice notice--success">${icon('shield-check')}<span>Your email is verified. Your progress is saved to your account.</span></div>`
+      : `<div class="notice notice--warning">${icon('mail')}<span>Please verify your email. We sent a link to ${esc(person.email)}. Check your spam folder too.</span></div>`}
+    <div class="profile__actions">
+      ${verified ? '' : `<button class="btn btn--block" type="button" id="acctResend"><span class="btn__label">Resend verification email</span></button>
+        <button class="btn btn--block" type="button" id="acctRefresh"><span class="btn__label">I’ve verified my email</span></button>`}
+      <button class="btn btn--block" type="button" id="acctSignOut">${icon('log-out')}<span class="btn__label">Sign out</span></button>
+    </div></div>`;
+}
 
-    overlay.querySelector('#acctForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errorBox.style.display = 'none';
-      submitBtn.disabled = true;
-      const email = overlay.querySelector('#acctEmail').value.trim();
-      const password = overlay.querySelector('#acctPassword').value;
-      const name = overlay.querySelector('#acctName').value.trim();
-      try {
-        if (mode === 'signup') {
-          await window.RCCGAuth.signUp(email, password, name);
-        } else {
-          await window.RCCGAuth.signIn(email, password);
-        }
-        // Reload so the page picks up the freshly-synced cloud progress
-        // cleanly from scratch, rather than trying to patch the live DOM.
-        submitBtn.textContent = 'Signed in - reloading...';
-        location.reload();
-      } catch (err) {
-        errorBox.textContent = window.RCCGAuth.friendlyAuthError(err);
-        errorBox.style.display = 'block';
-        submitBtn.disabled = false;
-      }
-    });
-
-    overlay.querySelector('#acctGoogleBtn').addEventListener('click', async (e) => {
-      errorBox.style.display = 'none';
-      const btn = e.currentTarget;
-      btn.disabled = true;
-      btn.textContent = 'Opening Google sign-in...';
-      try {
-        const user = await window.RCCGAuth.signInGoogle();
-        if (user) {
-          // Popup succeeded and returned a user directly - reload now so the
-          // page picks up freshly-synced cloud progress from scratch.
-          btn.textContent = 'Signed in - reloading...';
-          location.reload();
-        }
-        // If no user came back, signInGoogle fell back to a full-page
-        // redirect that's already in progress - nothing more to do here.
-      } catch (err) {
-        errorBox.textContent = window.RCCGAuth.friendlyAuthError(err);
-        errorBox.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Continue with Google';
-      }
-    });
-
-    return overlay;
+function render() {
+  const titles = { signin: 'Sign in', signup: 'Create your account', reset: 'Reset your password' };
+  $('#acctTitle', dlg).textContent = person ? 'Your account' : titles[mode];
+  $('#acctBody', dlg).innerHTML = person ? profileView() : formView();
+  if (!person && mode === 'reset') {
+    $('#acctBody .muted', dlg).textContent = 'Enter the email you signed up with and we’ll send you a link to choose a new password.';
   }
+}
 
-  function paintAccountButton(user) {
-    const btn = document.querySelector('[data-account-btn]');
-    if (!btn) return;
-    if (user) {
-      const label = user.displayName || user.email || 'Account';
-      btn.innerHTML = `<span class="account-avatar">${label.charAt(0).toUpperCase()}</span><span class="account-btn-label">${RCCG.escapeHtml(label.split(' ')[0])}</span>`;
-      btn.setAttribute('data-signed-in', 'true');
+function showError(message) {
+  const box = $('#acctError', dlg);
+  if (!box) return;
+  box.innerHTML = `${icon('triangle-alert')}<span>${esc(message)}</span>`;
+  box.hidden = false;
+}
+
+function setBusy(button, busy, label) {
+  button.disabled = busy;
+  const text = $('.btn__label', button);
+  if (busy) { button.dataset.label = text.textContent; text.innerHTML = '<span class="spinner" aria-hidden="true"></span>'; }
+  else text.textContent = label || button.dataset.label;
+}
+
+async function onSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  const email = $('#acctEmail', form).value.trim();
+  const password = $('#acctPassword', form)?.value || '';
+  const name = $('#acctName', form)?.value.trim() || '';
+  const submit = $('#acctSubmit', form);
+  $('#acctError', form).hidden = true;
+  if (!email) return showError('Please enter your email address.');
+  if (mode !== 'reset' && password.length < 6) return showError('Your password needs at least 6 characters.');
+  setBusy(submit, true);
+  try {
+    if (mode === 'reset') {
+      await auth.resetPassword(email);
+      toast('If that email has an account, a reset link is on its way.', { type: 'success' });
+      mode = 'signin'; render();
+    } else if (mode === 'signup') {
+      const result = await auth.signUp(email, password, name);
+      dlg.close();
+      toast(result.verificationSent ? 'Account created. Check your email to verify it.' : 'Account created.', { type: 'success' });
     } else {
-      btn.innerHTML = `<span class="account-btn-label">Sign in</span>`;
-      btn.removeAttribute('data-signed-in');
+      await auth.signIn(email, password);
+      dlg.close();
+      toast('Signed in. Your progress is syncing.', { type: 'success' });
+    }
+  } catch (error) {
+    showError(friendlyAuthError(error));
+    setBusy(submit, false);
+  }
+}
+
+function wire() {
+  if (wired) return;
+  wired = true;
+  dlg.addEventListener('submit', onSubmit);
+  dlg.addEventListener('click', async (event) => {
+    const modeBtn = event.target.closest('[data-mode]');
+    if (modeBtn) { mode = modeBtn.dataset.mode; render(); $('#acctBody input', dlg)?.focus(); return; }
+    const id = event.target.closest('button')?.id;
+    if (id === 'acctGoogle') {
+      const btn = event.target.closest('button');
+      setBusy(btn, true);
+      try {
+        const user = await auth.signInGoogle();
+        if (user) { dlg.close(); toast('Signed in. Your progress is syncing.', { type: 'success' }); }
+      } catch (error) { showError(friendlyAuthError(error)); setBusy(btn, false, 'Continue with Google'); }
+    } else if (id === 'acctSignOut') {
+      await auth.logOut();
+      dlg.close();
+      toast('Signed out.');
+    } else if (id === 'acctResend') {
+      try { await auth.resendVerification(); toast('Verification email sent.', { type: 'success' }); }
+      catch (error) { toast(friendlyAuthError(error), { type: 'error' }); }
+    } else if (id === 'acctRefresh') {
+      const updated = await auth.refreshUser();
+      if (updated?.emailVerified) toast('Email verified. Thank you!', { type: 'success' });
+      else toast('Not verified yet. Open the link in the email first.');
+    }
+  });
+}
+
+function build() {
+  dlg = createDialog({
+    label: 'Account',
+    html: `<div class="dialog__head"><h2 class="dialog__title" id="acctTitle">Sign in</h2>
+      <button class="nav-btn" type="button" data-close aria-label="Close">${icon('x')}</button></div>
+      <div class="dialog__body" id="acctBody"></div>`,
+  });
+  dlg.setAttribute('aria-labelledby', 'acctTitle');
+  dlg.removeAttribute('aria-label');
+}
+
+/** Restores a signed-in session in the background (no dialog shown). */
+export function initAccount() {
+  if (!initPromise) initPromise = startAccount();
+  return initPromise;
+}
+
+async function startAccount() {
+  try {
+    auth = await loadAuth();
+  } catch {
+    initPromise = null;
+    return; // offline: the button keeps its remembered label
+  }
+  window.addEventListener('rccg:auth-changed', (event) => {
+    person = event.detail;
+    paintAccountButton(person);
+    if (dlg?.open) render();
+  });
+  window.addEventListener('rccg:auth-error', (event) => toast(event.detail, { type: 'error' }));
+  let warned = false;
+  window.addEventListener('rccg:sync-error', (event) => {
+    if (!warned) { warned = true; toast(`Progress couldn’t sync: ${event.detail}`, { type: 'error' }); }
+  });
+  person = auth.getCurrentUser();
+  paintAccountButton(person);
+}
+
+export async function openAccount() {
+  if (!dlg) build();
+  wire();
+  if (!auth) {
+    $('#acctBody', dlg).innerHTML = '<p class="muted"><span class="spinner" aria-hidden="true"></span> Loading…</p>';
+    showDialog(dlg);
+    await initAccount();
+    if (!auth) {
+      $('#acctBody', dlg).innerHTML = `<div class="notice notice--error">${icon('wifi-off')}<span>Sign-in needs an internet connection. Your progress is still saved on this device.</span></div>`;
+      return;
     }
   }
-
-  function initAccountUI() {
-    const overlay = buildModal();
-    const btn = document.querySelector('[data-account-btn]');
-    if (btn) {
-      btn.addEventListener('click', async () => {
-        if (btn.getAttribute('data-signed-in') === 'true') {
-          if (confirm('Sign out?')) {
-            await window.RCCGAuth.logOut();
-            location.reload();
-          }
-        } else {
-          overlay.classList.add('is-open');
-        }
-      });
-    }
-    window.addEventListener('rccg:auth-changed', (e) => paintAccountButton(e.detail));
-    // Surface errors from a just-completed Google redirect sign-in - the
-    // modal itself won't still be open after the page reloads back from
-    // Google, so a plain alert is the simplest reliable way to show it.
-    window.addEventListener('rccg:auth-error', (e) => alert(e.detail));
-    // In case auth already resolved before this ran
-    if (window.RCCGAuth?.getCurrentUser()) paintAccountButton(window.RCCGAuth.getCurrentUser());
-  }
-
-  window.RCCG_initAccountUI = initAccountUI;
-})();
+  person = auth.getCurrentUser();
+  mode = 'signin';
+  render();
+  showDialog(dlg);
+  $('#acctBody input', dlg)?.focus();
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://babatundeawo.github.io/rccg-training-portal/sitemap.xml

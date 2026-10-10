@@ -1,0 +1,19 @@
+name: Content correction
+description: A typo, wrong verse reference or unclear wording in a study or test question
+labels: [content]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: Track, study number or test question
+    validations: { required: true }
+  - type: textarea
+    id: what
+    attributes:
+      label: What should it say?
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes:
+      label: Source (manual page or Bible reference)

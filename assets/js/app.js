@@ -1,266 +1,184 @@
-/* =============================================================
-   RCCG Learning Path - shared app engine
-   Handles: progress storage, nav drawer, scripture reveal modal
-   (with real verse numbers + internal scroll), and the single-card
-   "deck" reading engine with a fixed bottom Back/Continue bar.
-   ============================================================= */
+/* Page bootstrap shared by every page: navigation behaviour, theme toggle,
+   mobile menu, command palette trigger, account button, scroll reveals,
+   tactile button ripple and the offline service worker. */
+import { $, $$, icon, rootPath, createDialog, showDialog, esc, paintAccountButton, toast } from './ui.js';
 
-const RCCG = (() => {
-  const STORAGE_KEY = 'rccg-learning-progress-v1';
+const ACCOUNT_HINT_KEY = 'rccg-account-hint';
 
-  /* ---------------- Progress store (localStorage) ---------------- */
-  function loadProgress() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
-    catch (e) { return {}; }
-  }
-  function saveProgress(data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }
-  function markStudyComplete(moduleId, studyId) {
-    const data = loadProgress();
-    data[moduleId] = data[moduleId] || {};
-    data[moduleId][studyId] = true;
-    saveProgress(data);
-    // If signed in, sync this update to the cloud in the background so it
-    // shows up on the person's other devices. No-op for guests, and safe
-    // even if auth.js hasn't loaded on this page.
-    window.RCCGAuth?.pushProgressToCloud?.();
-  }
-  function isStudyComplete(moduleId, studyId) {
-    const data = loadProgress();
-    return !!(data[moduleId] && data[moduleId][studyId]);
-  }
-  function moduleCompletionCount(moduleId, totalStudies) {
-    const data = loadProgress();
-    const done = data[moduleId] ? Object.keys(data[moduleId]).length : 0;
-    return { done, total: totalStudies };
-  }
+function initNavScroll() {
+  const nav = $('.topnav');
+  if (!nav) return;
+  let ticking = false;
+  const sync = () => { nav.classList.toggle('is-scrolled', window.scrollY > 8); ticking = false; };
+  sync();
+  window.addEventListener('scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(sync); }
+  }, { passive: true });
+}
 
-  /* ---------------- Nav progress ring ---------------- */
-  function paintProgressRing(el, pct) {
-    if (!el) return;
-    const bar = el.querySelector('.bar');
-    const r = 12, circumference = 2 * Math.PI * r;
-    bar.style.strokeDasharray = circumference;
-    bar.style.strokeDashoffset = circumference * (1 - pct);
-  }
+/* ---------- Theme ---------- */
+function currentTheme() {
+  return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+}
 
-  /* ---------------- "You are here" drawer ---------------- */
-  function initMapDrawer() {
-    const openBtn = document.querySelector('[data-map-open]');
-    const overlay = document.querySelector('.map-overlay');
-    if (!openBtn || !overlay) return;
-    const closeBtn = overlay.querySelector('.map-drawer__close');
-    const open = () => { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; };
-    const close = () => { overlay.classList.remove('is-open'); document.body.style.overflow = ''; };
-    openBtn.addEventListener('click', open);
-    closeBtn?.addEventListener('click', close);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-  }
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const meta = $('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#0c0a1c' : '#f8f7fb');
+  $$('.theme-toggle').forEach((btn) => {
+    btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  });
+}
 
-  /* ---------------- Scripture reveal ---------------- */
-  let verseDB = null;
-  async function loadVerseDB() {
-    if (verseDB) return verseDB;
-    const res = await fetch(getRootPath() + 'assets/data/kjv-verses.json');
-    verseDB = await res.json();
-    return verseDB;
-  }
-  function getRootPath() {
-    return document.body.getAttribute('data-root') || '../';
-  }
-
-  function buildScriptureModal() {
-    const existing = document.querySelector('[data-scripture-modal]');
-    if (existing) return existing;
-    const overlay = document.createElement('div');
-    overlay.className = 'scr-modal-overlay';
-    overlay.setAttribute('data-scripture-modal', '1');
-    overlay.innerHTML = `
-      <div class="scr-modal" role="dialog" aria-modal="true" aria-labelledby="scrModalRef">
-        <div class="scr-modal__head">
-          <div class="scr-modal__ref" id="scrModalRef"></div>
-          <button class="scr-modal__close" type="button" aria-label="Close">✕</button>
-        </div>
-        <div class="scr-modal__text"></div>
-        <div class="scr-modal__version">King James Version</div>
-      </div>`;
-    document.body.appendChild(overlay);
-    const close = () => overlay.classList.remove('is-open');
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-    overlay.querySelector('.scr-modal__close').addEventListener('click', close);
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-    return overlay;
-  }
-
-  /** Extracts the verse number from a db key like "jo 3:16" -> 16 */
-  function verseNumFromKey(key) {
-    const m = key.match(/:(\d+)$/);
-    return m ? m[1] : '';
-  }
-
-  async function initScriptureReveal(root = document) {
-    const tags = root.querySelectorAll('.scr[data-ref]');
-    if (!tags.length) return;
-    const db = await loadVerseDB();
-    const overlay = buildScriptureModal();
-    tags.forEach((tag) => {
-      if (tag.dataset.bound) return;
-      tag.dataset.bound = '1';
-      const keys = tag.getAttribute('data-ref').split(',').map(k => k.trim()).filter(Boolean);
-      const entries = keys.map(k => ({ key: k, entry: db[k] })).filter(e => e.entry);
-      if (!entries.length) {
-        tag.replaceWith(document.createTextNode(tag.textContent.trim()));
-        return;
-      }
-      const displayLabel = tag.getAttribute('data-label') || entries[0].entry.ref;
-      // Show each verse with its REAL verse number (not array position) on its own
-      // line, the way a printed reference Bible lays out a passage - not as one
-      // run-on paragraph where verses blur into each other.
-      const bodyHTML = entries.map(({ key, entry }) =>
-        `<p class="verse-line"><span class="vnum">${RCCG.escapeHtml(verseNumFromKey(key))}</span>${RCCG.escapeHtml(entry.text)}</p>`
-      ).join('');
-      tag.addEventListener('click', () => {
-        overlay.querySelector('.scr-modal__ref').textContent = displayLabel;
-        overlay.querySelector('.scr-modal__text').innerHTML = bodyHTML;
-        overlay.querySelector('.scr-modal').scrollTop = 0;
-        overlay.classList.add('is-open');
-      });
-    });
-  }
-
-  /* ---------------- Card deck (single active card + fixed bottom bar) ---------------- */
-  /**
-   * opts: {
-   *   deckSelector, barFillSelector, stepLabelSelector,
-   *   backBtnSelector, nextBtnSelector,
-   *   onComplete(), onStep(index, total)
-   * }
-   */
-  function initCardDeck(opts) {
-    const deck = document.querySelector(opts.deckSelector);
-    const cards = Array.from(deck.querySelectorAll('.study-card'));
-    const barFill = document.querySelector(opts.barFillSelector);
-    const stepLabel = document.querySelector(opts.stepLabelSelector);
-    const backBtn = document.querySelector(opts.backBtnSelector);
-    const nextBtn = document.querySelector(opts.nextBtnSelector);
-    let index = 0;
-
-    function restartListAnimations(card) {
-      card.querySelectorAll('li').forEach((li, i) => {
-        li.style.animation = 'none';
-        // eslint-disable-next-line no-unused-expressions
-        li.offsetHeight; // force reflow to restart animation
-        li.style.animation = '';
-        li.style.animationDelay = `${Math.min(i, 8) * 45}ms`;
-      });
-    }
-
-    function paint() {
-      cards.forEach((c, i) => c.classList.toggle('active', i === index));
-      const pct = Math.round(((index + 1) / cards.length) * 100);
-      if (barFill) barFill.style.width = pct + '%';
-      if (stepLabel) stepLabel.textContent = `${index + 1} / ${cards.length}`;
-      if (backBtn) backBtn.disabled = index === 0;
-      if (nextBtn) nextBtn.textContent = index === cards.length - 1 ? 'Finish study ✓' : 'Continue →';
-      restartListAnimations(cards[index]);
-      window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-      if (typeof opts.onStep === 'function') opts.onStep(index, cards.length);
-    }
-
-    backBtn?.addEventListener('click', () => {
-      if (index > 0) { index--; paint(); }
-    });
-    nextBtn?.addEventListener('click', () => {
-      if (index < cards.length - 1) {
-        index++;
-        paint();
-      } else if (typeof opts.onComplete === 'function') {
-        opts.onComplete();
-      }
-    });
-
-    paint();
-    return { get index() { return index; }, total: cards.length };
-  }
-
-  /* ---------------- Understanding checks (cyu) ---------------- */
-  function initChecks(root = document) {
-    root.querySelectorAll('.cyu-box').forEach((check) => {
-      if (check.dataset.bound) return;
-      check.dataset.bound = '1';
-      const correctIdx = parseInt(check.getAttribute('data-correct'), 10);
-      const opts = check.querySelectorAll('.cyu-option');
-      const feedback = check.querySelector('.cyu-feedback');
-      opts.forEach((opt, i) => {
-        opt.addEventListener('click', () => {
-          if (check.classList.contains('is-answered')) return;
-          check.classList.add('is-answered');
-          opts.forEach((o, j) => o.classList.add(j === correctIdx ? 'correct' : (o === opt ? 'incorrect' : '')));
-          feedback.textContent = i === correctIdx ? '✓ Correct - well done!' : 'Not quite - the correct answer is highlighted above.';
-          feedback.classList.add('is-shown');
-        });
-      });
-    });
-  }
-
-  /* ---------------- Helpers ---------------- */
-  function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  /** Turns text containing {{key1,key2|Display Label}} markers into scripture tag spans. */
-  function renderScriptureText(text) {
-    return escapeHtml(text).replace(/\{\{([^|}]+)\|([^}]+)\}\}/g, (m, refs, display) => {
-      const safeRefs = escapeHtml(refs.trim());
-      const safeLabel = escapeHtml(display.trim());
-      return `<button type="button" class="scr" data-ref="${safeRefs}" data-label="${safeLabel}">${safeLabel}</button>`;
-    });
-  }
-
-  return {
-    loadProgress, saveProgress, markStudyComplete, isStudyComplete, moduleCompletionCount,
-    paintProgressRing, initMapDrawer, initScriptureReveal, initCardDeck, initChecks,
-    renderScriptureText, escapeHtml, getRootPath
-  };
-})();
-
-/* =============================================================
-   Global polish - runs on every page automatically, no per-page
-   wiring needed: a subtle shadow on the top nav once the page has
-   scrolled, and a soft ripple on tap/click for every .btn so
-   buttons feel tactile rather than flat.
-   ============================================================= */
-(function initGlobalPolish() {
-  function onReady(fn) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
-    else fn();
-  }
-
-  onReady(() => {
-    // Nav gains a shadow once content scrolls underneath it.
-    const nav = document.querySelector('.topnav');
-    if (nav) {
-      const syncNavShadow = () => nav.classList.toggle('is-scrolled', window.scrollY > 4);
-      syncNavShadow();
-      window.addEventListener('scroll', syncNavShadow, { passive: true });
-    }
-
-    // Ripple on every button - delegated so it also covers buttons
-    // rendered later (quiz options rendered from JSON, etc.).
-    document.addEventListener('pointerdown', (e) => {
-      const btn = e.target.closest('.btn');
-      if (!btn || btn.disabled) return;
-      const rect = btn.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height) * 1.4;
-      const ripple = document.createElement('span');
-      ripple.className = 'btn__ripple';
-      ripple.style.width = ripple.style.height = size + 'px';
-      ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-      ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-      btn.appendChild(ripple);
-      ripple.addEventListener('animationend', () => ripple.remove());
+function initTheme() {
+  applyTheme(currentTheme());
+  $$('.theme-toggle').forEach((btn) => {
+    btn.innerHTML = `${icon('sun', 'icon--sun')}${icon('moon', 'icon--moon')}`;
+    btn.addEventListener('click', () => {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('rccg-theme', next); } catch { /* private mode: choice lasts for this visit */ }
     });
   });
-})();
+  // Follow the system setting live, until the visitor picks a theme themselves.
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  mq.addEventListener?.('change', (event) => {
+    let saved = null;
+    try { saved = localStorage.getItem('rccg-theme'); } catch { /* ignore */ }
+    if (!saved) applyTheme(event.matches ? 'dark' : 'light');
+  });
+}
+
+/* ---------- Mobile menu (built from the links already in the nav) ---------- */
+function initMenu() {
+  const btn = $('.topnav__menu-btn');
+  if (!btn) return;
+  btn.innerHTML = icon('menu');
+  let dlg;
+  btn.addEventListener('click', () => {
+    if (!dlg) {
+      const links = $$('.topnav__links a').map((a) =>
+        `<a href="${esc(a.getAttribute('href'))}">${icon('book-open')}<span>${esc(a.textContent.trim())}</span></a>`).join('');
+      const home = `<a href="${rootPath() || './'}">${icon('house')}<span>Home</span></a>`;
+      dlg = createDialog({
+        className: 'dialog--drawer',
+        label: 'Menu',
+        html: `<div class="dialog__head"><h2 class="dialog__title">Menu</h2>
+          <button class="nav-btn" type="button" data-close aria-label="Close menu">${icon('x')}</button></div>
+          <nav class="dialog__body" aria-label="Menu"><div class="menu-list">${home}${links}<button type="button" data-palette-open>${icon('search')}<span>Search studies</span></button></div></nav>`,
+      });
+    }
+    showDialog(dlg);
+  });
+}
+
+/* ---------- Command palette (loaded only when first used) ---------- */
+function initPalette() {
+  const open = async () => {
+    try {
+      const mod = await import('./palette.js');
+      mod.openPalette();
+    } catch {
+      toast('Search is unavailable right now.', { type: 'error' });
+    }
+  };
+  if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) $$('[data-kbd]').forEach((k) => { k.textContent = '⌘ K'; });
+  $$('.nav-btn--search').forEach((btn) => btn.insertAdjacentHTML('afterbegin', icon('search')));
+  // One delegated listener also covers the search button inside the mobile menu.
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest?.('[data-palette-open]');
+    if (!trigger) return;
+    trigger.closest('dialog')?.close();
+    open();
+  });
+  document.addEventListener('keydown', (event) => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      open();
+    }
+  });
+}
+
+/* ---------- Account (Firebase is loaded only when needed) ---------- */
+function initAccount() {
+  const btn = $('[data-account-btn]');
+  if (!btn) return;
+  let hint = null;
+  try { hint = JSON.parse(localStorage.getItem(ACCOUNT_HINT_KEY)); } catch { /* ignore */ }
+  paintAccountButton(hint);
+
+  btn.addEventListener('click', async () => {
+    const mod = await import('./account-ui.js');
+    mod.openAccount(btn);
+  });
+
+  // Returning, signed-in visitors: restore the session quietly in the background.
+  if (hint) {
+    const restore = () => import('./account-ui.js').then((mod) => mod.initAccount());
+    if ('requestIdleCallback' in window) requestIdleCallback(restore, { timeout: 2500 });
+    else setTimeout(restore, 1200);
+  }
+}
+
+/* ---------- Scroll reveal ---------- */
+function initReveal() {
+  const items = $$('.reveal');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)) { items.forEach((el) => el.classList.add('is-in')); return; }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-in'); observer.unobserve(entry.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach((el, i) => {
+    if (!el.style.getPropertyValue('--i')) el.style.setProperty('--i', String(i % 4));
+    observer.observe(el);
+  });
+}
+
+/* ---------- Pointer polish: ripple on buttons, glow follows the cursor on track cards ---------- */
+function initPointerPolish() {
+  document.addEventListener('pointerdown', (event) => {
+    const btn = event.target.closest?.('.btn');
+    if (!btn || btn.disabled || btn.getAttribute('aria-disabled') === 'true') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 1.5;
+    const ripple = document.createElement('span');
+    ripple.className = 'btn__ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
+    ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
+    btn.append(ripple);
+    ripple.addEventListener('animationend', () => ripple.remove());
+  });
+  document.addEventListener('pointermove', (event) => {
+    if (event.pointerType !== 'mouse') return;
+    const card = event.target.closest?.('.track');
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+    card.style.setProperty('--my', `${event.clientY - rect.top}px`);
+  }, { passive: true });
+}
+
+/* ---------- Offline support ---------- */
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  const secure = location.protocol === 'https:' || location.hostname === 'localhost';
+  if (!secure) return;
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${rootPath()}sw.js`).catch(() => { /* offline support is optional */ });
+  });
+}
+
+export function initPage() {
+  initNavScroll();
+  initTheme();
+  initMenu();
+  initPalette();
+  initAccount();
+  initReveal();
+  initPointerPolish();
+  registerServiceWorker();
+}

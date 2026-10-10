@@ -1,0 +1,40 @@
+{
+ "modules": [
+  {
+   "id": "believers-manual",
+   "accent": "believers",
+   "icon": "book-open",
+   "title": "Believers' Class",
+   "path": "believers-manual/",
+   "testPath": "test-believers/",
+   "testTitle": "Believers' Class Test",
+   "cardText": "Start here if you're new in the faith - the fundamentals of the new birth, baptism, prayer, and Christian living.",
+   "heroTitle": "Establish your faith in Christ",
+   "heroText": "Learn the foundational doctrines every believer needs - the New Birth, Quiet Time, Baptism, and the Second Coming - one study at a time."
+  },
+  {
+   "id": "baptismal-manual",
+   "accent": "baptismal",
+   "icon": "droplets",
+   "title": "Baptismal Class",
+   "path": "baptismal-manual/",
+   "testPath": "test-baptismal/",
+   "testTitle": "Baptismal Class Test",
+   "cardText": "A deeper 15-study journey preparing you for water baptism, covering doctrine, conduct, and spiritual disciplines.",
+   "heroTitle": "Prepare your heart for the waters of baptism",
+   "heroText": "A deeper walk through doctrine, conduct, and spiritual discipline - for those getting ready to be buried with Christ in baptism and raised to walk in newness of life."
+  },
+  {
+   "id": "workers-in-training",
+   "accent": "workers",
+   "icon": "flame",
+   "title": "Workers-in-Training",
+   "path": "workers-in-training/",
+   "testPath": "test-workers/",
+   "testTitle": "Workers-in-Training Test",
+   "cardText": "For those stepping into service - church structure, conduct among workers, gifts, and ministry administration.",
+   "heroTitle": "Equipped to serve in the house of God",
+   "heroText": "For those stepping into service - church structure, conduct among workers, spiritual gifts, and ministry administration in the RCCG."
+  }
+ ]
+}
