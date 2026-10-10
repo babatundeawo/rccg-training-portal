@@ -1,104 +1,239 @@
 /* ==========================================================================
-   RCCG Learning Path - design tokens
-   Palette matches the official portal identity: deep royal blue, sky blue,
-   emerald green, warm gold for scripture/memory-verse highlights, on white.
+   RCCG Learning Path — design tokens
+
+   Brand direction
+   Reverent, luminous and unhurried: a quiet reading room for Scripture.
+   Deep royal indigo (drawn from the church seal) carries the interface, warm
+   candle-gold is reserved for Scripture and memory verses, and a soft serif
+   gives headlines the feel of a well-set printed Bible. Motion is gentle and
+   purposeful — things settle into place, they never perform.
+
+   Everything visual in the site reads from this file. To re-colour the site,
+   change the values here (see docs/CUSTOMIZING.md).
    ========================================================================== */
 
 :root {
-  /* --- Color: named --- */
-  --navy-950:  #061627;   /* near-black navy - deepest accents, text-on-gold */
-  --navy-900:  #0a2540;   /* deep royal blue  - headers, hero, headings */
-  --navy-800:  #123258;   /* lighter navy for gradients */
-  --blue-600:  #0070f3;   /* primary interactive blue */
-  --blue-500:  #0ea5e9;   /* secondary sky blue (Baptismal accent) */
-  --blue-glow: rgba(0, 112, 243, .35);
-  --green-600: #10b981;   /* emerald  - success, progress, completion */
-  --green-700: #059669;
-  --green-100: rgba(16, 185, 129, .1);
-  --gold-600:  #d97706;   /* warm gold  - memory verses, Workers accent */
-  --gold-500:  #f59e0b;
-  --gold-100:  rgba(217, 119, 6, .1);
-  --red-600:   #ef4444;   /* alerts / incorrect */
-  --red-100:   rgba(239, 68, 68, .1);
-  --slate-50:  #f8fafc;
-  --slate-100: #f1f5f9;
-  --slate-200: #e2e8f0;
-  --slate-300: #cbd5e1;
-  --slate-400: #94a3b8;
-  --slate-500: #64748b;
-  --slate-700: #334155;
-  --white: #ffffff;
+  color-scheme: light;
 
-  /* --- Role mapping --- */
-  --color-bg: var(--slate-50);
-  --color-surface: var(--white);
-  --color-surface-alt: var(--slate-100);
-  --color-text: var(--slate-700);
-  --color-text-muted: var(--slate-500);
-  --color-primary: var(--navy-900);
-  --color-accent: var(--blue-600);
-  --color-accent-light: rgba(0, 112, 243, .08);
-  --color-green: var(--green-600);
-  --color-gold: var(--gold-600);
-  --color-red: var(--red-600);
-  --color-border: var(--slate-200);
+  /* ---- Raw palette: indigo (primary) ---- */
+  --indigo-50:  #f6f5fe;
+  --indigo-100: #ebe9fd;
+  --indigo-200: #d5d0fb;
+  --indigo-300: #b1a8f7;
+  --indigo-400: #8f81f1;
+  --indigo-500: #6b57e6;
+  --indigo-600: #4b33c6;
+  --indigo-700: #3a24a0;
+  --indigo-800: #28166f;   /* the seal's own indigo */
+  --indigo-900: #1b1050;
+  --indigo-950: #120a38;
 
-  /* Per-module accent, overridden per module page */
-  --module-accent: var(--blue-600);
-  --module-accent-light: var(--color-accent-light);
-  --module-accent-dark: #0060d0;
+  /* ---- Raw palette: gold (Scripture) ---- */
+  --gold-100: #fbf0d6;
+  --gold-300: #f8d27f;
+  --gold-400: #f5bc4b;
+  --gold-500: #e8a317;
+  --gold-700: #96560a;
+  --gold-800: #7a4507;
 
-  /* --- Gradients (premium surfaces) --- */
-  --grad-navy: linear-gradient(160deg, var(--navy-800) 0%, var(--navy-950) 100%);
-  --grad-gold: linear-gradient(135deg, var(--gold-500), var(--gold-600));
-  --grad-sheen: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.35) 48%, rgba(255,255,255,0) 65%);
+  /* ---- Raw palette: water (Baptismal) & flame (Workers) ---- */
+  --water-500: #0b7c9e;
+  --water-300: #5fd0f0;
+  --flame-600: #b45309;
+  --flame-300: #f5bc4b;
 
-  /* --- Type --- */
-  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
-  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+  /* ---- Semantic roles (light) ---- */
+  --bg:           #f8f7fb;
+  --surface:      #ffffff;
+  --surface-2:    #f1f0f6;
+  --surface-3:    #e8e6f0;
+  --text:         #17142e;
+  --text-2:       #4a4663;
+  --text-3:       #666280;
+  --border:       #e4e2ec;
+  --border-strong:#cfccdb;
 
-  /* Fluid type scale  - bumped up a step for a more immersive, easy-to-read feel */
-  --fs-xs:   clamp(0.78rem, 0.74rem + 0.2vw, 0.86rem);
-  --fs-sm:   clamp(0.95rem, 0.9rem + 0.25vw, 1.02rem);
-  --fs-base: clamp(1.08rem, 1.03rem + 0.25vw, 1.18rem);
-  --fs-md:   clamp(1.28rem, 1.15rem + 0.6vw, 1.5rem);
-  --fs-lg:   clamp(1.55rem, 1.3rem + 1.2vw, 2.1rem);
-  --fs-xl:   clamp(1.9rem, 1.55rem + 1.7vw, 2.7rem);
-  --fs-xxl:  clamp(2.3rem, 1.8rem + 2.5vw, 3.6rem);
+  --primary:        var(--indigo-700);
+  --primary-hover:  var(--indigo-800);
+  --on-primary:     #ffffff;
+  --link:           var(--indigo-600);
+  --focus:          var(--indigo-600);
 
-  /* Spacing scale */
-  --sp-1: clamp(0.4rem, 0.35rem + 0.25vw, 0.55rem);
-  --sp-2: clamp(0.7rem, 0.6rem + 0.4vw, 0.95rem);
-  --sp-3: clamp(1.1rem, 0.95rem + 0.6vw, 1.5rem);
-  --sp-4: clamp(1.6rem, 1.35rem + 1vw, 2.3rem);
-  --sp-5: clamp(2.3rem, 1.9rem + 1.6vw, 3.4rem);
-  --sp-6: clamp(3.2rem, 2.6rem + 2.4vw, 4.8rem);
+  --scripture:      var(--gold-700);
+  --scripture-bg:   rgba(232, 163, 23, .14);
+  --scripture-line: rgba(232, 163, 23, .45);
 
-  /* Layout */
-  --max-w-reading: 40rem;
-  --max-w-shell: 68rem;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 28px;
-  --nav-h: 64px;
-  --bottom-bar-h: 78px;
+  --success:    #0a7a3b;
+  --success-bg: rgba(10, 122, 59, .1);
+  --warning:    #96560a;
+  --warning-bg: rgba(232, 163, 23, .16);
+  --error:      #b42318;
+  --error-bg:   rgba(180, 35, 24, .09);
+  --info:       #1f5fbf;
+  --info-bg:    rgba(31, 95, 191, .09);
 
-  /* Motion */
+  /* Per-track accent (overridden by [data-accent]) */
+  --accent:       var(--indigo-600);
+  --accent-text:  var(--indigo-600);
+  --accent-soft:  rgba(75, 51, 198, .09);
+  --accent-line:  rgba(75, 51, 198, .28);
+  --on-accent:    #ffffff;
+
+  /* ---- Typography ---- */
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Inter", "Inter Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step--2: clamp(0.76rem, 0.74rem + 0.1vw, 0.82rem);
+  --step--1: clamp(0.875rem, 0.85rem + 0.12vw, 0.94rem);
+  --step-0:  clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem);
+  --step-1:  clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --step-2:  clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --step-3:  clamp(1.9rem, 1.5rem + 2vw, 2.9rem);
+  --step-4:  clamp(2.4rem, 1.7rem + 3.5vw, 4.2rem);
+  --step-5:  clamp(2.8rem, 1.8rem + 5vw, 5.4rem);
+
+  /* ---- Spacing (4px base) ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --section-y: clamp(3.5rem, 2.5rem + 5vw, 7rem);
+  --gutter: clamp(1.25rem, 0.8rem + 2.2vw, 2.5rem);
+
+  /* ---- Layout ---- */
+  --container: 72rem;
+  --reading: 41rem;
+  --nav-h: 4rem;
+  --bar-h: 4.75rem;
+
+  /* ---- Radius ---- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ---- Shadows (tinted with indigo ink, never flat black) ---- */
+  --shadow-xs: 0 1px 2px rgba(27, 16, 80, .06);
+  --shadow-sm: 0 2px 8px -2px rgba(27, 16, 80, .1);
+  --shadow-md: 0 10px 30px -10px rgba(27, 16, 80, .18);
+  --shadow-lg: 0 24px 56px -16px rgba(27, 16, 80, .28);
+  --shadow-glow: 0 12px 32px -10px color-mix(in srgb, var(--accent) 55%, transparent);
+
+  /* ---- Layers ---- */
+  --z-content: 1;
+  --z-bar: 40;
+  --z-nav: 50;
+  --z-dialog: 100;
+  --z-toast: 200;
+  --z-skip: 300;
+
+  /* ---- Motion ---- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --dur-fast: 180ms;
-  --dur-med: 340ms;
-  --dur-slow: 560ms;
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --dur-1: 150ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
+  --dur-4: 720ms;
+}
 
-  /* Shadows - tinted with the navy ink instead of flat black for a warmer,
-     more premium sense of depth; one carries the module accent for glow. */
-  --shadow-xs: 0 1px 2px rgba(10,37,64,.04);
-  --shadow-sm: 0 2px 8px -2px rgba(10,37,64,.07);
-  --shadow-md: 0 8px 28px -6px rgba(10,37,64,.14);
-  --shadow-lg: 0 20px 48px -12px rgba(10,37,64,.22);
-  --shadow-xl: 0 28px 64px -16px rgba(10,37,64,.28);
-  --shadow-glow: 0 10px 30px -8px var(--blue-glow);
+/* ---- Track accents ---- */
+[data-accent="believers"] {
+  --accent: var(--indigo-600);
+  --accent-text: var(--indigo-600);
+  --accent-soft: rgba(75, 51, 198, .09);
+  --accent-line: rgba(75, 51, 198, .28);
+  --on-accent: #ffffff;
+}
+[data-accent="baptismal"] {
+  --accent: var(--water-500);
+  --accent-text: #08708f;
+  --accent-soft: rgba(11, 124, 158, .1);
+  --accent-line: rgba(11, 124, 158, .32);
+  --on-accent: #ffffff;
+}
+[data-accent="workers"] {
+  --accent: var(--flame-600);
+  --accent-text: #9a4507;
+  --accent-soft: rgba(180, 83, 9, .1);
+  --accent-line: rgba(180, 83, 9, .32);
+  --on-accent: #ffffff;
+}
 
-  --glass-blur: 16px;
+/* ---- Dark theme ---- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:           #0c0a1c;
+  --surface:      #14112b;
+  --surface-2:    #1b1838;
+  --surface-3:    #252148;
+  --text:         #eceaf7;
+  --text-2:       #bab6d4;
+  --text-3:       #9591b4;
+  --border:       #26224a;
+  --border-strong:#3a3566;
+
+  --primary:       #a99cff;
+  --primary-hover: #c1b7ff;
+  --on-primary:    #120a38;
+  --link:          #b9aeff;
+  --focus:         #c1b7ff;
+
+  --scripture:      var(--gold-400);
+  --scripture-bg:   rgba(245, 188, 75, .12);
+  --scripture-line: rgba(245, 188, 75, .4);
+
+  --success:    #4ade80;
+  --success-bg: rgba(74, 222, 128, .12);
+  --warning:    #f5bc4b;
+  --warning-bg: rgba(245, 188, 75, .14);
+  --error:      #ff8a80;
+  --error-bg:   rgba(255, 138, 128, .13);
+  --info:       #7db4ff;
+  --info-bg:    rgba(125, 180, 255, .12);
+
+  --accent: #a99cff;
+  --accent-text: #b9aeff;
+  --accent-soft: rgba(169, 156, 255, .14);
+  --accent-line: rgba(169, 156, 255, .34);
+  --on-accent: #120a38;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, .5);
+  --shadow-md: 0 10px 30px -10px rgba(0, 0, 0, .6);
+  --shadow-lg: 0 24px 56px -16px rgba(0, 0, 0, .7);
+}
+:root[data-theme="dark"] [data-accent="believers"] {
+  --accent: #a99cff; --accent-text: #b9aeff;
+  --accent-soft: rgba(169, 156, 255, .14); --accent-line: rgba(169, 156, 255, .34); --on-accent: #120a38;
+}
+:root[data-theme="dark"] [data-accent="baptismal"] {
+  --accent: var(--water-300); --accent-text: #7fdcf5;
+  --accent-soft: rgba(95, 208, 240, .13); --accent-line: rgba(95, 208, 240, .34); --on-accent: #06222b;
+}
+:root[data-theme="dark"] [data-accent="workers"] {
+  --accent: var(--flame-300); --accent-text: #f8cf78;
+  --accent-soft: rgba(245, 188, 75, .13); --accent-line: rgba(245, 188, 75, .36); --on-accent: #2a1704;
+}
+
+/* No-JavaScript fallback: follow the system preference when no theme was set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg: #0c0a1c; --surface: #14112b; --surface-2: #1b1838; --surface-3: #252148;
+    --text: #eceaf7; --text-2: #bab6d4; --text-3: #9591b4;
+    --border: #26224a; --border-strong: #3a3566;
+    --primary: #a99cff; --primary-hover: #c1b7ff; --on-primary: #120a38;
+    --link: #b9aeff; --focus: #c1b7ff;
+    --scripture: var(--gold-400); --scripture-bg: rgba(245, 188, 75, .12); --scripture-line: rgba(245, 188, 75, .4);
+    --accent: #a99cff; --accent-text: #b9aeff; --accent-soft: rgba(169, 156, 255, .14);
+    --accent-line: rgba(169, 156, 255, .34); --on-accent: #120a38;
+  }
 }

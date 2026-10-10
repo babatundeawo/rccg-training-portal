@@ -1,229 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a2540">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<title>Believers' Class Test - RCCG Learning Path</title>
-<link rel="icon" href="../assets/img/rccg-logo.png">
-<link rel="apple-touch-icon" href="../assets/img/rccg-logo.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://apis.google.com; style-src 'self'; img-src 'self' data: https://*.googleusercontent.com; font-src 'self'; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.firebaseapp.com wss://*.firebaseio.com; frame-src https://*.firebaseapp.com https://accounts.google.com https://apis.google.com https://content.googleapis.com; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<title>Believers&#x27; Class Test - RCCG Learning Path</title>
+<meta name="description" content="Take the Believers&#x27; Class test: a timed paper of randomly chosen questions, with your result ready to share.">
+<link rel="canonical" href="https://babatundeawo.github.io/rccg-training-portal/test-believers/">
+<meta name="theme-color" content="#f8f7fb">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RCCG Learning Path">
+<meta property="og:title" content="Believers&#x27; Class Test - RCCG Learning Path">
+<meta property="og:description" content="Take the Believers&#x27; Class test: a timed paper of randomly chosen questions, with your result ready to share.">
+<meta property="og:url" content="https://babatundeawo.github.io/rccg-training-portal/test-believers/">
+<meta property="og:image" content="https://babatundeawo.github.io/rccg-training-portal/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RCCG Learning Path: Believers' Class, Baptismal Class and Workers-in-Training">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="preload" href="../assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script src="../assets/js/theme-init.js"></script>
+<link rel="stylesheet" href="../assets/css/tokens.css">
 <link rel="stylesheet" href="../assets/css/base.css">
-<style>
- :root{--module-accent:var(--blue-600);--module-accent-light:var(--color-accent-light);}
- .test-shell{max-width:38rem;margin:0 auto;padding:var(--sp-4) var(--sp-3) var(--sp-6);}
- .panel{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--sp-4);box-shadow:var(--shadow-md);animation:pageIn var(--dur-slow) var(--ease-out);}
- .field{margin-bottom:var(--sp-3);}
- .field label{display:block;font-size:var(--fs-sm);font-weight:700;color:var(--color-primary);margin-bottom:.4rem;}
- .field input{width:100%;padding:.85rem 1rem;border:1.5px solid var(--color-border);border-radius:var(--radius-sm);font-size:var(--fs-base);font-family:inherit;background:var(--slate-50);}
- .field input:focus{outline:none;border-color:var(--module-accent);background:var(--white);box-shadow:0 0 0 4px var(--module-accent-light);}
- .q-progress{font-size:var(--fs-xs);color:var(--color-text-muted);font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--sp-2);}
- .q-text{font-family:var(--font-display);font-size:var(--fs-lg);margin-bottom:var(--sp-3);line-height:1.35;}
- .q-opts{display:grid;gap:.7rem;margin-bottom:var(--sp-4);}
- .q-opt{position:relative;text-align:left;background:var(--slate-50);border:1.5px solid var(--color-border);border-radius:var(--radius-sm);padding:.9rem 1.1rem .9rem 2.9rem;cursor:pointer;font-size:var(--fs-base);transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out);}
- .q-opt:hover{border-color:var(--slate-400);transform:translateX(2px);}
- .q-opt::before{content:'';position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;border:1.5px solid var(--slate-300);background:#fff;transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out);}
- .q-opt.selected{border-color:var(--module-accent);background:var(--module-accent-light);font-weight:700;color:var(--color-primary);}
- .q-opt.selected::before{border-color:var(--module-accent);border-width:5px;background:#fff;}
- .score-hero{text-align:center;padding:var(--sp-4) 0;}
- .score-hero .num{font-family:var(--font-display);font-size:var(--fs-xxl);color:var(--module-accent);font-weight:700;}
- .hidden{display:none !important;}
- .wa-btn{background:#25D366;color:#fff;box-shadow:0 10px 26px -10px rgba(37,211,102,.5);}
- .wa-btn:hover{filter:brightness(1.05);}
- #timerDisplay{transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out);}
- #timerDisplay.is-low{animation:timerPulse 1s ease-in-out infinite;}
- @keyframes timerPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
-</style>
+<link rel="stylesheet" href="../assets/css/components.css">
+
 </head>
-<body data-root="../">
-
-<nav class="topnav">
+<body data-root="../" data-accent="believers" data-module="believers-manual" data-title="Believers&#x27; Class">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topnav">
  <div class="topnav__inner">
- <a class="topnav__brand" href="index.html">
- <span class="topnav__logo"><img src="../assets/img/rccg-logo.png" alt="RCCG logo"></span>
- <span class="topnav__brand-text"><span class="topnav__brand-name">Believers' Class Test</span></span>
- </a>
- <span class="topnav__spacer"></span>
- <button class="account-btn" data-account-btn type="button">
-   <span class="account-btn-label">Sign in</span>
- </button>
+  <a class="brand" href="../" aria-label="RCCG Learning Path - home">
+   <img class="brand__logo" src="../assets/img/rccg-logo-48.webp" srcset="../assets/img/rccg-logo-48.webp 1x, ../assets/img/rccg-logo-96.webp 2x, ../assets/img/rccg-logo-144.webp 3x" width="40" height="40" alt="">
+   <span class="brand__text"><span class="brand__name">RCCG Learning Path</span><span class="brand__sub">Kingdom Diplomats Training Portal</span></span>
+  </a>
+  <nav class="topnav__links" aria-label="Tracks"><a class="topnav__link" href="../believers-manual/index.html" aria-current="page">Believers&#x27; Class</a><a class="topnav__link" href="../baptismal-manual/index.html">Baptismal Class</a><a class="topnav__link" href="../workers-in-training/index.html">Workers-in-Training</a></nav>
+  <span class="topnav__spacer"></span>
+  <div class="topnav__actions">
+   
+   <button class="nav-btn nav-btn--search" data-palette-open type="button" aria-label="Search studies"><span class="nav-btn__label">Search</span><kbd data-kbd>Ctrl K</kbd></button>
+   <button class="nav-btn theme-toggle" type="button" aria-label="Switch to dark theme"></button>
+   <button class="nav-btn account-btn" data-account-btn type="button" aria-label="Sign in or create an account"><span class="account-btn__label">Sign in</span></button>
+   <button class="nav-btn topnav__menu-btn" type="button" aria-label="Open menu"></button>
+  </div>
  </div>
-</nav>
-
-<main class="test-shell">
-
- <section id="stepRegister" class="panel">
- <h1 style="font-size:var(--fs-lg);margin-top:0;">Test day registration</h1>
- <p style="color:var(--color-text-muted);">Fill in your details before starting. Your paper will have 30 randomly chosen questions - no two candidates get quite the same set.</p>
- <div class="field">
- <label for="candName">Full name</label>
- <input id="candName" type="text" autocomplete="name" required>
- </div>
- <div class="field">
- <label for="candDob">Date of birth</label>
- <input id="candDob" type="date" required>
- </div>
- <div class="field">
- <label for="candPhone">Phone number</label>
- <input id="candPhone" type="tel" autocomplete="tel" placeholder="e.g. 080XXXXXXXX">
- </div>
- <button class="btn btn--primary btn--block" id="startBtn" type="button">Start test →</button>
+ 
+</header>
+<main id="main" class="container container--reading test-wrap">
+ <section id="stepRegister" class="panel" aria-labelledby="regTitle">
+  <h1 id="regTitle">Test day registration</h1>
+  <p>Fill in your details before starting. Your paper will have <span id="qCount">30</span> randomly chosen questions - no two candidates get quite the same set. You will have 15 minutes.</p>
+  <form id="registerForm" novalidate>
+   <div class="field"><label for="candName">Full name</label>
+    <input class="input" id="candName" type="text" autocomplete="name" required aria-required="true" aria-describedby="err-name">
+    <span class="field__error" id="err-name" role="alert"></span></div>
+   <div class="field"><label for="candDob">Date of birth</label>
+    <input class="input" id="candDob" type="date" required aria-required="true" aria-describedby="err-dob">
+    <span class="field__error" id="err-dob" role="alert"></span></div>
+   <div class="field"><label for="candPhone">Phone number <span class="muted">(optional)</span></label>
+    <input class="input" id="candPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 080XXXXXXXX" aria-describedby="err-phone">
+    <span class="field__error" id="err-phone" role="alert"></span></div>
+   <div class="notice notice--error mb-4" id="loadError" role="alert" hidden><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20h.01" /> <path d="M8.5 16.429a5 5 0 0 1 7 0" /> <path d="M5 12.859a10 10 0 0 1 5.17-2.69" /> <path d="M19 12.859a10 10 0 0 0-2.007-1.523" /> <path d="M2 8.82a15 15 0 0 1 4.177-2.643" /> <path d="M22 8.82a15 15 0 0 0-11.288-3.764" /> <path d="m2 2 20 20" /></svg><span>We couldn't load the questions. Check your connection and try again.</span></div>
+   <button class="btn btn--primary btn--block btn--lg" id="startBtn" type="submit"><span class="btn__label">Start test</span><svg class="icon icon--nudge" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></button>
+  </form>
+  <noscript><p class="notice noscript-note"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /></svg><span>The test needs JavaScript. Please turn it on in your browser to take it.</span></p></noscript>
  </section>
 
- <section id="stepQuiz" class="panel hidden">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--sp-2);">
- <div class="q-progress" id="qProgress" style="margin-bottom:0;">Question 1 of 30</div>
- <div id="timerDisplay" style="font-weight:800;font-size:var(--fs-sm);color:var(--module-accent);background:var(--module-accent-light);padding:.35rem .7rem;border-radius:99px;">15:00</div>
- </div>
- <div class="bar-track" style="margin-bottom:var(--sp-3);"><div class="bar-fill" id="quizBar" style="width:0%"></div></div>
- <div class="q-text" id="qText"></div>
- <div class="q-opts" id="qOpts"></div>
- <button class="btn btn--primary btn--block" id="nextBtn" type="button" disabled>Next question →</button>
+ <section id="stepQuiz" class="panel" aria-label="Test" hidden>
+  <div class="quiz-top">
+   <div class="q-progress" id="qProgress">Question 1</div>
+   <div class="timer" id="timer" role="timer" aria-label="Time remaining"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" /></svg><span id="timerText">15:00</span></div>
+  </div>
+  <div class="bar quiz-bar" aria-hidden="true"><div class="bar__fill" id="quizBar"></div></div>
+  <h2 class="q-text" id="qText" tabindex="-1"></h2>
+  <fieldset class="q-opts" id="qOpts" aria-labelledby="qText"></fieldset>
+  <button class="btn btn--primary btn--block btn--lg" id="nextBtn" type="button" disabled><span class="btn__label">Next question</span><svg class="icon icon--nudge" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></svg></button>
+  <div class="sr-only" id="timerLive" aria-live="polite"></div>
  </section>
 
- <section id="stepResult" class="panel hidden">
- <div class="score-hero">
- <div class="q-progress">Test complete</div>
- <div class="num" id="scoreNum">0 / 30</div>
- <p id="scorePct" style="color:var(--color-text-muted);"></p>
- </div>
- <button class="btn btn--primary btn--block" id="submitScoreBtn" type="button">Submit score</button>
- <div id="afterSubmit" class="hidden" style="margin-top:var(--sp-3);display:grid;gap:.6rem;">
- <a class="btn wa-btn btn--block" id="waShareBtn" href="#" target="_blank" rel="noopener">Share result to WhatsApp group →</a>
- <a class="btn btn--ghost btn--block" href="index.html">Back to test home</a>
- </div>
+ <section id="stepResult" class="panel" aria-labelledby="resultTitle" hidden>
+  <div class="score">
+   <span class="q-progress">Test complete</span>
+   <h1 class="sr-only" id="resultTitle" tabindex="-1">Your result</h1>
+   <div class="score__ring">
+    <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track-c" cx="60" cy="60" r="52"></circle><circle class="value-c" cx="60" cy="60" r="52"></circle></svg>
+    <div class="score__num" id="scoreNum">0 / 30<small id="scorePct"></small></div>
+   </div>
+   <p class="score__note" id="scoreNote"></p>
+  </div>
+  <button class="btn btn--primary btn--block btn--lg" id="submitScoreBtn" type="button"><span class="btn__label">Submit score</span></button>
+  <div class="share-actions" id="afterSubmit" hidden>
+   <a class="btn btn--whatsapp btn--lg btn--block" id="waShareBtn" href="#" target="_blank" rel="noopener noreferrer"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></svg><span class="btn__label">Share result to WhatsApp group</span></a>
+   <button class="btn btn--block" id="copyBtn" type="button"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /> <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span class="btn__label">Copy result</span></button>
+   <a class="btn btn--ghost btn--block" href="index.html"><span class="btn__label">Back to test home</span></a>
+  </div>
  </section>
-
 </main>
-
-<footer class="footer">The Redeemed Christian Church of God</footer>
-
-<script src="../assets/js/app.js"></script>
-<script src="../assets/js/firebase-config.js"></script>
-<script type="module" src="../assets/js/auth.js"></script>
-<script src="../assets/js/account-ui.js"></script>
-<script>RCCG_initAccountUI();</script>
-<script src="../assets/js/quiz.js"></script>
-<script>
-const MODULE_ID = 'believers-manual';
-const TEST_DURATION_SECONDS = 15 * 60;
-let paper = [], answers = [], current = 0, candidate = {};
-let timerInterval = null, timeRemaining = TEST_DURATION_SECONDS, autoSubmitted = false;
-
-const stepRegister = document.getElementById('stepRegister');
-const stepQuiz = document.getElementById('stepQuiz');
-const stepResult = document.getElementById('stepResult');
-
-function formatTime(secs) {
- const m = Math.floor(secs / 60);
- const s = secs % 60;
- return `${m}:${String(s).padStart(2, '0')}`;
-}
-
-function startTimer() {
- timeRemaining = TEST_DURATION_SECONDS;
- autoSubmitted = false;
- const display = document.getElementById('timerDisplay');
- display.textContent = formatTime(timeRemaining);
- display.style.color = '';
- display.style.background = '';
- display.classList.remove('is-low');
- clearInterval(timerInterval);
- timerInterval = setInterval(() => {
- timeRemaining--;
- display.textContent = formatTime(Math.max(timeRemaining, 0));
- if (timeRemaining <= 60) {
- display.style.color = '#fff';
- display.style.background = 'var(--color-red, #ef4444)';
- display.classList.add('is-low');
- }
- if (timeRemaining <= 0) {
- clearInterval(timerInterval);
- autoSubmitted = true;
- finishQuiz();
- }
- }, 1000);
-}
-
-function stopTimer() {
- clearInterval(timerInterval);
-}
-
-document.getElementById('startBtn').addEventListener('click', async () => {
- const name = document.getElementById('candName').value.trim();
- const dob = document.getElementById('candDob').value;
- const phone = document.getElementById('candPhone').value.trim();
- if (!name || !dob) { alert('Please enter your full name and date of birth.'); return; }
- candidate = { name, dob, phone };
-
- const bank = await fetch(`../assets/data/${MODULE_ID}/quiz-bank.json`).then(r => r.json());
- paper = RCCGQuiz.buildCandidatePaper(bank.questions, 30);
- answers = new Array(paper.length).fill(null);
- current = 0;
-
- stepRegister.classList.add('hidden');
- stepQuiz.classList.remove('hidden');
- renderQuestion();
- startTimer();
-});
-
-function renderQuestion() {
- const q = paper[current];
- document.getElementById('qProgress').textContent = `Question ${current + 1} of ${paper.length}`;
- document.getElementById('quizBar').style.width = Math.round((current / paper.length) * 100) + '%';
- document.getElementById('qText').textContent = q.question;
- const optsEl = document.getElementById('qOpts');
- optsEl.innerHTML = q.options.map((opt, i) =>
- `<button type="button" class="q-opt" data-i="${i}">${RCCG.escapeHtml(opt)}</button>`
- ).join('');
- const nextBtn = document.getElementById('nextBtn');
- nextBtn.disabled = true;
- nextBtn.textContent = current === paper.length - 1 ? 'Finish test →' : 'Next question →';
-
- optsEl.querySelectorAll('.q-opt').forEach(btn => {
- btn.addEventListener('click', () => {
- optsEl.querySelectorAll('.q-opt').forEach(b => b.classList.remove('selected'));
- btn.classList.add('selected');
- answers[current] = parseInt(btn.getAttribute('data-i'), 10);
- nextBtn.disabled = false;
- });
- });
-}
-
-document.getElementById('nextBtn').addEventListener('click', () => {
- if (current < paper.length - 1) { current++; renderQuestion(); }
- else finishQuiz();
-});
-
-function finishQuiz() {
- stopTimer();
- const { correct, total } = RCCGQuiz.scorePaper(paper, answers);
- stepQuiz.classList.add('hidden');
- stepResult.classList.remove('hidden');
- document.getElementById('scoreNum').textContent = `${correct} / ${total}`;
- const unanswered = answers.filter(a => a === null).length;
- let pctLine = `${Math.round((correct/total)*100)}%`;
- if (autoSubmitted) {
- pctLine = `⏱ Time's up - test auto-submitted. ${pctLine}` + (unanswered ? ` (${unanswered} left unanswered)` : '');
- }
- document.getElementById('scorePct').textContent = pctLine;
- window._lastScore = { correct, total };
-}
-
-document.getElementById('submitScoreBtn').addEventListener('click', (e) => {
- e.target.disabled = true;
- e.target.textContent = 'Score submitted ✓';
- const { correct, total } = window._lastScore;
- const message = RCCGQuiz.buildWhatsAppMessage({
- moduleTitle: "Believers' Class",
- name: candidate.name, dob: candidate.dob, phone: candidate.phone,
- correct, total,
- date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
- });
- document.getElementById('waShareBtn').href = RCCGQuiz.whatsappShareUrl(message);
- document.getElementById('afterSubmit').classList.remove('hidden');
-});
-</script>
+<footer class="footer">
+ <div class="container footer__inner">
+  <div class="footer__brand">
+   <a class="brand" href="../"><img class="brand__logo" src="../assets/img/rccg-logo-48.webp" srcset="../assets/img/rccg-logo-96.webp 2x" width="40" height="40" alt=""><span class="brand__text"><span class="brand__name">RCCG Learning Path</span></span></a>
+   <p>The Redeemed Christian Church of God - for local use in preparing believers.</p>
+  </div>
+  <div class="footer__cols">
+   <div class="footer__col"><h2>Tracks</h2><a href="../believers-manual/index.html">Believers&#x27; Class</a><a href="../baptismal-manual/index.html">Baptismal Class</a><a href="../workers-in-training/index.html">Workers-in-Training</a></div>
+   <div class="footer__col"><h2>Test day</h2><a href="../test-believers/index.html">Believers&#x27; Class</a><a href="../test-baptismal/index.html">Baptismal Class</a><a href="../test-workers/index.html">Workers-in-Training</a></div>
+  </div>
+ </div>
+ <div class="container footer__legal">Scripture quotations are from the King James Version.</div>
+</footer>
+<script type="module" src="../assets/js/pages/test.js"></script>
 </body>
 </html>

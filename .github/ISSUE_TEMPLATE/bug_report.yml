@@ -1,0 +1,15 @@
+name: Something is not working
+description: A page, button or sign-in problem
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Include the page address and what you expected.
+    validations: { required: true }
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser
+      placeholder: iPhone, Safari
