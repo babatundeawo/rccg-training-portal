@@ -1,6 +1,6 @@
 /* Account dialog: sign in, create account, reset password, and a profile view
    with email verification and sign out. Loaded on demand. */
-import { $, esc, icon, createDialog, showDialog, toast, paintAccountButton } from './ui.js';
+import { $, esc, icon, rootPath, createDialog, showDialog, toast, paintAccountButton } from './ui.js';
 import { loadAuth, friendlyAuthError } from './auth.js';
 
 let dlg;
@@ -48,6 +48,11 @@ function profileView() {
     <div class="profile__actions">
       ${verified ? '' : `<button class="btn btn--block" type="button" id="acctResend"><span class="btn__label">Resend verification email</span></button>
         <button class="btn btn--block" type="button" id="acctRefresh"><span class="btn__label">I’ve verified my email</span></button>`}
+      <a class="btn btn--block" href="${rootPath()}my-notes/index.html"><span class="btn__label">My notes and bookmarks</span></a>
+      <div class="share-box"><label class="switch"><input type="checkbox" id="acctShare" ${auth && auth.isSharing() ? 'checked' : ''}>
+        <span class="switch__track" aria-hidden="true"></span><span class="switch__text">Share my progress with my class leaders</span></label>
+        <p class="hint">If you turn this on, approved class leaders can see your name, email and which studies you have finished. They can never see your notes or bookmarks. Turn it off any time.</p></div>
+      <a class="btn btn--block" id="acctLeader" href="${rootPath()}leaders/index.html" hidden><span class="btn__label">Class leader view</span></a>
       <button class="btn btn--block" type="button" id="acctSignOut">${icon('log-out')}<span class="btn__label">Sign out</span></button>
     </div></div>`;
 }
@@ -56,6 +61,7 @@ function render() {
   const titles = { signin: 'Sign in', signup: 'Create your account', reset: 'Reset your password' };
   $('#acctTitle', dlg).textContent = person ? 'Your account' : titles[mode];
   $('#acctBody', dlg).innerHTML = person ? profileView() : formView();
+  if (person && auth) auth.isLeader().then((yes) => { const link = $('#acctLeader', dlg); if (link) link.hidden = !yes; });
   if (!person && mode === 'reset') {
     $('#acctBody .muted', dlg).textContent = 'Enter the email you signed up with and we’ll send you a link to choose a new password.';
   }
@@ -110,6 +116,19 @@ function wire() {
   if (wired) return;
   wired = true;
   dlg.addEventListener('submit', onSubmit);
+  dlg.addEventListener('change', async (event) => {
+    if (event.target.id !== 'acctShare') return;
+    const box = event.target;
+    box.disabled = true;
+    try {
+      await auth.setSharing(box.checked);
+      toast(box.checked ? 'Your progress is now visible to class leaders.' : 'Sharing is off. Leaders can no longer see your progress.', { type: 'success' });
+    } catch (error) {
+      box.checked = !box.checked;
+      toast(friendlyAuthError(error), { type: 'error' });
+    }
+    box.disabled = false;
+  });
   dlg.addEventListener('click', async (event) => {
     const modeBtn = event.target.closest('[data-mode]');
     if (modeBtn) { mode = modeBtn.dataset.mode; render(); $('#acctBody input', dlg)?.focus(); return; }

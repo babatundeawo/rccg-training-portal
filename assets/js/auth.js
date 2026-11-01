@@ -7,7 +7,10 @@
    progress is union-merged with the device's progress, so nothing completed as
    a guest is lost, and later completions are pushed up in the background. */
 import { firebaseConfig } from './firebase-config.js';
-import { loadProgress, saveProgress, mergeProgress } from './store.js';
+import {
+  loadProgress, saveProgress, mergeProgress, getActivity, saveActivity, mergeActivity, getCompletedOn, saveCompletedOn,
+  mergeCompletedOn, getPrivateData, savePrivateData, mergeByUpdatedAt, getShared, setSharedLocal,
+} from './store.js';
 import { debounce } from './ui.js';
 
 const SDK = 'https://www.gstatic.com/firebasejs/10.13.0';
@@ -63,17 +66,45 @@ async function init() {
 
   const emit = (name, detail) => window.dispatchEvent(new CustomEvent(name, { detail }));
 
+  const progressRef = (uid) => fsSdk.doc(db, 'progress', uid);
+  const privateRef = (uid) => fsSdk.doc(db, 'private', uid);
+
+  /* What a class leader can see (only when the learner opts in): name, email,
+     study progress, study days. Notes and bookmarks live in 'private' instead. */
+  const progressPayload = (user, extra = {}) => ({
+    modules: loadProgress(),
+    activity: getActivity(),
+    completed: getCompletedOn(),
+    updatedAt: Date.now(),
+    name: publicUser(user).name,
+    email: user.email || null,
+    ...extra,
+  });
+
   async function syncOnSignIn(user) {
     if (syncing) return;
     syncing = true;
     try {
-      const ref = fsSdk.doc(db, 'progress', user.uid);
-      const snap = await fsSdk.getDoc(ref);
-      const remote = snap.exists() ? (snap.data().modules || {}) : {};
-      const merged = mergeProgress(loadProgress(), remote);
+      const [snap, privSnap] = await Promise.all([fsSdk.getDoc(progressRef(user.uid)), fsSdk.getDoc(privateRef(user.uid))]);
+      const remote = snap.exists() ? snap.data() : {};
+      const merged = mergeProgress(loadProgress(), remote.modules || {});
       saveProgress(merged);
-      await fsSdk.setDoc(ref, { modules: merged, updatedAt: Date.now(), email: user.email || null }, { merge: true });
+      saveActivity(mergeActivity(getActivity(), remote.activity));
+      saveCompletedOn(mergeCompletedOn(getCompletedOn(), remote.completed));
+      setSharedLocal(remote.shared === true);
+      await fsSdk.setDoc(progressRef(user.uid), progressPayload(user), { merge: true });
+
+      const remotePrivate = privSnap.exists() ? privSnap.data() : {};
+      const local = getPrivateData();
+      const mergedPrivate = {
+        notes: mergeByUpdatedAt(local.notes, remotePrivate.notes),
+        bookmarks: mergeByUpdatedAt(local.bookmarks, remotePrivate.bookmarks),
+        positions: mergeByUpdatedAt(local.positions, remotePrivate.positions),
+      };
+      savePrivateData(mergedPrivate);
+      await fsSdk.setDoc(privateRef(user.uid), { ...mergedPrivate, updatedAt: Date.now() }, { merge: true });
       emit('rccg:progress-synced', merged);
+      emit('rccg:private-synced', mergedPrivate);
     } catch (error) {
       emit('rccg:sync-error', friendlyAuthError(error));
     } finally {
@@ -84,12 +115,22 @@ async function init() {
   const pushProgress = debounce(async () => {
     if (!current) return;
     try {
-      await fsSdk.setDoc(fsSdk.doc(db, 'progress', current.uid), { modules: loadProgress(), updatedAt: Date.now() }, { merge: true });
+      await fsSdk.setDoc(progressRef(current.uid), progressPayload(current), { merge: true });
     } catch (error) {
       emit('rccg:sync-error', friendlyAuthError(error));
     }
   }, 600);
   window.addEventListener('rccg:progress-changed', pushProgress);
+
+  const pushPrivate = debounce(async () => {
+    if (!current) return;
+    try {
+      await fsSdk.setDoc(privateRef(current.uid), { ...getPrivateData(), updatedAt: Date.now() }, { merge: true });
+    } catch (error) {
+      emit('rccg:sync-error', friendlyAuthError(error));
+    }
+  }, 1200);
+  window.addEventListener('rccg:private-changed', pushPrivate);
 
   const ready = new Promise((resolve) => {
     let first = true;
@@ -161,6 +202,32 @@ async function init() {
       const person = publicUser(auth.currentUser);
       emit('rccg:auth-changed', person);
       return person;
+    },
+
+    isSharing: () => getShared(),
+
+    /** Opt in or out of showing name, email and progress to class leaders. */
+    async setSharing(shared) {
+      if (!auth.currentUser) throw new Error('Not signed in');
+      await fsSdk.setDoc(progressRef(auth.currentUser.uid), progressPayload(auth.currentUser, { shared: Boolean(shared) }), { merge: true });
+      setSharedLocal(shared);
+    },
+
+    /** True only for people the site owner has approved as class leaders. */
+    async isLeader() {
+      if (!auth.currentUser) return false;
+      try {
+        const snap = await fsSdk.getDoc(fsSdk.doc(db, 'leaders', auth.currentUser.uid));
+        return snap.exists() && snap.data().active === true;
+      } catch {
+        return false;
+      }
+    },
+
+    /** Everyone who chose to share their progress (leaders only; the rules enforce this). */
+    async listSharedLearners() {
+      const result = await fsSdk.getDocs(fsSdk.query(fsSdk.collection(db, 'progress'), fsSdk.where('shared', '==', true)));
+      return result.docs.map((d) => ({ uid: d.id, ...d.data() }));
     },
 
     logOut: () => authSdk.signOut(auth),

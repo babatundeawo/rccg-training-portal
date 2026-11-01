@@ -1,22 +1,34 @@
 /* Offline support. Pages and data are fetched from the network first, so
    visitors always get the latest version after an update; if the network is
-   down, the last copy they opened is served instead. Fonts and images are
-   served from cache for speed. Firebase and other sites are never touched. */
+   down, the last copy they opened is served instead, or a friendly offline
+   page. Fonts and images are served from cache for speed. Firebase and other
+   sites are never touched.
+
+   Updates: a new version waits quietly until the visitor taps "Refresh" in the
+   "update available" message, so nobody is interrupted mid-study.
+
+   Studies a visitor chose to "Save for offline" live in a separate cache that
+   is kept across updates. */
 const CACHE = 'rccg-learning-path-v1';
+const CACHE_PREFIX = 'rccg-learning-path-';
 const CORE = [
-  './', 'index.html', 'assets/css/tokens.css', 'assets/css/base.css', 'assets/css/components.css',
+  './', 'index.html', 'offline.html', 'assets/css/tokens.css', 'assets/css/base.css', 'assets/css/components.css',
   'assets/js/app.js', 'assets/js/pages/home.js', 'assets/data/modules.json',
   'assets/fonts/inter-latin-wght-normal.woff2', 'assets/fonts/fraunces-latin-wght-normal.woff2',
 ];
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)).then(() => self.skipWaiting()));
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)));
+});
+
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k.startsWith(CACHE_PREFIX) && k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });
@@ -34,7 +46,7 @@ self.addEventListener('fetch', (event) => {
   }
   event.respondWith(
     fetchAndCache(request).catch(() => caches.match(request, { ignoreSearch: request.mode === 'navigate' })
-      .then((hit) => hit || (request.mode === 'navigate' ? caches.match('index.html') : Response.error()))),
+      .then((hit) => hit || (request.mode === 'navigate' ? caches.match('offline.html') : Response.error()))),
   );
 });
 

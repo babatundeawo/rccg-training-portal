@@ -17,7 +17,7 @@ import { transform } from 'esbuild';
 const OUT = 'dist';
 const DEFAULT_SITE = 'https://babatundeawo.github.io/rccg-training-portal/';
 const DEFAULT_BASE = '/rccg-training-portal/';
-const COPY = ['index.html', '404.html', 'favicon.ico', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml', 'sw.js', 'assets'];
+const COPY = ['index.html', '404.html', 'offline.html', 'favicon.ico', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml', 'sw.js', 'assets'];
 
 const withSlash = (s) => (s.endsWith('/') ? s : `${s}/`);
 const siteUrl = withSlash(process.env.SITE_URL || DEFAULT_SITE);
@@ -64,7 +64,7 @@ for await (const file of walk(OUT)) {
   } else if (['.html', '.xml', '.txt', '.webmanifest'].includes(ext)) {
     let text = before.toString();
     if (siteUrl !== DEFAULT_SITE) text = text.split(DEFAULT_SITE).join(siteUrl);
-    if (file.endsWith('404.html')) text = text.replace(`<base href="${DEFAULT_BASE}">`, `<base href="${basePath}">`);
+    if (file.endsWith('404.html') || file.endsWith('offline.html')) text = text.replace(`<base href="${DEFAULT_BASE}">`, `<base href="${basePath}">`);
     after = text;
   }
   if (after !== null) {

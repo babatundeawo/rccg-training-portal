@@ -17,7 +17,7 @@ export function icon(name, extraClass = '') {
 
 /* ---------- Toasts ---------- */
 let toastRegion;
-export function toast(message, { type = 'info', duration = 4500 } = {}) {
+export function toast(message, { type = 'info', duration = 4500, action = null } = {}) {
   if (!toastRegion) {
     toastRegion = document.createElement('div');
     toastRegion.className = 'toasts';
@@ -29,13 +29,23 @@ export function toast(message, { type = 'info', duration = 4500 } = {}) {
   el.className = `toast toast--${type}`;
   const glyph = type === 'success' ? 'circle-check' : type === 'error' ? 'triangle-alert' : 'info';
   el.innerHTML = `${icon(glyph)}<span>${esc(message)}</span>`;
-  toastRegion.append(el);
   const remove = () => el.remove();
-  setTimeout(() => {
+  const dismiss = () => {
     el.classList.add('is-leaving');
     el.addEventListener('animationend', remove, { once: true });
     setTimeout(remove, 500);
-  }, duration);
+  };
+  if (action) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'toast__action';
+    btn.textContent = action.label;
+    btn.addEventListener('click', () => { dismiss(); action.onClick(); });
+    el.append(btn);
+  }
+  toastRegion.append(el);
+  if (duration > 0) setTimeout(dismiss, duration);
+  return dismiss;
 }
 
 /* ---------- Dialogs (native <dialog>: focus trap, Esc and inert background built in) ---------- */

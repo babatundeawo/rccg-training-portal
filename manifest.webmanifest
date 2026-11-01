@@ -1,20 +1,84 @@
 {
+  "id": "./",
   "name": "RCCG Learning Path",
   "short_name": "Learning Path",
   "description": "Interactive discipleship training for the Redeemed Christian Church of God: Believers' Class, Baptismal Class and Workers-in-Training.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#f8f7fb",
   "theme_color": "#28166f",
+  "categories": [
+    "education",
+    "religion"
+  ],
   "icons": [
-    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "assets/img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/img/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ],
   "shortcuts": [
-    { "name": "Believers' Class", "url": "believers-manual/index.html" },
-    { "name": "Baptismal Class", "url": "baptismal-manual/index.html" },
-    { "name": "Workers-in-Training", "url": "workers-in-training/index.html" }
+    {
+      "name": "Continue studying",
+      "short_name": "Continue",
+      "url": "./?source=shortcut#journey",
+      "icons": [
+        {
+          "src": "assets/img/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Believers' Class",
+      "url": "believers-manual/index.html"
+    },
+    {
+      "name": "Baptismal Class",
+      "url": "baptismal-manual/index.html"
+    },
+    {
+      "name": "Workers-in-Training",
+      "url": "workers-in-training/index.html"
+    },
+    {
+      "name": "My notes and bookmarks",
+      "url": "my-notes/index.html"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "assets/img/screenshot-wide.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home page with the three tracks"
+    },
+    {
+      "src": "assets/img/screenshot-narrow.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "A study, one idea at a time"
+    }
   ]
 }

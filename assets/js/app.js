@@ -162,13 +162,74 @@ function initPointerPolish() {
   }, { passive: true });
 }
 
-/* ---------- Offline support ---------- */
+/* ---------- Install prompt (Chrome fires this event once; keep it for install.js) ---------- */
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  window.__rccgInstallEvent = event;
+  window.dispatchEvent(new CustomEvent('rccg:install-ready'));
+});
+
+function initInstall() {
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest?.('[data-install-open]')) return;
+    import('./install.js').then((mod) => mod.openInstallHelp()).catch(() => toast('Install help is unavailable right now.', { type: 'error' }));
+  });
+  const load = () => import('./install.js').then((mod) => mod.initInstall()).catch(() => { /* optional */ });
+  if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 4000 });
+  else setTimeout(load, 2000);
+}
+
+/* ---------- Back to top (long pages only) ---------- */
+function initBackToTop() {
+  if (document.getElementById('bottomBar')) return; // the study reader has its own controls
+  const btn = document.createElement('button');
+  btn.className = 'to-top';
+  btn.type = 'button';
+  btn.setAttribute('aria-label', 'Back to top');
+  btn.hidden = true;
+  btn.innerHTML = icon('arrow-up');
+  document.body.append(btn);
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' }));
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { btn.hidden = window.scrollY < window.innerHeight * 1.2; ticking = false; });
+  }, { passive: true });
+}
+
+/* ---------- Offline support and safe updates ---------- */
 function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
   const secure = location.protocol === 'https:' || location.hostname === 'localhost';
   if (!secure) return;
+  let reloading = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (reloading) return;
+    reloading = true;
+    location.reload();
+  });
+  const announce = (worker) => {
+    toast('A new version of the Learning Path is ready.', {
+      duration: 0,
+      action: { label: 'Refresh', onClick: () => worker.postMessage({ type: 'SKIP_WAITING' }) },
+    });
+  };
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register(`${rootPath()}sw.js`).catch(() => { /* offline support is optional */ });
+    navigator.serviceWorker.register(`${rootPath()}sw.js`).then((registration) => {
+      // A new version already waiting from an earlier visit.
+      if (registration.waiting && navigator.serviceWorker.controller) announce(registration.waiting);
+      registration.addEventListener('updatefound', () => {
+        const worker = registration.installing;
+        if (!worker) return;
+        worker.addEventListener('statechange', () => {
+          if (worker.state === 'installed' && navigator.serviceWorker.controller) announce(worker);
+        });
+      });
+      // Long-lived installed apps: look for updates when they come back to the foreground.
+      document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') registration.update().catch(() => {}); });
+    }).catch(() => { /* offline support is optional */ });
   });
 }
 
@@ -180,5 +241,7 @@ export function initPage() {
   initAccount();
   initReveal();
   initPointerPolish();
+  initInstall();
+  initBackToTop();
   registerServiceWorker();
 }

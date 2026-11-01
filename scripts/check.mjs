@@ -61,7 +61,7 @@ const attr = (tag, name) => (tag.match(new RegExp(`\\s${name}="([^"]*)"`)) || []
 for (const file of htmlFiles) {
   const rel = file.slice(DIST.length + 1);
   const html = await readFile(file, 'utf8');
-  const is404 = rel === '404.html';
+  const is404 = rel === '404.html' || rel === 'offline.html';
   if (!/<html lang="/.test(html)) err(`${rel}: missing <html lang>`);
   if (!/<title>[^<]+<\/title>/.test(html)) err(`${rel}: missing <title>`);
   if (!/<meta name="description" content="[^"]{20,}"/.test(html)) err(`${rel}: missing or very short meta description`);

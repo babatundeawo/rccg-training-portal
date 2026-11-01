@@ -1,9 +1,9 @@
 /* Card deck: one idea at a time, with Back / Continue, keyboard arrows and swipe. */
 import { $ } from './ui.js';
 
-export function initDeck({ deck, barFill, stepLabel, live, backBtn, nextBtn, onComplete }) {
+export function initDeck({ deck, barFill, stepLabel, live, backBtn, nextBtn, onComplete, startIndex = 0, onChange = null }) {
   const cards = Array.from(deck.querySelectorAll('.study-card'));
-  let index = 0;
+  let index = Math.min(Math.max(0, startIndex), cards.length - 1);
   let firstPaint = true;
 
   function paint(direction) {
@@ -24,6 +24,7 @@ export function initDeck({ deck, barFill, stepLabel, live, backBtn, nextBtn, onC
       title?.focus({ preventScroll: true });
     }
     firstPaint = false;
+    if (onChange) onChange(index, cards.length);
   }
 
   const next = () => {
@@ -58,5 +59,5 @@ export function initDeck({ deck, barFill, stepLabel, live, backBtn, nextBtn, onC
   }, { passive: true });
 
   paint('forward');
-  return { get index() { return index; }, total: cards.length };
+  return { get index() { return index; }, total: cards.length, cards };
 }

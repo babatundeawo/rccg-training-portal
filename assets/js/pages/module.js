@@ -3,6 +3,7 @@ import { initPage } from '../app.js';
 import { $, esc, icon, smartTitle } from '../ui.js';
 import { getModules, getModuleIndex } from '../data.js';
 import { isStudyComplete, moduleCompletionCount, nextStudyId } from '../store.js';
+import { offlineSupported, isTrackSaved, saveTrack } from '../offline.js';
 
 initPage();
 
@@ -35,6 +36,27 @@ function showError() {
   $('#retry').addEventListener('click', load);
 }
 
+function setupOffline(meta) {
+  if (!offlineSupported() || $('#offlineBox')) return;
+  const box = document.createElement('div');
+  box.className = 'offline-box';
+  box.id = 'offlineBox';
+  const saved = isTrackSaved(moduleId);
+  box.innerHTML = `<div><h2>Study without data</h2><p>Save all ${studies.length} studies of the ${esc(meta.title)} on this phone, so they open with no signal. About 1 MB.</p></div>
+    <button class="btn" type="button" id="offlineBtn">${icon('download')}<span class="btn__label">${saved ? 'Saved on this device. Update' : 'Save for offline'}</span></button>
+    <p class="offline-box__status" id="offlineStatus" role="status"></p>`;
+  $('.test-cta').before(box);
+  $('#offlineBtn').addEventListener('click', async (event) => {
+    const btn = event.currentTarget;
+    btn.disabled = true;
+    const status = $('#offlineStatus');
+    const failed = await saveTrack(meta, studies.length, (done, total) => { status.textContent = `Saving… ${done} of ${total}`; });
+    btn.disabled = false;
+    status.textContent = failed ? `Some files could not be saved (${failed}). Check your connection and try again.` : 'Saved. This track now works without internet.';
+    if (!failed) $('.btn__label', btn).textContent = 'Saved on this device. Update';
+  });
+}
+
 async function load() {
   try {
     const [modules, index] = await Promise.all([getModules(), getModuleIndex(moduleId)]);
@@ -42,6 +64,7 @@ async function load() {
     const meta = modules.find((m) => m.id === moduleId);
     $('#testIntro').textContent = `Once you’ve gone through all ${studies.length} studies, take the ${meta.title} quiz on test day.`;
     paint();
+    setupOffline(meta);
   } catch {
     showError();
   }
