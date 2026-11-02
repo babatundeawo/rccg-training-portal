@@ -80,7 +80,7 @@ const csvCell = (value) => {
 function exportCsv() {
   const header = ['Name', 'Email', ...modules.map((m) => `${m.title} (of ${totals[m.id]})`), ...modules.flatMap((m) => [`${m.title} test best (%)`, `${m.title} test last score`, `${m.title} test attempts`]), 'Streak (days)', 'Last studied'];
   const lines = [header, ...visibleRows().map((r) => [r.name, r.email, ...modules.map((m) => r.done[m.id] || 0), ...modules.flatMap((m) => { const t = r.tests[m.id]; return t && t.bestTotal ? [Math.round((t.best / t.bestTotal) * 100), `${t.last}/${t.lastTotal}`, t.attempts || 1] : ['', '', 0]; }), r.streak, r.lastDay || ''])];
-  const blob = new Blob([`﻿${lines.map((l) => l.map(csvCell).join(',')).join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
+  const blob = new Blob([`\uFEFF${lines.map((l) => l.map(csvCell).join(',')).join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
