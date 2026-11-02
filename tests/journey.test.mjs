@@ -111,3 +111,42 @@ test('sharing is off by default and remembered when turned on', () => {
   s.setSharedLocal(true);
   assert.equal(s.getShared(), true);
 });
+
+test('test results keep best, latest and attempts', () => {
+  store.clear();
+  s.recordTestResult('m', 20, 30, 1000);
+  s.recordTestResult('m', 25, 30, 2000);
+  s.recordTestResult('m', 22, 30, 3000);
+  assert.deepEqual(s.getTests().m, { best: 25, bestTotal: 30, last: 22, lastTotal: 30, lastAt: 3000, attempts: 3 });
+});
+
+test('mergeTests combines two devices without losing the best score', () => {
+  const a = { m: { best: 25, bestTotal: 30, last: 20, lastTotal: 30, lastAt: 1, attempts: 2 } };
+  const b = { m: { best: 21, bestTotal: 30, last: 21, lastTotal: 30, lastAt: 5, attempts: 3 }, n: { best: 1, bestTotal: 2, last: 1, lastTotal: 2, lastAt: 2, attempts: 1 } };
+  const merged = s.mergeTests(a, b);
+  assert.equal(merged.m.best, 25);
+  assert.equal(merged.m.last, 21);
+  assert.equal(merged.m.attempts, 3);
+  assert.equal(merged.n.best, 1);
+  assert.deepEqual(s.mergeTests(null, { x: { best: 'bad' } }), {});
+});
+
+test('clearAccountData wipes one person\'s study but keeps device settings', () => {
+  store.clear();
+  s.markStudyComplete('m', 1);
+  s.setNote('m', 1, 'private');
+  s.toggleBookmark('m', 1, 0);
+  s.recordTestResult('m', 10, 30);
+  s.setSharedLocal(true);
+  s.setOwner('uid-A');
+  store.set('rccg-theme', 'dark');
+  s.clearAccountData();
+  assert.deepEqual(s.loadProgress(), {});
+  assert.deepEqual(s.getActivity(), []);
+  assert.equal(s.listNotes().length, 0);
+  assert.equal(s.listBookmarks().length, 0);
+  assert.deepEqual(s.getTests(), {});
+  assert.equal(s.getShared(), false);
+  assert.equal(s.getOwner(), null);
+  assert.equal(store.get('rccg-theme'), 'dark');
+});

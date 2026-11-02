@@ -31,7 +31,7 @@ Study streaks and a weekly view, resume where you stopped, bookmarks and private
 6. Open the **Actions** tab. The newest run named **Deploy to GitHub Pages** shows a yellow circle, then a **green tick**. Click the run, then the link under **deploy** to open the live site.
 7. **Roll back** if needed: **Pull requests → Closed**, open the merged request, click **Revert**, then merge the new pull request that appears.
 
-## D. Firebase Console (needed for notes sync and class leaders)
+## D. Firebase Console (publish the rules again: they gained a `tests` field) (needed for notes sync and class leaders)
 Follow `docs/FIREBASE_LOGIN_SETUP.md`, sections **B** (publish rules, required) and **C** (approve leaders). Do B before testing sign-in.
 
 ## E. Test on a phone

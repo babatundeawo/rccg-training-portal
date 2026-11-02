@@ -548,3 +548,15 @@ a.saved-item__main:hover .saved-item__title { text-decoration: underline; }
 .lead-prog .bar, .lead-prog .bar__fill { display: block; }
 .lead-wrap + .hint { margin-top: var(--space-3); font-size: var(--step--2); color: var(--text-3); }
 .footer__btn { font-size: var(--step--1); }
+
+/* ---- Study complete screen: never wider than the phone ---- */
+.complete { min-width: 0; width: 100%; }
+.complete h1, .complete p { max-width: 100%; overflow-wrap: anywhere; }
+.complete p { max-width: min(32ch, 100%); }
+.complete__actions { width: 100%; min-width: 0; }
+.complete__actions .btn { max-width: 100%; height: auto; min-height: 3.25rem; white-space: normal; text-align: center; }
+@media (max-width: 30rem) {
+  .complete__actions { flex-direction: column; align-items: stretch; }
+  .complete__actions .btn { width: 100%; justify-content: center; }
+}
+.lead-test { font-size: var(--step--2); color: var(--text-3); }

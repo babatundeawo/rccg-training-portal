@@ -6,7 +6,7 @@ Firebase is the free (Spark plan) service that stores sign-ins and saved progres
 
 | Data | Where | Who can read it |
 |---|---|---|
-| Study progress, days studied, name, email | `progress` | The learner. Class leaders **only if the learner turned on "Share my progress with my class leaders"** |
+| Study progress, days studied, test scores, name, email | `progress` | The learner. Class leaders **only if the learner turned on "Share my progress with my class leaders"** |
 | Notes, bookmarks, reading position | `private` | Only the learner. Never leaders, never you |
 | Who is a class leader | `leaders` | Only that person (to check their own status). Only you can add them, in the console |
 
@@ -30,7 +30,7 @@ Do this for each person who should see class progress. They must first create an
 4. **Document ID**: paste the leader's UID. Add one field: name `active`, type **boolean**, value **true**. Click **Save**.
 5. The leader opens the site, signs in, and the account window now shows **Class leader view**. To remove a leader, delete their document or set `active` to false.
 
-Learners appear on the leader page only after they switch on **Share my progress with my class leaders** in their account window. Leaders see name, email, study counts, streak and last study day. Please tell your learners this before they switch it on.
+Learners appear on the leader page only after they switch on **Share my progress with my class leaders** in their account window. Leaders see name, email, study counts, test scores (best, latest, tries), streak and last study day. Test scores are recorded by the learner's own phone, so treat them as a guide, not as proof; the official test is still the one you supervise. Please tell your learners this before they switch it on.
 
 ## D. Keep the settings out of the code (recommended)
 The web settings are not passwords (the rules protect the data), but it is cleaner to keep them in GitHub.
@@ -38,8 +38,11 @@ The web settings are not passwords (the rules protect the data), but it is clean
 2. GitHub: your repository → **Settings → Secrets and variables → Actions → New repository secret**. Add one secret per line (name on the left, value from Firebase):
    `FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, `FIREBASE_PROJECT_ID`, `FIREBASE_STORAGE_BUCKET`, `FIREBASE_MESSAGING_SENDER_ID`, `FIREBASE_APP_ID`, `FIREBASE_MEASUREMENT_ID`.
 3. If you skip this, the values already in `assets/js/firebase-config.js` are used and the site still works.
-4. Google Cloud console → **APIs & Services → Credentials** → open the browser key → **Website restrictions** → add `https://babatundeawo.github.io/*`.
+4. Google Cloud console → **APIs & Services → Credentials** → open the browser key → **Website restrictions**. If you use restrictions, the list must contain all three: `https://babatundeawo.github.io/*`, `https://rccg-training-portal.firebaseapp.com/*` and `https://rccg-training-portal.web.app/*`. Missing the last two breaks Google sign-in and password reset.
 5. Recommended: **Firebase → App Check** and register the web app with reCAPTCHA, to slow down abuse. Turn on enforcement only after you have tested sign-in.
+
+## Two people on one phone
+Signing out clears that person's progress, notes, bookmarks and test scores from the phone, after saving them to their account. The next person who signs in starts with only their own. If a mix-up happened before this update, the mixed progress is already saved in the second account. To fix it: Firestore Database → Data → `progress` → open that person's document (the UID from Authentication → Users) → delete the `modules`, `completed` and `activity` fields (hover the field, click the minus sign) → also open `private` and delete the same person's document if it holds the wrong notes. They then sign out and in again.
 
 ## E. Test it
 1. Open the live site on your phone. Tap **Sign in → Create account**, then verify the email.
