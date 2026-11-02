@@ -10,6 +10,7 @@ import { firebaseConfig } from './firebase-config.js';
 import {
   loadProgress, saveProgress, mergeProgress, getActivity, saveActivity, mergeActivity, getCompletedOn, saveCompletedOn,
   mergeCompletedOn, getPrivateData, savePrivateData, mergeByUpdatedAt, getShared, setSharedLocal,
+  getTests, saveTests, mergeTests, getOwner, setOwner, clearAccountData,
 } from './store.js';
 import { debounce } from './ui.js';
 
@@ -75,6 +76,7 @@ async function init() {
     modules: loadProgress(),
     activity: getActivity(),
     completed: getCompletedOn(),
+    tests: getTests(),
     updatedAt: Date.now(),
     name: publicUser(user).name,
     email: user.email || null,
@@ -85,13 +87,22 @@ async function init() {
     if (syncing) return;
     syncing = true;
     try {
+      // Another person's study data is still on this device: never mix it into this account.
+      const owner = getOwner();
+      if (owner && owner !== user.uid) {
+        clearAccountData();
+        emit('rccg:progress-synced', {});
+        emit('rccg:private-synced', {});
+      }
       const [snap, privSnap] = await Promise.all([fsSdk.getDoc(progressRef(user.uid)), fsSdk.getDoc(privateRef(user.uid))]);
       const remote = snap.exists() ? snap.data() : {};
       const merged = mergeProgress(loadProgress(), remote.modules || {});
       saveProgress(merged);
       saveActivity(mergeActivity(getActivity(), remote.activity));
       saveCompletedOn(mergeCompletedOn(getCompletedOn(), remote.completed));
+      saveTests(mergeTests(getTests(), remote.tests));
       setSharedLocal(remote.shared === true);
+      setOwner(user.uid);
       await fsSdk.setDoc(progressRef(user.uid), progressPayload(user), { merge: true });
 
       const remotePrivate = privSnap.exists() ? privSnap.data() : {};
@@ -230,6 +241,22 @@ async function init() {
       return result.docs.map((d) => ({ uid: d.id, ...d.data() }));
     },
 
-    logOut: () => authSdk.signOut(auth),
+    /** Saves the latest to the account, signs out, then clears this device so the next
+        person who signs in starts with only their own progress. */
+    async logOut() {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          await Promise.all([
+            fsSdk.setDoc(progressRef(user.uid), progressPayload(user), { merge: true }),
+            fsSdk.setDoc(privateRef(user.uid), { ...getPrivateData(), updatedAt: Date.now() }, { merge: true }),
+          ]);
+        } catch { /* offline: it stays in the account's last synced copy */ }
+      }
+      await authSdk.signOut(auth);
+      clearAccountData();
+      emit('rccg:progress-synced', {});
+      emit('rccg:private-synced', {});
+    },
   };
 }

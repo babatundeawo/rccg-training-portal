@@ -51,7 +51,7 @@ function profileView() {
       <a class="btn btn--block" href="${rootPath()}my-notes/index.html"><span class="btn__label">My notes and bookmarks</span></a>
       <div class="share-box"><label class="switch"><input type="checkbox" id="acctShare" ${auth && auth.isSharing() ? 'checked' : ''}>
         <span class="switch__track" aria-hidden="true"></span><span class="switch__text">Share my progress with my class leaders</span></label>
-        <p class="hint">If you turn this on, approved class leaders can see your name, email and which studies you have finished. They can never see your notes or bookmarks. Turn it off any time.</p></div>
+        <p class="hint">If you turn this on, approved class leaders can see your name, email, which studies you have finished and your test scores. They can never see your notes or bookmarks. Turn it off any time.</p></div>
       <a class="btn btn--block" id="acctLeader" href="${rootPath()}leaders/index.html" hidden><span class="btn__label">Class leader view</span></a>
       <button class="btn btn--block" type="button" id="acctSignOut">${icon('log-out')}<span class="btn__label">Sign out</span></button>
     </div></div>`;

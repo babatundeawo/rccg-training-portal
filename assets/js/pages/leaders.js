@@ -33,10 +33,17 @@ function toRow(learner) {
     name: learner.name || 'Unnamed learner',
     email: learner.email || '',
     done,
+    tests: learner.tests && typeof learner.tests === 'object' ? learner.tests : {},
     streak: currentStreak(days),
     lastDay,
     updatedAt: learner.updatedAt || 0,
   };
+}
+
+function testLabel(t) {
+  if (!t || !Number.isFinite(t.best) || !t.bestTotal) return 'Test: not taken';
+  const pct = Math.round((t.best / t.bestTotal) * 100);
+  return `Test best ${t.best}/${t.bestTotal} (${pct}%) · ${t.attempts || 1} ${(t.attempts || 1) === 1 ? 'try' : 'tries'}`;
 }
 
 function visibleRows() {
@@ -55,7 +62,7 @@ function paintTable() {
   $('#leaderCount').textContent = `${list.length} of ${rows.length} learners`;
   $('#leaderBody').innerHTML = list.length ? list.map((r) => `<tr>
       <th scope="row" data-label="Learner"><span class="lead-name">${esc(r.name)}</span><span class="lead-email">${esc(r.email)}</span></th>
-      ${modules.map((m) => `<td data-label="${esc(m.title)}"><span class="lead-prog"><span class="bar" aria-hidden="true"><span class="bar__fill" data-p="${(r.done[m.id] || 0) / totals[m.id]}"></span></span>${r.done[m.id] || 0} / ${totals[m.id]}</span></td>`).join('')}
+      ${modules.map((m) => `<td data-label="${esc(m.title)}"><span class="lead-prog"><span class="bar" aria-hidden="true"><span class="bar__fill" data-p="${(r.done[m.id] || 0) / totals[m.id]}"></span></span>${r.done[m.id] || 0} / ${totals[m.id]}<span class="lead-test">${testLabel(r.tests[m.id])}</span></span></td>`).join('')}
       <td data-label="Streak">${r.streak} ${r.streak === 1 ? 'day' : 'days'}</td>
       <td data-label="Last studied">${r.lastDay ? esc(formatDay(new Date(`${r.lastDay}T00:00:00`).getTime())) : 'Never'}</td></tr>`).join('')
     : `<tr><td colspan="${modules.length + 3}" class="saved-empty">No learners match.</td></tr>`;
@@ -71,9 +78,9 @@ const csvCell = (value) => {
 };
 
 function exportCsv() {
-  const header = ['Name', 'Email', ...modules.map((m) => `${m.title} (of ${totals[m.id]})`), 'Streak (days)', 'Last studied'];
-  const lines = [header, ...visibleRows().map((r) => [r.name, r.email, ...modules.map((m) => r.done[m.id] || 0), r.streak, r.lastDay || ''])];
-  const blob = new Blob([`\uFEFF${lines.map((l) => l.map(csvCell).join(',')).join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
+  const header = ['Name', 'Email', ...modules.map((m) => `${m.title} (of ${totals[m.id]})`), ...modules.flatMap((m) => [`${m.title} test best (%)`, `${m.title} test last score`, `${m.title} test attempts`]), 'Streak (days)', 'Last studied'];
+  const lines = [header, ...visibleRows().map((r) => [r.name, r.email, ...modules.map((m) => r.done[m.id] || 0), ...modules.flatMap((m) => { const t = r.tests[m.id]; return t && t.bestTotal ? [Math.round((t.best / t.bestTotal) * 100), `${t.last}/${t.lastTotal}`, t.attempts || 1] : ['', '', 0]; }), r.streak, r.lastDay || ''])];
+  const blob = new Blob([`﻿${lines.map((l) => l.map(csvCell).join(',')).join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

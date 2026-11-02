@@ -6,6 +6,8 @@ import {
   buildCandidatePaper, scorePaper, formatTime, validateCandidate, buildWhatsAppMessage, whatsappShareUrl,
 } from '../quiz.js';
 
+import { recordTestResult } from '../store.js';
+
 initPage();
 
 const MODULE_ID = document.body.dataset.module;
@@ -135,6 +137,7 @@ function finish() {
   clearInterval(timerId);
   const { correct, total } = scorePaper(paper, answers);
   lastScore = { correct, total };
+  recordTestResult(MODULE_ID, correct, total); // reaches class leaders if the learner shares and is signed in
   show('result');
   const pct = total ? correct / total : 0;
   $('#scoreNum').firstChild.textContent = `${correct} / ${total}`;
@@ -143,6 +146,7 @@ function finish() {
   $('#scoreNote').textContent = autoSubmitted
     ? `Time’s up, so your test was submitted automatically.${unanswered ? ` ${unanswered} unanswered ${unanswered === 1 ? 'question counts' : 'questions count'} as incorrect.` : ''}`
     : 'Well done for completing the test.';
+  $('#scoreNote').textContent += ' Your score is saved to your Learning Path account if you are signed in.';
   const circle = $('.score__ring .value-c');
   const c = 2 * Math.PI * 52;
   circle.style.strokeDasharray = String(c);

@@ -339,3 +339,65 @@ export function getShared() {
 export function setSharedLocal(shared) {
   write(SHARE_KEY, { shared: Boolean(shared) });
 }
+
+/* ---------- Test scores (reported to class leaders along with progress, if the learner shares) ---------- */
+const TESTS_KEY = 'rccg-tests-v1'; // { moduleId: { best, bestTotal, last, lastTotal, lastAt, attempts } }
+
+export function getTests() {
+  const data = read(TESTS_KEY);
+  return data && typeof data === 'object' ? data : {};
+}
+
+export function saveTests(data) {
+  write(TESTS_KEY, data && typeof data === 'object' ? data : {});
+}
+
+const ratio = (score, total) => (total > 0 ? score / total : 0);
+
+/** Keeps the best score, the latest score and how many times the test was taken. */
+export function recordTestResult(moduleId, correct, total, now = Date.now()) {
+  const all = getTests();
+  const old = all[moduleId];
+  const entry = { best: correct, bestTotal: total, last: correct, lastTotal: total, lastAt: now, attempts: 1 };
+  if (old) {
+    entry.attempts = (old.attempts || 0) + 1;
+    if (ratio(old.best, old.bestTotal) >= ratio(correct, total)) { entry.best = old.best; entry.bestTotal = old.bestTotal; }
+  }
+  all[moduleId] = entry;
+  write(TESTS_KEY, all);
+  window.dispatchEvent(new CustomEvent('rccg:progress-changed'));
+  return entry;
+}
+
+export function mergeTests(a, b) {
+  const out = {};
+  const valid = (t) => t && Number.isFinite(t.best) && Number.isFinite(t.bestTotal) && Number.isFinite(t.last) && Number.isFinite(t.lastTotal);
+  for (const id of new Set([...Object.keys(a || {}), ...Object.keys(b || {})])) {
+    const x = valid(a?.[id]) ? a[id] : null;
+    const y = valid(b?.[id]) ? b[id] : null;
+    if (!x || !y) { if (x || y) out[id] = { ...(x || y) }; continue; }
+    const better = ratio(x.best, x.bestTotal) >= ratio(y.best, y.bestTotal) ? x : y;
+    const newer = (x.lastAt || 0) >= (y.lastAt || 0) ? x : y;
+    out[id] = { best: better.best, bestTotal: better.bestTotal, last: newer.last, lastTotal: newer.lastTotal, lastAt: newer.lastAt || 0, attempts: Math.max(x.attempts || 0, y.attempts || 0) };
+  }
+  return out;
+}
+
+/* ---------- Whose data is on this device ---------- */
+const OWNER_KEY = 'rccg-owner-v1';
+const ACCOUNT_KEYS = [PROGRESS_KEY, LAST_KEY, ACTIVITY_KEY, COMPLETED_KEY, POSITION_KEY, NOTES_KEY, BOOKMARKS_KEY, SHARE_KEY, TESTS_KEY, OWNER_KEY];
+
+export const getOwner = () => {
+  const owner = read(OWNER_KEY);
+  return typeof owner === 'string' && owner ? owner : null;
+};
+export const setOwner = (uid) => write(OWNER_KEY, uid);
+
+/** Removes everything that belongs to a person's study (not device settings such as
+    the theme). Used when someone signs out, so the next person starts clean. */
+export function clearAccountData() {
+  for (const key of ACCOUNT_KEYS) {
+    delete fallback[key];
+    try { localStorage.removeItem(key); } catch { /* ignore */ }
+  }
+}
