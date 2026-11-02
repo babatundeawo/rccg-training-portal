@@ -74,6 +74,7 @@ function exportCsv() {
   const header = ['Name', 'Email', ...modules.map((m) => `${m.title} (of ${totals[m.id]})`), 'Streak (days)', 'Last studied'];
   const lines = [header, ...visibleRows().map((r) => [r.name, r.email, ...modules.map((m) => r.done[m.id] || 0), r.streak, r.lastDay || ''])];
   const blob = new Blob([`\uFEFF${lines.map((l) => l.map(csvCell).join(',')).join('\r\n')}`], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
   a.download = `class-progress-${new Date().toISOString().slice(0, 10)}.csv`;
